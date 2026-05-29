@@ -4,24 +4,68 @@ using DefaultPublisher;
 using Microsoft.Foundation.Company;
 
 /// <summary>
-/// List-Page für Mandanten Tabelleninformationen
+/// List-Page für Tabelleninformationen
 /// </summary>
 page 50400 "ICM Tables List"
 {
     ApplicationArea = All;
-    Caption = 'ICM Tables List';
-    PageType = List;
+    Caption = 'Tables List';
+    PageType = Worksheet;
     SourceTable = "ICM Table";
-    UsageCategory = Lists;
-    Editable = true;
+    UsageCategory = Tasks;
+    AutosplitKey = true;
+    delayedinsert = true;
+    savevalues = true;
 
 
     layout
     {
         area(Content)
         {
+            group(Group)
+            {
+                Caption = 'General';
+
+                field("Company"; CompanyName)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Company Name';
+                    Lookup = true;
+                    ToolTip = 'Specifies the name of a the company.';
+
+                    trigger OnLookup(var Text: Text): boolean
+                    begin
+                        CurrPage.SaveRecord();
+                        ICMMgt.LookupCompanyName(CompanyName, Rec);
+                        CurrPage.Update(false);
+                    end;
+
+                    trigger OnValidate()
+                    begin
+                        if CompanyName = '' then begin
+                            Rec.FilterGroup := 2;
+                            Rec.SetRange("ICM Company Name");
+                            Rec.FilterGroup := 0;
+
+                            CurrPage.Update(false);
+                            exit;
+                        end;
+
+                        CurrPage.SaveRecord();
+                        ICMMgt.LookupCompanyName(CompanyName, Rec);
+                        ICMMgt.FillCompanyTableInformation();
+                        CurrPage.Update(false);
+                    end;
+                }
+
+            }
             repeater(General)
             {
+                field("Company Name"; Rec."ICM Company Name")
+                {
+                    ToolTip = 'Specifies the name of the company.';
+                    Visible = true;
+                }
                 field(ID; Rec."ICM Table ID")
                 {
                     ToolTip = 'Specifies the unique identifier of the table.';
@@ -35,14 +79,10 @@ page 50400 "ICM Tables List"
                 {
                     ToolTip = 'Specifies the caption of the table.';
                 }
-                field("Company Name"; Rec."ICM Company Name")
-                {
-                    ToolTip = 'Specifies the name of the company.';
-                    Visible = false;
-                }
                 field("Data Per Company"; Rec."ICM Data Per Company")
                 {
                     ToolTip = 'Specifies if the table has data per company.';
+                    Visible = false;
                 }
                 field("Has Records"; Rec."ICM Has Records")
                 {
@@ -51,6 +91,7 @@ page 50400 "ICM Tables List"
                 field("Table Subtype"; Rec."ICM Table Subtype")
                 {
                     ToolTip = 'Specifies the subtype of the table.';
+                    Visible = false;
                 }
                 field("Included in the License"; Rec."ICM Included in the License")
                 {
@@ -110,32 +151,6 @@ page 50400 "ICM Tables List"
                     CurrPage.Update(false);
                 end;
             }
-            action("Set Field Active for Setup Tables")
-            {
-                Caption = 'Set Field Active for Setup Tables';
-                ToolTip = 'Set the Setup Active field for Setup tables entries to true or false';
-                Image = CheckList;
-
-                trigger OnAction()
-                var
-                    ICMTable: Record "ICM Table";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
-                begin
-                    ICMTable.SetFilter("ICM Table Name", '*%1*', 'Setup');
-                    ICMTable.CopyFilters(Rec);
-                    Choice := StrMenu(Text001Lbl, 1, Text002Lbl);
-                    case Choice of
-                        1:
-                            ICMMgt.SetActiveStatus(ICMTable, true);
-                        2:
-                            ICMMgt.SetActiveStatus(ICMTable, false);
-                        3:
-                            exit;
-                    end;
-                    CurrPage.Update(false);
-                end;
-            }
             action("Create new Company")
             {
                 Caption = 'Create new Company';
@@ -172,9 +187,22 @@ page 50400 "ICM Tables List"
                     Page.Run(Page::"ICM Setup");
                 end;
             }
+            action("Configuration Packages")
+            {
+                Caption = 'Configuration Packages';
+                ToolTip = 'Open Configuration Packages List';
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"CMI Config. Package Card");
+                end;
+            }
         }
     }
     var
+        ICMMgt: Codeunit "ICM Management";
+        CompanyName: Text[30];
         Text001Lbl: Label 'Activated,Deactivated,Cancel';
         Text002Lbl: Label 'Select action:';
 }

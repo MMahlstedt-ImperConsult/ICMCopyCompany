@@ -2,7 +2,7 @@ namespace DefaultPublisher;
 
 table 50400 "ICM Table"
 {
-    DataPerCompany = true;
+    DataPerCompany = false;
     Caption = 'Company Table Information';
 
     fields
@@ -70,7 +70,7 @@ table 50400 "ICM Table"
 
     keys
     {
-        key(PK; "ICM Table ID")
+        key(PK; "ICM Company Name", "ICM Table ID")
         {
             Clustered = true;
         }

@@ -2,42 +2,53 @@ namespace DefaultPublisher;
 
 using Microsoft.Inventory.Item;
 using System.Reflection;
+using System.Environment;
+using Microsoft.Foundation.Company;
 
 codeunit 50400 "ICM Management"
 {
     procedure FillCompanyTableInformation()
     var
         AllObjWithCaptionL: Record AllObjWithCaption;
+        CompanyL: Record Company;
         ICMTableL: Record "ICM Table";
         RecRefL: RecordRef;
         TableCountL: Integer;
     begin
-        AllObjWithCaptionL.SetRange("Object Type", AllObjWithCaptionL."Object Type"::Table);
-        AllObjWithCaptionL.SetRange("Object ID", 1, 99999999);
 
-        if AllObjWithCaptionL.FindSet() then begin
+        CompanyL.Reset();
+
+        if CompanyL.FindSet() then begin
+
             if GuiAllowed then Begin
                 WindowDialog.Open(Text005Lbl +
-                  '#1###################\' +
-                  '#2###################'
+                '#1###################\' +
+                '#2###################'
                 );
                 WindowDialogIndex1 := 0;
                 WindowDialogCount1 := AllObjWithCaptionL.Count;
             End;
 
             repeat
-                if GuiAllowed then Begin
-                    WindowDialogIndex1 += 1;
-                    WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
-                End;
+                AllObjWithCaptionL.Reset();
+                AllObjWithCaptionL.ChangeCompany(CompanyL.Name);
+                AllObjWithCaptionL.SetRange("Object Type", AllObjWithCaptionL."Object Type"::Table);
+                AllObjWithCaptionL.SetRange("Object Subtype", 'Normal');
+                AllObjWithCaptionL.SetRange("Object ID", 1, 99999999);
 
-                if AllObjWithCaptionL."Object Type" <> AllObjWithCaptionL."Object Type"::System then
-                    //    if CheckTableInLicense(AllObjWithCaptionL."Object ID") and HasTableRecords(AllObjWithCaptionL."Object ID") then
-                    if CheckTableInLicense(AllObjWithCaptionL."Object ID") then
-                        UpdateICMTableLine(AllObjWithCaptionL, ICMTableL);
+                if AllObjWithCaptionL.FindSet() then
+                    repeat
+                        if GuiAllowed then Begin
+                            WindowDialogIndex1 += 1;
+                            WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
+                        End;
 
+                        if AllObjWithCaptionL."Object Type" <> AllObjWithCaptionL."Object Type"::System then
+                            if CheckTableInLicense(AllObjWithCaptionL."Object ID") then
+                                UpdateICMTableLine(AllObjWithCaptionL, CompanyL.Name);
 
-            until AllObjWithCaptionL.Next() = 0;
+                    until AllObjWithCaptionL.Next() = 0;
+            until CompanyL.Next() = 0;
         end;
 
         if GuiAllowed then
@@ -87,31 +98,33 @@ codeunit 50400 "ICM Management"
     /// <summary>
     /// Inserts a Line into "ICM Table" if it does not already exist
     /// </summary>
-    local procedure UpdateICMTableLine(var TableInfo: Record AllObjWithCaption; var ICMTable: Record "ICM Table")
+    local procedure UpdateICMTableLine(var AllObjWithCaptionR: Record AllObjWithCaption; CompanyNameR: Text[30])
     var
+        ICMTableL: Record "ICM Table";
         RecRef: RecordRef;
         RecordCount: Integer;
     begin
-        if not ICMTable.Get(TableInfo."Object ID") then begin
-            ICMTable.Init();
-            ICMTable."ICM Table ID" := TableInfo."Object ID";
-            ICMTable."ICM Table Name" := TableInfo."Object Name";
-            ICMTable."ICM Table Caption" := TableInfo."Object Caption";
-            ICMTable."ICM Table Subtype" := TableInfo."Object Subtype";
-            ICMTable."ICM Company Name" := CompanyName();
-            ICMTable."ICM Active" := false;
+        if not ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
+            ICMTableL.Init();
+            ICMTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
+            ICMTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
+            ICMTableL."ICM Table Caption" := AllObjWithCaptionR."Object Caption";
+            ICMTableL."ICM Table Subtype" := AllObjWithCaptionR."Object Subtype";
+            ICMTableL."ICM Company Name" := CompanyNameR;
+            ICMTableL."ICM Active" := false;
 
-            ICMTable.Insert();
+            ICMTableL.Insert();
         end;
 
-        if ICMTable."ICM Table Subtype" = 'Normal' then begin
-            if SafeOpenTable(TableInfo."Object ID", RecRef) then begin
+        if ICMTableL."ICM Table Subtype" = 'Normal' then begin
+            if SafeOpenTable(AllObjWithCaptionR."Object ID", RecRef) then begin
                 RecordCount := RecRef.Count();
-                ICMTable."ICM Has Records" := RecordCount > 0;
-                ICMTable."ICM Record Count" := RecordCount;
-                ICMTable."ICM Included in the License" := CheckTableInLicense(TableInfo."Object ID");
-                ICMTable."ICM Active" := true;
-                ICMtable.Modify();
+                ICMTableL."ICM Has Records" := RecordCount > 0;
+                ICMTableL."ICM Record Count" := RecordCount;
+                //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
+                ICMTableL."ICM Included in the License" := true;
+                ICMTableL."ICM Active" := true;
+                ICMTableL.Modify();
             end;
         end;
         recRef.Close();
@@ -237,6 +250,27 @@ codeunit 50400 "ICM Management"
     local procedure TryDeleteAll(var RecRef: RecordRef)
     begin
         RecRef.DeleteAll();
+    end;
+
+    procedure LookupCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Table")
+    var
+        CompanyL: Record Company;
+    begin
+        Commit();
+        //if PAGE.RunModal(0, CompanyL) = ACTION::LookupOK then begin
+        if PAGE.RunModal(PAGE::Companies, CompanyL) = ACTION::LookupOK then begin
+            CurrentCompanyNameR := CompanyL.Name;
+            SetCompanyName(CurrentCompanyNameR, ICMTableR);
+        end;
+    end;
+
+    local procedure SetCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Table")
+    begin
+        ICMTableR.FilterGroup := 2;
+        ICMTableR.SetRange("ICM Company Name", CurrentCompanyNameR);
+        ICMTableR.FilterGroup := 0;
+        //OnSetCompanyNameOnAfterAppliesFilter(CurrentCompanyNameR, ICMTableR);
+        if ICMTableR.Find('-') then;
     end;
 
     procedure FormatPercentage(adPercentage: Decimal): Text

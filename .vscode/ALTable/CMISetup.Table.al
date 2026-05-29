@@ -1,0 +1,43 @@
+table 50401 "ICM Setup"
+{
+    Caption = 'ICM Setup';
+    DataClassification = ToBeClassified;
+    Extensible = true;
+
+    fields
+    {
+        field(1; "Primary Key"; Code[10])
+        {
+            Caption = 'Primary Key';
+            Editable = false;
+        }
+        field(2; "Table data processing"; Enum "ICM Table Data Processing")
+        {
+            Caption = 'Table data processing';
+        }
+    }
+
+    keys
+    {
+        key(PK; "Primary Key")
+        {
+            Clustered = true;
+        }
+    }
+
+    trigger OnInsert()
+    begin
+    end;
+
+    trigger OnModify()
+    begin
+    end;
+
+    trigger OnDelete()
+    begin
+    end;
+
+    trigger OnRename()
+    begin
+    end;
+}

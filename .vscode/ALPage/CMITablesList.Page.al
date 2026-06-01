@@ -195,7 +195,7 @@ page 50400 "ICM Tables List"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"CMI Config. Package Card");
+                    Page.Run(Page::"CMI Config. Package List");
                 end;
             }
         }

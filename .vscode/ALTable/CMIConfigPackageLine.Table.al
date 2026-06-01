@@ -1,7 +1,7 @@
 table 50403 "CMI Config. Package Line"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Configuration Package Table';
+    Caption = 'Configuration Package Line';
 
     fields
     {
@@ -14,12 +14,21 @@ table 50403 "CMI Config. Package Line"
         {
             Caption = 'Table ID';
             DataClassification = ToBeClassified;
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table));
         }
         field(3; "Table Name"; Text[250])
         {
             CalcFormula = lookup(AllObjWithCaption."Object Name" where("Object Type" = const(Table),
                                                                         "Object ID" = field("Table ID")));
             Caption = 'Table Name';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(4; "Table Caption"; Text[250])
+        {
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = const(Table),
+                                                                        "Object ID" = field("Table ID")));
+            Caption = 'Table Caption';
             Editable = false;
             FieldClass = FlowField;
         }

@@ -299,7 +299,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2092870705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuration Package Table</source>
+          <source>Configuration Package Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Property Caption</note>
         </trans-unit>
@@ -307,6 +307,11 @@
           <source>Package Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Package Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Caption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Table Caption - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2092870705 - Field 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table ID</source>
@@ -363,6 +368,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Control Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 574892325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Configuration Packages</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 574892325 - Control 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 574892325 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 46674421 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tables</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -372,6 +392,11 @@
           <source>Package Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Package Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 46674421 - Control 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Caption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Table Caption - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 46674421 - Control 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table ID</source>

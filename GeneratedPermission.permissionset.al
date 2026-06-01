@@ -8,5 +8,12 @@ permissionset 50400 "ICM Copy Company"
         report "ICM Copy Tables" = X,
         tabledata "ICM Setup" = RIMD,
         table "ICM Setup" = X,
-        page "ICM Setup" = X;
+        page "ICM Setup" = X,
+        tabledata "CMI Config. Package" = RIMD,
+        tabledata "CMI Config. Package Line" = RIMD,
+        table "CMI Config. Package" = X,
+        table "CMI Config. Package Line" = X,
+        page "CMI Config. Package Card" = X,
+        page "CMI Config. Package Subform" = X,
+        page "CMI Config. Package List" = X;
 }

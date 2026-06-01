@@ -2,6 +2,8 @@ table 50402 "CMI Config. Package"
 {
     DataClassification = ToBeClassified;
     Caption = 'Configuration Package';
+    LookupPageId = "CMI Config. Package List";
+    DrillDownPageId = "CMI Config. Package List";
 
     fields
     {

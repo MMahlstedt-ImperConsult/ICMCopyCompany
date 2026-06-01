@@ -27,9 +27,15 @@ page 50403 "CMI Config. Package Subform"
                 {
                     ApplicationArea = All;
                     Caption = 'Table Name';
+                    visible = false;
+                }
+                field("Table Caption"; Rec."Table Caption")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Table Caption';
                 }
             }
         }
-    }
 
+    }
 }

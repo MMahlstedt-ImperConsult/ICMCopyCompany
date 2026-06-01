@@ -1,7 +1,6 @@
 page 50402 "CMI Config. Package Card"
 {
     PageType = Document;
-    ;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "CMI Config. Package";

@@ -3,6 +3,7 @@ table 50401 "ICM Setup"
     Caption = 'ICM Setup';
     DataClassification = ToBeClassified;
     Extensible = true;
+    DataPerCompany = false;
 
     fields
     {

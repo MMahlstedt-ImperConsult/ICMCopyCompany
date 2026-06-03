@@ -34,6 +34,43 @@ page 50403 "CMI Config. Package Subform"
                     ApplicationArea = All;
                     Caption = 'Table Caption';
                 }
+                field("ICM Active"; Rec."ICM Active")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Active';
+                }
+                field("From Company Name"; Rec."From Company Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'From Company Name';
+                    visible = false;
+                }
+                field("To Company Name"; Rec."To Company Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'To Company Name';
+                    visible = false;
+                }
+                field("ICM Source Company Has Records"; Rec."ICM Source Company Has Records")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Source Company Has Records';
+                }
+                field("ICM Source Comp. Record Count"; Rec."ICM Source Comp. Record Count")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Source Company Record Count';
+                }
+                field("ICM Target Company Has Records"; Rec."ICM Target Company Has Records")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Target Company Has Records';
+                }
+                field("ICM Target Comp. Record Count"; Rec."ICM Target Comp. Record Count")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Target Company Record Count';
+                }
             }
         }
 

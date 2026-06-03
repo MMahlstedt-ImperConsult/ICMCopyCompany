@@ -173,6 +173,41 @@ page 50400 "ICM Tables List"
                     Report.Run(Report::"ICM Copy Tables");
                 end;
             }
+            action("Apply configuration package")
+            {
+                Caption = 'Apply configuration package';
+                ToolTip = 'Apply configuration package to fill tables';
+                Image = Setup;
+
+                trigger OnAction()
+                var
+                    CMIConfigPackageListL: Page "CMI Config. Package List";
+                    SelectedPackageCodeL: Code[20];
+                begin
+                    if CMIConfigPackageListL.RunModal() = Action::OK then begin
+                        SelectedPackageCodeL := CMIConfigPackageListL.GetSelectedPackage();
+                        if SelectedPackageCodeL <> '' then
+                            ICMMgt.ApplyConfigurationPackage(SelectedPackageCodeL, Rec);
+                        ShowActive := true;
+                        Rec.Reset();
+                        Rec.SetRange("ICM Active", ShowActive);
+                        CurrPage.Update(false);
+                    end;
+                end;
+            }
+            action("Toggle Active Tables Visibility")
+            {
+                Caption = 'Toggle Active Tables Visibility';
+                ToolTip = 'Filter to show active tables';
+                Image = Filter;
+
+                trigger OnAction()
+                begin
+                    ShowActive := not ShowActive;
+                    Rec.SetRange("ICM Active", ShowActive);
+                    CurrPage.Update(false);
+                end;
+            }
         }
         area(Navigation)
         {
@@ -201,6 +236,7 @@ page 50400 "ICM Tables List"
         }
     }
     var
+        ShowActive: Boolean;
         ICMMgt: Codeunit "ICM Management";
         CompanyName: Text[30];
         Text001Lbl: Label 'Activated,Deactivated,Cancel';

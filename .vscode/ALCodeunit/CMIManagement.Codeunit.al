@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Environment;
 using Microsoft.Foundation.Company;
 
+
 codeunit 50400 "ICM Management"
 {
     procedure FillCompanyTableInformation()
@@ -154,9 +155,6 @@ codeunit 50400 "ICM Management"
     end;
 
 
-    /// <summary>
-    /// Copies the table contents from FromCompany to ToCompany for all active Lines in ICM Table
-    /// </summary>
     procedure CopyTablesFromToCompany(FromCompanyName: Text[30]; ToCompanyName: Text[30])
     var
         ICMTable: Record "ICM Table";
@@ -169,6 +167,90 @@ codeunit 50400 "ICM Management"
         SkippedTableCount: Integer;
         i: Integer;
     begin
+        ICMSetup.Get();
+        ICMTable.SetRange("ICM Active", true);
+
+        if not ICMTable.FindSet() then begin
+            if guiAllowed then
+                Message(Text003Lbl);
+            exit;
+        end;
+
+        if GuiAllowed then Begin
+            WindowDialog.Open(Text006Lbl +
+              '#1###################\' +
+              '#2###################'
+            );
+            WindowDialogIndex1 := 0;
+            WindowDialogCount1 := ICMTable.Count;
+        End;
+
+        repeat
+        begin
+
+            if GuiAllowed then Begin
+                WindowDialogIndex1 += 1;
+                WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
+            End;
+
+            SourceRecRef.Open(ICMTable."ICM Table ID", false, FromCompanyName);
+
+            TargetRecRef.Open(ICMTable."ICM Table ID", false, ToCompanyName);
+
+            CopiedTableCount := ICMTable.Count();
+
+            if ICMSetup."Table data processing" = ICMSetup."Table data processing"::"Overwrite existing data" then
+                TryDeleteAll(TargetRecRef);
+
+            if SourceRecRef.FindSet() then begin
+                repeat
+                    TargetRecRef.Init();
+
+                    for i := 1 to SourceRecRef.FieldCount() do begin
+                        FieldRef := SourceRecRef.FieldIndex(i);
+
+
+                        if not (FieldRef.Class() = FieldClass::FlowField) then begin
+                            TargetFieldRef := TargetRecRef.FieldIndex(i);
+                            TargetFieldRef.Value := FieldRef.Value;
+                        end;
+                    end;
+
+                    if TryInsertRecord(TargetRecRef) then
+                        CopiedTableCount += 1
+                    else
+                        SkippedTableCount += 1;
+
+                until SourceRecRef.Next() = 0;
+            end;
+
+            SourceRecRef.Close();
+            TargetRecRef.Close();
+
+        end;
+        until ICMTable.Next() = 0;
+
+        if GuiAllowed then
+            WindowDialog.Close();
+
+        if GuiAllowed then
+            Message(Text004Lbl, CopiedTableCount);
+    end;
+
+    procedure CopyTablesFromToCompany2(PackageCode: Code[20])
+    var
+        ICMTable: Record "ICM Table";
+        ICMSetup: Record "ICM Setup";
+        SourceRecRef: RecordRef;
+        TargetRecRef: RecordRef;
+        FieldRef: FieldRef;
+        TargetFieldRef: FieldRef;
+        CopiedTableCount: Integer;
+        SkippedTableCount: Integer;
+        i: Integer;
+    begin
+        Message('ToDo: Applying configuration package and copying tables.');
+        /*
         ICMSetup.Get();
         ICMTable.SetRange("ICM Active", true);
 
@@ -238,7 +320,9 @@ codeunit 50400 "ICM Management"
 
         if GuiAllowed then
             Message(Text004Lbl, CopiedTableCount);
+            */
     end;
+
 
     [TryFunction]
     local procedure TryInsertRecord(var RecRef: RecordRef)
@@ -257,7 +341,6 @@ codeunit 50400 "ICM Management"
         CompanyL: Record Company;
     begin
         Commit();
-        //if PAGE.RunModal(0, CompanyL) = ACTION::LookupOK then begin
         if PAGE.RunModal(PAGE::Companies, CompanyL) = ACTION::LookupOK then begin
             CurrentCompanyNameR := CompanyL.Name;
             SetCompanyName(CurrentCompanyNameR, ICMTableR);
@@ -269,8 +352,27 @@ codeunit 50400 "ICM Management"
         ICMTableR.FilterGroup := 2;
         ICMTableR.SetRange("ICM Company Name", CurrentCompanyNameR);
         ICMTableR.FilterGroup := 0;
-        //OnSetCompanyNameOnAfterAppliesFilter(CurrentCompanyNameR, ICMTableR);
         if ICMTableR.Find('-') then;
+    end;
+
+    procedure ApplyConfigurationPackage(PackageCodeR: Code[20]; var ICMTableR: Record "ICM Table")
+    var
+        ICMConfigPackageLineL: Record "CMI Config. Package Line";
+    begin
+        //Message('Package %1 wird angewendet...', PackageCode);
+        ICMConfigPackageLineL.Reset();
+        ICMConfigPackageLineL.SetRange("Package Code", PackageCodeR);
+
+        if ICMConfigPackageLineL.FindSet() then begin
+            ICMTableR.Reset();
+            ICMTableR.ModifyAll("ICM Active", false);
+            repeat
+                ICMTableR.SetRange("ICM Table ID", ICMConfigPackageLineL."Table ID");
+                if ICMTableR.FindSet() then begin
+                    ICMTableR.ModifyAll("ICM Active", true);
+                end;
+            until ICMConfigPackageLineL.Next() = 0;
+        end;
     end;
 
     procedure FormatPercentage(adPercentage: Decimal): Text

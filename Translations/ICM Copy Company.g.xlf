@@ -313,100 +313,135 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - NamedType Text001Err</note>
         </trans-unit>
-        <trans-unit id="Table 3057836987 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 3057836987 - Field 1215649846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field ICM Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3057836987 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 3057836987 - Field 634954699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field Description - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field ICM Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3057836987 - Field 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company Name</source>
+        <trans-unit id="Table 3057836987 - Field 2888170934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field From Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field ICM Source Company Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3057836987 - Field 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company Name</source>
+        <trans-unit id="Table 3057836987 - Field 2865861978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field To Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field ICM Target Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3057836987 - Field 666729213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Tables</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package - Field No. of Tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMI Config. Package Field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 3542180045 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Caption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Field Caption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 513630172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 3049349766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 3554684779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include Field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Include Field - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 3875498340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Package Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2519735717 - Field 2106729104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Field - Field ICM Table ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2092870705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuration Package Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field From Company Name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 2092870705 - Field 970397981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Active - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 1775937908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Fields Included</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM No. of Fields Included - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 3875498340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Package Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2092870705 - Field 226706053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Company Record Count</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Source Comp. Record Count - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 389973483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Source Company Has Records</source>
+        <trans-unit id="Table 2092870705 - Field 2888170934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Source Company Has Records - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Source Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 3975857153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Caption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Table Caption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 2106729104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Table ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2092870705 - Field 3866235946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Table Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2092870705 - Field 2714534249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Target Company Record Count</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Target Comp. Record Count - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 101894223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Target Company Has Records</source>
+        <trans-unit id="Table 2092870705 - Field 2865861978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Target Company Has Records - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 4253581577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Package Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Package Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Table Caption</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Table Caption - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Table ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Table ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 3808951907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Table Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field Table Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2092870705 - Field 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field To Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table CMI Config. Package Line - Field ICM Target Company Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ICM Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1451704708 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1451704708 - Field 1670772200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Setup - Field Primary Key - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Setup - Field ICM Primary Key - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1451704708 - Field 3900724239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1451704708 - Field 1328162822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table data processing</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Setup - Field Table data processing - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Setup - Field ICM Table data processing - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2645588111 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuration Package</source>
@@ -444,7 +479,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Control From Company Name - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2645588111 - Control 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company</source>
+          <source>Source Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Control From Company Name - Property Caption</note>
         </trans-unit>
@@ -454,7 +489,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Control To Company Name - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2645588111 - Control 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company</source>
+          <source>Target Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Control To Company Name - Property Caption</note>
         </trans-unit>
@@ -467,6 +502,16 @@
           <source>Copy Tables</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Action Copy Tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2645588111 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create new Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Action Create new Company - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645588111 - Action 964520465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create new Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Card - Action Create new Company - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 574892325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuration Packages</source>
@@ -483,55 +528,65 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 574892325 - Control 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company</source>
+        <trans-unit id="Page 574892325 - Control 666729213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Tables</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control From Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control No. of Tables - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 574892325 - Control 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company</source>
+        <trans-unit id="Page 574892325 - Control 3291697743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control To Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control Source Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 574892325 - Control 804250715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Control Target Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 574892325 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create new Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Action Create new Company - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 574892325 - Action 964520465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create new Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package List - Action Create new Company - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 46674421 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tables</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 46674421 - Control 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control From Company Name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 46674421 - Control 970397981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM Active - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 46674421 - Control 1775937908 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Fields Included</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM No. of Fields Included - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 46674421 - Control 226706053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Company Record Count</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM Source Comp. Record Count - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 46674421 - Control 389973483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Source Company Has Records</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM Source Company Has Records - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 46674421 - Control 2714534249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Target Company Record Count</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM Target Comp. Record Count - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 46674421 - Control 101894223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Target Company Has Records</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control ICM Target Company Has Records - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 46674421 - Control 4253581577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Package Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 46674421 - Control 3291697743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Source Company Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 46674421 - Control 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table Caption</source>
@@ -548,10 +603,70 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Table Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 46674421 - Control 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company Name</source>
+        <trans-unit id="Page 46674421 - Control 804250715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Company Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control To Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page CMI Config. Package Subform - Control Target Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICM Config. Package Fields</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 513630172 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the field for the table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Field ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 513630172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Field ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 3049349766 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Name of the field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Field Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 3049349766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 3554684779 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the field is included in the migration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Include Field - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 3554684779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include Field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Include Field - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 2106729104 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Table ID.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Table ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 2106729104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control ICM Table ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 4253581577 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Package Code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control Package Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Control 4253581577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Control Package Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3883849644 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ActionName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Fields - Action ActionName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ICM Setup</source>

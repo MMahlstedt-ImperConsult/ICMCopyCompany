@@ -14,7 +14,7 @@ page 50401 "ICM Setup"
             {
                 Caption = 'General';
 
-                field("Table data processing"; Rec."Table data processing")
+                field("Table data processing"; Rec."ICM Table data processing")
                 {
                     ApplicationArea = All;
                 }
@@ -26,7 +26,7 @@ page 50401 "ICM Setup"
     begin
         if not Rec.FindFirst() then begin
             Rec.Init();
-            Rec."Primary Key" := '';
+            Rec."ICM Primary Key" := '';
             Rec.Insert();
         end;
     end;

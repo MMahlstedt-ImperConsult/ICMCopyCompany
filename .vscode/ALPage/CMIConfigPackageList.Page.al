@@ -14,26 +14,31 @@ page 50404 "CMI Config. Package List"
         {
             repeater(GroupName)
             {
-                field(Code; Rec.Code)
+                field(Code; Rec."ICM Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Code';
 
                 }
-                field(Description; Rec.Description)
+                field(Description; Rec."ICM Description")
                 {
                     ApplicationArea = All;
                     Caption = 'Description';
                 }
-                field("From Company Name"; Rec."From Company Name")
+                field("No. of Tables"; Rec."No. of Tables")
                 {
                     ApplicationArea = All;
-                    Caption = 'From Company';
+                    Caption = 'No. of Tables';
                 }
-                field("To Company Name"; Rec."To Company Name")
+                field("Source Company Name"; Rec."ICM Source Company Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'To Company';
+                    Caption = 'Source Company';
+                }
+                field("Target Company Name"; Rec."ICM Target Company Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Target Company';
                 }
             }
         }
@@ -49,6 +54,23 @@ page 50404 "CMI Config. Package List"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Create new Company")
+            {
+                Caption = 'Create new Company';
+                ToolTip = 'Create new Company';
+                Image = Open;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::Companies);
+                end;
+            }
+        }
+    }
     var
         SelectedPackageCodeL: Code[20];
 
@@ -61,6 +83,6 @@ page 50404 "CMI Config. Package List"
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         if CloseAction = Action::OK then
-            SelectedPackageCodeL := Rec."Code";
+            SelectedPackageCodeL := Rec."ICM Code";
     end;
 }

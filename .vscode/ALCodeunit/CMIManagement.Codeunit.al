@@ -8,6 +8,43 @@ using Microsoft.Foundation.Company;
 
 codeunit 50400 "ICM Management"
 {
+    procedure UpdateConfigPackageLines(PackageCodeR: Code[20])
+    var
+        ICMConfigPackLineL: Record "CMI Config. Package Line";
+        RecRefL: RecordRef;
+        RecordCountL: Integer;
+    begin
+        IcMConfigPackLineL.Reset();
+        IcMConfigPackLineL.SetRange("ICM Package Code", PackageCodeR);
+        if ICMConfigPackLineL.FindSet() then begin
+            repeat
+                Clear(RecordCountL);
+                ICMConfigPackLineL.CalcFields("ICM Source Company Name", "ICM Target Company Name");
+                if (ICMConfigPackLineL."ICM Source Company Name" <> '') then begin
+                    RecRefL.Open(ICMConfigPackLineL."ICM Table ID");
+                    RecRefL.ChangeCompany(ICMConfigPackLineL."ICM Source Company Name");
+                    if RecRefL.ReadPermission() then begin
+                        RecordCountL := RecRefL.Count();
+                        ICMConfigPackLineL."ICM Source Comp. Record Count" := RecordCountL;
+                    end;
+                    RecRefL.Close();
+                end;
+
+                Clear(RecordCountL);
+                if (ICMConfigPackLineL."ICM Target Company Name" <> '') then begin
+                    RecRefL.Open(ICMConfigPackLineL."ICM Table ID");
+                    RecRefL.ChangeCompany(ICMConfigPackLineL."ICM Target Company Name");
+                    if RecRefL.ReadPermission() then begin
+                        RecordCountL := RecRefL.Count();
+                        ICMConfigPackLineL."ICM Target Comp. Record Count" := RecordCountL;
+                    end;
+                    RecRefL.Close();
+                end;
+                ICMConfigPackLineL.Modify();
+            until ICMConfigPackLineL.Next() = 0;
+        end;
+    end;
+
     procedure FillCompanyTableInformation()
     var
         AllObjWithCaptionL: Record AllObjWithCaption;
@@ -199,7 +236,7 @@ codeunit 50400 "ICM Management"
 
             CopiedTableCount := ICMTable.Count();
 
-            if ICMSetup."Table data processing" = ICMSetup."Table data processing"::"Overwrite existing data" then
+            if ICMSetup."ICM Table data processing" = ICMSetup."ICM Table data processing"::"Overwrite existing data" then
                 TryDeleteAll(TargetRecRef);
 
             if SourceRecRef.FindSet() then begin
@@ -361,13 +398,13 @@ codeunit 50400 "ICM Management"
     begin
         //Message('Package %1 wird angewendet...', PackageCode);
         ICMConfigPackageLineL.Reset();
-        ICMConfigPackageLineL.SetRange("Package Code", PackageCodeR);
+        ICMConfigPackageLineL.SetRange("ICM Package Code", PackageCodeR);
 
         if ICMConfigPackageLineL.FindSet() then begin
             ICMTableR.Reset();
             ICMTableR.ModifyAll("ICM Active", false);
             repeat
-                ICMTableR.SetRange("ICM Table ID", ICMConfigPackageLineL."Table ID");
+                ICMTableR.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Table ID");
                 if ICMTableR.FindSet() then begin
                     ICMTableR.ModifyAll("ICM Active", true);
                 end;

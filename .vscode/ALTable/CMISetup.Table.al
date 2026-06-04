@@ -7,12 +7,12 @@ table 50401 "ICM Setup"
 
     fields
     {
-        field(1; "Primary Key"; Code[10])
+        field(1; "ICM Primary Key"; Code[10])
         {
             Caption = 'Primary Key';
             Editable = false;
         }
-        field(2; "Table data processing"; Enum "ICM Table Data Processing")
+        field(2; "ICM Table data processing"; Enum "ICM Table Data Processing")
         {
             Caption = 'Table data processing';
         }
@@ -20,7 +20,7 @@ table 50401 "ICM Setup"
 
     keys
     {
-        key(PK; "Primary Key")
+        key(PK; "ICM Primary Key")
         {
             Clustered = true;
         }

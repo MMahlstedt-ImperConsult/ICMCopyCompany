@@ -14,36 +14,36 @@ page 50402 "CMI Config. Package Card"
             {
                 Caption = 'General';
 
-                field("Code"; Rec.Code)
+                field("Code"; Rec."ICM Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Package Code';
                     ToolTip = 'Specifies the code of the configuration package.';
                 }
-                field("Description"; Rec.Description)
+                field("Description"; Rec."ICM Description")
                 {
                     ApplicationArea = All;
                     Caption = 'Description';
                     ToolTip = 'Specifies the description of the configuration package.';
                 }
-                field("From Company Name"; Rec."From Company Name")
+                field("From Company Name"; Rec."ICM Source Company Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'From Company';
+                    Caption = 'Source Company';
                     ToolTip = 'Specifies the source company for the configuration package.';
                 }
-                field("To Company Name"; Rec."To Company Name")
+                field("To Company Name"; Rec."ICM Target Company Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'To Company';
+                    Caption = 'Target Company';
                     ToolTip = 'Specifies the target company for the configuration package.';
                 }
             }
             part(Lines; "CMI Config. Package Subform")
             {
                 ApplicationArea = All;
-                SubPageLink = "Package Code" = field(Code);
-                SubPageView = sorting("Package Code", "Table ID");
+                SubPageLink = "ICM Package Code" = field("ICM Code");
+                SubPageView = sorting("ICM Package Code", "ICM Table ID");
             }
         }
     }
@@ -51,6 +51,17 @@ page 50402 "CMI Config. Package Card"
     {
         area(Processing)
         {
+            action("Create new Company")
+            {
+                Caption = 'Create new Company';
+                ToolTip = 'Create new Company';
+                Image = Open;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::Companies);
+                end;
+            }
             action("Copy Tables")
             {
                 Caption = 'Copy Tables';
@@ -61,7 +72,7 @@ page 50402 "CMI Config. Package Card"
                 var
                     ICMMgtL: Codeunit "ICM Management";
                 begin
-                    ICMMgtL.CopyTablesFromToCompany2(Rec.Code);
+                    ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
                 end;
             }
         }

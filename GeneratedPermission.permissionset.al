@@ -15,5 +15,8 @@ permissionset 50400 "ICM Copy Company"
         table "CMI Config. Package Line" = X,
         page "CMI Config. Package Card" = X,
         page "CMI Config. Package Subform" = X,
-        page "CMI Config. Package List" = X;
+        page "CMI Config. Package List" = X,
+        tabledata "CMI Config. Package Field" = RIMD,
+        table "CMI Config. Package Field" = X,
+        page "ICM Config. Package Fields" = X;
 }

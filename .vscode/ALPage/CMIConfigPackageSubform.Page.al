@@ -12,24 +12,24 @@ page 50403 "CMI Config. Package Subform"
             repeater(Control1)
             {
                 ShowCaption = false;
-                field("Package Code"; Rec."Package Code")
+                field("Package Code"; Rec."ICM Package Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Package Code';
                     visible = false;
                 }
-                field("Table ID"; Rec."Table ID")
+                field("Table ID"; Rec."ICM Table ID")
                 {
                     ApplicationArea = All;
                     Caption = 'Table ID';
                 }
-                field("Table Name"; Rec."Table Name")
+                field("Table Name"; Rec."ICM Table Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Table Name';
                     visible = false;
                 }
-                field("Table Caption"; Rec."Table Caption")
+                field("Table Caption"; Rec."ICM Table Caption")
                 {
                     ApplicationArea = All;
                     Caption = 'Table Caption';
@@ -39,37 +39,34 @@ page 50403 "CMI Config. Package Subform"
                     ApplicationArea = All;
                     Caption = 'Active';
                 }
-                field("From Company Name"; Rec."From Company Name")
+                field("Source Company Name"; Rec."ICM Source Company Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'From Company Name';
+                    Caption = 'Source Company Name';
                     visible = false;
                 }
-                field("To Company Name"; Rec."To Company Name")
+                field("Target Company Name"; Rec."ICM Target Company Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'To Company Name';
+                    Caption = 'Target Company Name';
                     visible = false;
-                }
-                field("ICM Source Company Has Records"; Rec."ICM Source Company Has Records")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Source Company Has Records';
                 }
                 field("ICM Source Comp. Record Count"; Rec."ICM Source Comp. Record Count")
                 {
                     ApplicationArea = All;
                     Caption = 'Source Company Record Count';
                 }
-                field("ICM Target Company Has Records"; Rec."ICM Target Company Has Records")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Target Company Has Records';
-                }
                 field("ICM Target Comp. Record Count"; Rec."ICM Target Comp. Record Count")
                 {
                     ApplicationArea = All;
                     Caption = 'Target Company Record Count';
+                }
+                field("ICM No. of Fields Included"; Rec."ICM No. of Fields Included")
+                {
+                    ApplicationArea = All;
+                    Caption = 'No. of Fields Included';
+                    DrillDown = true;
+                    DrillDownPageID = "ICM Config. Package Fields";
                 }
             }
         }

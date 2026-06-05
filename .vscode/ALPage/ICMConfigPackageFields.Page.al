@@ -3,7 +3,7 @@ page 50405 "ICM Config. Package Fields"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "CMI Config. Package Field";
+    SourceTable = "ICM Config. Package Field";
 
     layout
     {
@@ -38,6 +38,14 @@ page 50405 "ICM Config. Package Fields"
                     ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the Name of the field';
+                    Visible = false;
+                }
+                field("ICM Field Caption"; Rec."ICM Field Caption")
+                {
+                    Caption = 'Field Caption';
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the Caption of the field';
                 }
                 field("ICM Include Field"; Rec."ICM Include Field")
                 {
@@ -48,17 +56,42 @@ page 50405 "ICM Config. Package Fields"
             }
         }
     }
-
     actions
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Set Included")
             {
+                Caption = 'Set Included';
+                ToolTip = 'Set Included';
+                Image = Open;
 
                 trigger OnAction()
+                var
+                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
+                    ICMMgt: Codeunit "ICM Management";
+                    Choice: Integer;
                 begin
+                    CMIConfigPackageFieldL.CopyFilters(Rec);
+                    ICMMgt.ActivateIncludeField(CMIConfigPackageFieldL);
+                    CurrPage.Update(false);
+                end;
+            }
+            action("Clear Included")
+            {
+                Caption = 'Clear Included';
+                ToolTip = 'Clear Included';
+                Image = Close;
 
+                trigger OnAction()
+                var
+                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
+                    ICMMgt: Codeunit "ICM Management";
+                    Choice: Integer;
+                begin
+                    CMIConfigPackageFieldL.CopyFilters(Rec);
+                    ICMMgt.DeactivateIncludeField(CMIConfigPackageFieldL);
+                    CurrPage.Update(false);
                 end;
             }
         }

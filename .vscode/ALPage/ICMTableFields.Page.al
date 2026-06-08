@@ -1,11 +1,11 @@
 namespace ImperConsult.CopyCompany;
 
-page 50405 "ICM Config. Package Fields"
+page 50406 "ICM Table Fields"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ICM Config. Package Field";
+    SourceTable = "ICM Table Field";
 
     layout
     {
@@ -13,13 +13,6 @@ page 50405 "ICM Config. Package Fields"
         {
             repeater(GroupName)
             {
-                field("Package Code"; Rec."ICM Package Code")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Package Code';
-                    ToolTip = 'Specifies the Package Code.';
-                    Visible = false;
-                }
                 field("ICM Table ID"; Rec."ICM Table ID")
                 {
                     ApplicationArea = All;
@@ -27,11 +20,18 @@ page 50405 "ICM Config. Package Fields"
                     ToolTip = 'Specifies the Table ID.';
                     Visible = false;
                 }
+                field("ICM Company Name"; Rec."ICM Company Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Company Name';
+                    ToolTip = 'Specifies the name of the company.';
+                    Visible = false;
+                }
                 field("ICM Field ID"; Rec."ICM Field ID")
                 {
                     Caption = 'Field ID';
                     ApplicationArea = All;
-                    Editable = false;
+                    //Editable = false;
                     ToolTip = 'Specifies the ID of the field for the table';
                 }
                 field("ICM Field Name"; Rec."ICM Field Name")
@@ -57,7 +57,12 @@ page 50405 "ICM Config. Package Fields"
                 }
             }
         }
+        area(Factboxes)
+        {
+
+        }
     }
+
     actions
     {
         area(Processing)
@@ -70,12 +75,12 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
+                    CMITableFieldL: Record "ICM Table Field";
                     ICMMgt: Codeunit "ICM Management";
                     Choice: Integer;
                 begin
-                    CMIConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgt.ActivateIncludePackageField(CMIConfigPackageFieldL);
+                    CMITableFieldL.CopyFilters(Rec);
+                    ICMMgt.ActivateIncludeTableField(CMITableFieldL);
                     CurrPage.Update(false);
                 end;
             }
@@ -87,15 +92,16 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
+                    CMITableFieldL: Record "ICM Table Field";
                     ICMMgt: Codeunit "ICM Management";
                     Choice: Integer;
                 begin
-                    CMIConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgt.DeactivateIncludePackageField(CMIConfigPackageFieldL);
+                    CMITableFieldL.CopyFilters(Rec);
+                    ICMMgt.DeactivateIncludeTableField(CMITableFieldL);
                     CurrPage.Update(false);
                 end;
             }
         }
     }
+
 }

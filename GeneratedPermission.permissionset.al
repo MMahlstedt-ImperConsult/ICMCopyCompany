@@ -18,5 +18,8 @@ permissionset 50400 "ICM Copy Company"
         page "ICM Config. Package List" = X,
         tabledata "ICM Config. Package Field" = RIMD,
         table "ICM Config. Package Field" = X,
-        page "ICM Config. Package Fields" = X;
+        page "ICM Config. Package Fields" = X,
+        tabledata "ICM Table Field" = RIMD,
+        table "ICM Table Field" = X,
+        page "ICM Table Fields" = X;
 }

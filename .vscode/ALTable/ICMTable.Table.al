@@ -1,4 +1,5 @@
-namespace DefaultPublisher;
+namespace ImperConsult.CopyCompany;
+using System.Reflection;
 
 table 50400 "ICM Table"
 {
@@ -11,6 +12,11 @@ table 50400 "ICM Table"
         {
             Caption = 'Table ID';
             Editable = false;
+            trigger OnValidate()
+            begin
+                if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then
+                    InitPackageFields();
+            end;
         }
         field(2; "ICM Table Name"; Text[249])
         {
@@ -66,6 +72,28 @@ table 50400 "ICM Table"
             Caption = 'Included in the License';
             Editable = false;
         }
+        field(11; "ICM No. of Fields Available"; Integer)
+        {
+            CalcFormula = count("ICM Table Field" where("ICM Table ID" = field("ICM Table ID"),
+                                                    "ICM Company Name" = field("ICM Company Name")));
+            Caption = 'No. of Fields Available';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(12; "ICM No. of Fields Included"; Integer)
+        {
+            CalcFormula = count("ICM Table Field" where("ICM Table ID" = field("ICM Table ID"),
+                                                            "ICM Company Name" = field("ICM Company Name"),
+                                                            "ICM Include Field" = const(true)));
+            Caption = 'No. of Fields Included';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(13; "ICM Apply Table Fields"; Enum "ICM Apply Table Fields")
+        {
+            Caption = 'Apply Table Fields';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
@@ -78,6 +106,54 @@ table 50400 "ICM Table"
         {
         }
     }
+
+    trigger OnInsert()
+    begin
+        InitPackageFields();
+    end;
+
+    trigger OnDelete()
+    var
+        TableFieldL: Record "ICM Table Field";
+    begin
+        TableFieldL.Setrange("ICM Company Name", "ICM Company Name");
+        TableFieldL.Setrange("ICM Table ID", "ICM Table ID");
+        TableFieldL.DeleteAll();
+    end;
+
+    local procedure InitPackageFields()
+    var
+        FieldL: Record Field;
+        TableFieldL: Record "ICM Table Field";
+        ICMMgtL: Codeunit "ICM Management";
+    begin
+        TableFieldL.Setrange("ICM Company Name", "ICM Company Name");
+        TableFieldL.Setrange("ICM Table ID", "ICM Table ID");
+        TableFieldL.DeleteAll();
+
+        FieldL.Reset();
+        FieldL.Setrange(TableNo, "ICM Table ID");
+        FieldL.SetRange(Class, FieldL.Class::Normal);
+        FieldL.SetFilter(ObsoleteState, '<>%1', FieldL.ObsoleteState::Removed);
+        if FieldL.FindSet() then
+            repeat
+                if not TableFieldL.Get("ICM Table ID", "ICM Company Name", FieldL."No.") then begin
+                    TableFieldL.Init;
+                    TableFieldL."ICM Company Name" := "ICM Company Name";
+                    TableFieldL."ICM Table ID" := "ICM Table ID";
+                    TableFieldL."ICM Field ID" := FieldL."No.";
+                    TableFieldL."ICM Field Caption" := FieldL."Field Caption";
+                    TableFieldL."ICM Field Name" := FieldL.FieldName;
+                    TableFieldL."ICM Primary Key" := ICMMgtL.IsKeyField("ICM Table ID", FieldL."No.");
+                    if TableFieldL."ICM Primary Key" then
+                        TableFieldL."ICM Include Field" := true
+                    else
+                        TableFieldL."ICM Include Field" := false;
+                    TableFieldL.Insert();
+                end;
+            until FieldL.Next() = 0;
+    end;
+
     var
         Text001Lbl: Label 'This table is not included in the license. Active status cannot be set to true.';
         Text002Lbl: Label 'Only tables with subtype "Normal" can be set to active.';

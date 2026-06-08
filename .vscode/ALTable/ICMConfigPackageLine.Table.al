@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 using System.Reflection;
 
 table 50403 "ICM Config. Package Line"
@@ -71,10 +73,19 @@ table 50403 "ICM Config. Package Line"
             Caption = 'Target Company Record Count';
             Editable = false;
         }
-        field(15; "ICM No. of Fields Included"; Integer)
+        field(14; "ICM No. of Fields Available"; Integer)
         {
             CalcFormula = count("ICM Config. Package Field" where("ICM Package Code" = field("ICM Package Code"),
                                                                "ICM Table ID" = field("ICM Table ID")));
+            Caption = 'No. of Fields Included';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(15; "ICM No. of Fields Included"; Integer)
+        {
+            CalcFormula = count("ICM Config. Package Field" where("ICM Package Code" = field("ICM Package Code"),
+                                                               "ICM Table ID" = field("ICM Table ID"),
+                                                               "ICM Include Field" = const(true)));
             Caption = 'No. of Fields Included';
             Editable = false;
             FieldClass = FlowField;
@@ -122,6 +133,7 @@ table 50403 "ICM Config. Package Line"
     var
         FieldL: Record Field;
         ConfigPackageFieldL: Record "ICM Config. Package Field";
+        ICMMgtL: Codeunit "ICM Management";
     begin
         ConfigPackageFieldL.Setrange("ICM Package Code", "ICM Package Code");
         ConfigPackageFieldL.Setrange("ICM Table ID", "ICM Table ID");
@@ -140,7 +152,11 @@ table 50403 "ICM Config. Package Line"
                     ConfigPackageFieldL."ICM Field ID" := FieldL."No.";
                     ConfigPackageFieldL."ICM Field Caption" := FieldL."Field Caption";
                     ConfigPackageFieldL."ICM Field Name" := FieldL.FieldName;
-                    ConfigPackageFieldL."ICM Include Field" := false;
+                    ConfigPackageFieldL."ICM Primary Key" := ICMMgtL.IsKeyField("ICM Table ID", FieldL."No.");
+                    if ConfigPackageFieldL."ICM Primary Key" then
+                        ConfigPackageFieldL."ICM Include Field" := true
+                    else
+                        ConfigPackageFieldL."ICM Include Field" := false;
                     configPackageFieldL.Insert();
                 end;
             until FieldL.Next() = 0;

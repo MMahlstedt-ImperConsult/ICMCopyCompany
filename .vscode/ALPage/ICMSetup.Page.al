@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 page 50401 "ICM Setup"
 {
     PageType = Card;

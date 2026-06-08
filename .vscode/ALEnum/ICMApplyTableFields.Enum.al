@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 enum 50401 "ICM Apply Table Fields"
 {
     Extensible = true;

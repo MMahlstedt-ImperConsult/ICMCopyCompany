@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 enum 50400 "ICM Table Data Processing"
 {
     Extensible = true;

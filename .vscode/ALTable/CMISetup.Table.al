@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 table 50401 "ICM Setup"
 {
     Caption = 'ICM Setup';

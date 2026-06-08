@@ -9,7 +9,7 @@
             "tenant": "acc40adc-44a2-4174-9362-49a24caaf6c4",
             "environmentType": "Sandbox",
             "environmentName": "SandboxDE",
-            "startupObjectId": 50404,
+            "startupObjectId": 50400,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,

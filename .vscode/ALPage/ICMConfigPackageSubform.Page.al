@@ -1,3 +1,5 @@
+namespace ImperConsult.CopyCompany;
+
 page 50403 "ICM Config. Package Subform"
 {
     PageType = ListPart;
@@ -56,18 +58,27 @@ page 50403 "ICM Config. Package Subform"
                     ApplicationArea = All;
                     Caption = 'Apply Table Fields';
                 }
+                field("ICM No. of Fields Available"; Rec."ICM No. of Fields Available")
+                {
+                    ApplicationArea = All;
+                    Caption = 'No. of Fields Available';
+                    AssistEdit = true;
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
+                        AssistEdit();
+                    end;
+                }
                 field("ICM No. of Fields Included"; Rec."ICM No. of Fields Included")
                 {
                     ApplicationArea = All;
                     Caption = 'No. of Fields Included';
-                    //DrillDown = true;
-                    //DrillDownPageID = "ICM Config. Package Fields";
-                    trigger OnAssistEdit()
-                    begin
-                        //ChangeLogSetupTable.TestField("Log Modification", ChangeLogSetupTable."Log Modification"::"Some Fields");
-                        Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
-                        AssistEdit();
-                    end;
+                    //AssistEdit = true;
+                    //trigger OnAssistEdit()
+                    //begin
+                    //    Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
+                    //    AssistEdit();
+                    //end;
                 }
                 field("ICM Source Comp. Record Count"; Rec."ICM Source Comp. Record Count")
                 {

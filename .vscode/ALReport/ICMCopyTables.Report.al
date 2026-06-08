@@ -1,4 +1,4 @@
-namespace DefaultPublisher;
+namespace ImperConsult.CopyCompany;
 
 using System.Environment;
 using Microsoft.Foundation.Company;

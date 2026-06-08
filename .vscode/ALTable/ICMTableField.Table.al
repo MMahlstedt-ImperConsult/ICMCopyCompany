@@ -2,25 +2,24 @@ namespace ImperConsult.CopyCompany;
 
 using System.Reflection;
 
-table 50404 "ICM Config. Package Field"
+table 50405 "ICM Table Field"
 {
     DataClassification = ToBeClassified;
-    LookupPageId = "ICM Config. Package Fields";
-    DrilldownPageId = "ICM Config. Package Fields";
+    LookupPageId = "ICM Table Fields";
+    DrilldownPageId = "ICM Table Fields";
 
     fields
     {
-        field(1; "ICM Package Code"; Code[20])
-        {
-            Caption = 'Package Code';
-            NotBlank = true;
-            TableRelation = "ICM Config. Package";
-        }
-        field(2; "ICM Table ID"; Integer)
+        field(1; "ICM Table ID"; Integer)
         {
             Caption = 'Table ID';
             NotBlank = true;
             TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table));
+        }
+        field(2; "ICM Company Name"; Text[30])
+        {
+            Caption = 'Company Name';
+            Editable = false;
         }
         field(3; "ICM Field ID"; Integer)
         {
@@ -55,10 +54,9 @@ table 50404 "ICM Config. Package Field"
 
     keys
     {
-        key(Key1; "ICM Package Code", "ICM Table ID", "ICM Field ID")
+        key(Key1; "ICM Table ID", "ICM Company Name", "ICM Field ID")
         {
             Clustered = true;
         }
     }
-
 }

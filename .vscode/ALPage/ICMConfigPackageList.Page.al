@@ -1,3 +1,7 @@
+namespace ImperConsult.CopyCompany;
+
+using Microsoft.Foundation.Company;
+
 page 50404 "ICM Config. Package List"
 {
     PageType = List;

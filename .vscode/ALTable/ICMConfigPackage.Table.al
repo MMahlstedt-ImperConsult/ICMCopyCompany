@@ -1,3 +1,7 @@
+namespace ImperConsult.CopyCompany;
+
+using System.Environment;
+
 table 50402 "ICM Config. Package"
 {
     DataClassification = ToBeClassified;
@@ -65,6 +69,18 @@ table 50402 "ICM Config. Package"
             "ICM Source Company Name" := CompanyName();
 
         ICMMgt.UpdateConfigPackageLines("ICM Code");
+    end;
+
+    trigger OnDelete()
+    var
+        ConfigPackageLineL: Record "ICM Config. Package Line";
+        ConfigPackageFieldL: Record "ICM Config. Package Field";
+    begin
+        ConfigPackageLineL.Setrange("ICM Package Code", "ICM Code");
+        ConfigPackageLineL.DeleteAll();
+
+        ConfigPackageFieldL.Setrange("ICM Package Code", "ICM Code");
+        ConfigPackageFieldL.DeleteAll();
     end;
 
     var

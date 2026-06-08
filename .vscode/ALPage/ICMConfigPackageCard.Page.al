@@ -1,3 +1,7 @@
+namespace ImperConsult.CopyCompany;
+
+using Microsoft.Foundation.Company;
+
 page 50402 "ICM Config. Package Card"
 {
     PageType = Document;

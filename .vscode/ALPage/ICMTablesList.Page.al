@@ -1,6 +1,5 @@
-namespace DefaultPublisher;
+namespace ImperConsult.CopyCompany;
 
-using DefaultPublisher;
 using Microsoft.Foundation.Company;
 
 /// <summary>
@@ -92,6 +91,24 @@ page 50400 "ICM Tables List"
                 {
                     ToolTip = 'Specifies the subtype of the table.';
                     Visible = false;
+                }
+                field("ICM Apply Table Fields"; Rec."ICM Apply Table Fields")
+                {
+                    ToolTip = 'Specifies the subtype of the table.';
+                    AssistEdit = true;
+                    trigger OnAssistEdit()
+                    begin
+                        Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
+                        AssistEdit();
+                    end;
+                }
+                field("No. of Fields Available"; Rec."ICM No. of Fields Available")
+                {
+                    ToolTip = 'Specifies the number of fields available for migration.';
+                }
+                field("No. of Fields Included"; Rec."ICM No. of Fields Included")
+                {
+                    ToolTip = 'Specifies the number of fields included for migration.';
                 }
                 field("Included in the License"; Rec."ICM Included in the License")
                 {
@@ -235,6 +252,20 @@ page 50400 "ICM Tables List"
             }
         }
     }
+
+    local procedure AssistEdit()
+    var
+        TableFieldL: Record "ICM Table Field";
+        TableFieldsL: Page "ICM Table Fields";
+    begin
+        TableFieldL.Reset();
+        TableFieldL.SetRange("ICM Table ID", Rec."ICM Table ID");
+        TableFieldL.SetRange("ICM Company Name", Rec."ICM Company Name");
+
+        TableFieldsL.SetTableView(TableFieldL);
+        TableFieldsL.Run();
+    end;
+
     var
         ShowActive: Boolean;
         ICMMgt: Codeunit "ICM Management";

@@ -1,4 +1,4 @@
-namespace DefaultPublisher;
+namespace ImperConsult.CopyCompany;
 
 using Microsoft.Inventory.Item;
 using System.Reflection;
@@ -151,7 +151,7 @@ codeunit 50400 "ICM Management"
             ICMTableL."ICM Company Name" := CompanyNameR;
             ICMTableL."ICM Active" := false;
 
-            ICMTableL.Insert();
+            ICMTableL.Insert(true);
         end;
 
         if ICMTableL."ICM Table Subtype" = 'Normal' then begin
@@ -191,9 +191,8 @@ codeunit 50400 "ICM Management"
             Message(Text002Lbl, ActiveStatus);
     end;
 
-    procedure ActivateIncludeField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
+    procedure ActivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
     begin
-        //to Do: Primärschlüssel berücksichtigen
         if CMIConfigPackageFieldR.FindSet(true) then
             repeat
                 CMIConfigPackageFieldR."ICM Include Field" := true;
@@ -201,14 +200,41 @@ codeunit 50400 "ICM Management"
             until CMIConfigPackageFieldR.Next() = 0;
     end;
 
-    procedure DeactivateIncludeField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
+    procedure DeactivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
+    var
+        ICMConfigPackageLineL: Record "ICM Config. Package Line";
     begin
-        //to Do: Primärschlüssel berücksichtigen
+        if ICMConfigPackageLineL.Get(CMIConfigPackageFieldR."ICM Package Code", CMIConfigPackageFieldR."ICM Table ID") then
+            ICMConfigPackageLineL.TestField("ICM Apply Table Fields", ICMConfigPackageLineL."ICM Apply Table Fields"::"Some Fields");
+        CMIConfigPackageFieldR.SetRange("ICM Primary Key", false);
         if CMIConfigPackageFieldR.FindSet(true) then
             repeat
                 CMIConfigPackageFieldR."ICM Include Field" := false;
                 CMIConfigPackageFieldR.Modify();
             until CMIConfigPackageFieldR.Next() = 0;
+    end;
+
+    procedure ActivateIncludeTableField(var CMITableFieldR: Record "ICM Table Field")
+    begin
+        if CMITableFieldR.FindSet(true) then
+            repeat
+                CMITableFieldR."ICM Include Field" := true;
+                CMITableFieldR.Modify();
+            until CMITableFieldR.Next() = 0;
+    end;
+
+    procedure DeactivateIncludeTableField(var CMITableFieldR: Record "ICM Table Field")
+    var
+        ICMTableL: Record "ICM Table";
+    begin
+        if ICMTableL.Get(CMITableFieldR."ICM Company Name", CMITableFieldR."ICM Table ID") then
+            ICMTableL.TestField("ICM Apply Table Fields", ICMTableL."ICM Apply Table Fields"::"Some Fields");
+        CMITableFieldR.SetRange("ICM Primary Key", false);
+        if CMITableFieldR.FindSet(true) then
+            repeat
+                CMITableFieldR."ICM Include Field" := false;
+                CMITableFieldR.Modify();
+            until CMITableFieldR.Next() = 0;
     end;
 
     procedure CopyTablesFromToCompany(FromCompanyName: Text[30]; ToCompanyName: Text[30])

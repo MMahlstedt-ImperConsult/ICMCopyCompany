@@ -94,6 +94,12 @@ table 50403 "ICM Config. Package Line"
         {
             Caption = 'Apply Table Fields';
             DataClassification = CustomerContent;
+            Trigger OnValidate()
+            begin
+                if ("ICM Apply Table Fields" <> xRec."ICM Apply Table Fields") and
+                 ("ICM Apply Table Fields" = "ICM Apply Table Fields"::"All Fields") then
+                    UpdateTableFields();
+            end;
         }
     }
 
@@ -141,6 +147,7 @@ table 50403 "ICM Config. Package Line"
 
         FieldL.Reset();
         FieldL.Setrange(TableNo, "ICM Table ID");
+        FieldL.SetRange("No.", 1, 1999999999);
         FieldL.SetRange(Class, FieldL.Class::Normal);
         FieldL.SetFilter(ObsoleteState, '<>%1', FieldL.ObsoleteState::Removed);
         if FieldL.FindSet() then
@@ -153,12 +160,29 @@ table 50403 "ICM Config. Package Line"
                     ConfigPackageFieldL."ICM Field Caption" := FieldL."Field Caption";
                     ConfigPackageFieldL."ICM Field Name" := FieldL.FieldName;
                     ConfigPackageFieldL."ICM Primary Key" := ICMMgtL.IsKeyField("ICM Table ID", FieldL."No.");
-                    if ConfigPackageFieldL."ICM Primary Key" then
+                    if "ICM Apply Table Fields" = "ICM Apply Table Fields"::"All Fields" then
                         ConfigPackageFieldL."ICM Include Field" := true
                     else
                         ConfigPackageFieldL."ICM Include Field" := false;
+                    if ConfigPackageFieldL."ICM Primary Key" then
+                        ConfigPackageFieldL."ICM Include Field" := true;
+
                     configPackageFieldL.Insert();
                 end;
             until FieldL.Next() = 0;
     end;
+
+    local procedure UpdateTableFields()
+    var
+        ICMConfigPackageFieldL: Record "ICM Config. Package Field";
+    begin
+        ICMConfigPackageFieldL.Reset();
+        ICMConfigPackageFieldL.Setrange("ICM Package Code", "ICM Package Code");
+        ICMConfigPackageFieldL.Setrange("ICM Table ID", "ICM Table ID");
+        if ICMConfigPackageFieldL.FindSet() then
+            ICMConfigPackageFieldL.ModifyAll("ICM Include Field", true);
+    end;
+
+    var
+        RemoveSelectionsQst: Label 'You have changed the %1 field to no longer be %2. Do you want to remove the field selections?', Comment = '%1: Field caption, %2: The selected log action. Example: You have changed the Log Modification field to no longer be Some Fields';
 }

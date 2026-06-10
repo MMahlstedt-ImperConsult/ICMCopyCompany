@@ -54,6 +54,7 @@ page 50406 "ICM Table Fields"
                     Caption = 'Include Field';
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the field is included in the migration';
+                    Editable = IncludedEditable;
                 }
             }
         }
@@ -96,6 +97,8 @@ page 50406 "ICM Table Fields"
                     ICMMgt: Codeunit "ICM Management";
                     Choice: Integer;
                 begin
+                    Rec.CalcFields("ICM Apply Table Fields");
+                    Rec.TestField("ICM Apply Table Fields", "ICM Apply Table Fields"::"Some Fields");
                     CMITableFieldL.CopyFilters(Rec);
                     ICMMgt.DeactivateIncludeTableField(CMITableFieldL);
                     CurrPage.Update(false);
@@ -103,5 +106,11 @@ page 50406 "ICM Table Fields"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    begin
+        IncludedEditable := not Rec."ICM Primary Key";
+    end;
 
+    var
+        IncludedEditable: Boolean;
 }

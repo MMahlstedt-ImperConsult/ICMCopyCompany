@@ -95,12 +95,12 @@ page 50400 "ICM Tables List"
                 field("ICM Apply Table Fields"; Rec."ICM Apply Table Fields")
                 {
                     ToolTip = 'Specifies the subtype of the table.';
-                    AssistEdit = true;
-                    trigger OnAssistEdit()
-                    begin
-                        Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
-                        AssistEdit();
-                    end;
+                    //AssistEdit = true;
+                    //trigger OnAssistEdit()
+                    //begin
+                    //    Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
+                    //    AssistEdit();
+                    //end;
                 }
                 field("No. of Fields Available"; Rec."ICM No. of Fields Available")
                 {
@@ -252,19 +252,6 @@ page 50400 "ICM Tables List"
             }
         }
     }
-
-    local procedure AssistEdit()
-    var
-        TableFieldL: Record "ICM Table Field";
-        TableFieldsL: Page "ICM Table Fields";
-    begin
-        TableFieldL.Reset();
-        TableFieldL.SetRange("ICM Table ID", Rec."ICM Table ID");
-        TableFieldL.SetRange("ICM Company Name", Rec."ICM Company Name");
-
-        TableFieldsL.SetTableView(TableFieldL);
-        TableFieldsL.Run();
-    end;
 
     var
         ShowActive: Boolean;

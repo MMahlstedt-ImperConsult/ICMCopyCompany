@@ -93,6 +93,12 @@ table 50400 "ICM Table"
         {
             Caption = 'Apply Table Fields';
             DataClassification = CustomerContent;
+            Trigger OnValidate()
+            begin
+                if ("ICM Apply Table Fields" <> xRec."ICM Apply Table Fields") and
+                 ("ICM Apply Table Fields" = "ICM Apply Table Fields"::"All Fields") then
+                    UpdateTableFields();
+            end;
         }
     }
 
@@ -133,7 +139,9 @@ table 50400 "ICM Table"
 
         FieldL.Reset();
         FieldL.Setrange(TableNo, "ICM Table ID");
+        FieldL.SetRange("No.", 1, 1999999999);
         FieldL.SetRange(Class, FieldL.Class::Normal);
+
         FieldL.SetFilter(ObsoleteState, '<>%1', FieldL.ObsoleteState::Removed);
         if FieldL.FindSet() then
             repeat
@@ -145,13 +153,28 @@ table 50400 "ICM Table"
                     TableFieldL."ICM Field Caption" := FieldL."Field Caption";
                     TableFieldL."ICM Field Name" := FieldL.FieldName;
                     TableFieldL."ICM Primary Key" := ICMMgtL.IsKeyField("ICM Table ID", FieldL."No.");
-                    if TableFieldL."ICM Primary Key" then
+
+                    if "ICM Apply Table Fields" = "ICM Apply Table Fields"::"All Fields" then
                         TableFieldL."ICM Include Field" := true
                     else
                         TableFieldL."ICM Include Field" := false;
+                    if TableFieldL."ICM Primary Key" then
+                        TableFieldL."ICM Include Field" := true;
+
                     TableFieldL.Insert();
                 end;
             until FieldL.Next() = 0;
+    end;
+
+    local procedure UpdateTableFields()
+    var
+        TableFieldL: Record "ICM Table Field";
+    begin
+        TableFieldL.Reset();
+        TableFieldL.Setrange("ICM Company Name", "ICM Company Name");
+        TableFieldL.Setrange("ICM Table ID", "ICM Table ID");
+        if TableFieldL.FindSet() then
+            TableFieldL.ModifyAll("ICM Include Field", true);
     end;
 
     var

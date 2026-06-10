@@ -42,13 +42,21 @@ table 50405 "ICM Table Field"
             trigger OnValidate()
             begin
                 if "ICM Include Field" = false then
-                    TestField("ICM Primary Key", true);
+                    TestField("ICM Primary Key", false);
             end;
         }
         field(8; "ICM Primary Key"; Boolean)
         {
             Caption = 'Primary Key';
             Editable = false;
+        }
+        field(9; "ICM Apply Table Fields"; Enum "ICM Apply Table Fields")
+        {
+            CalcFormula = lookup("ICM Table"."ICM Apply Table Fields" where("ICM Table ID" = field("ICM Table ID"),
+                                                                            "ICM Company Name" = field("ICM Company Name")));
+            Caption = 'Apply Table Fields';
+            Editable = false;
+            FieldClass = FlowField;
         }
     }
 

@@ -54,6 +54,7 @@ page 50405 "ICM Config. Package Fields"
                     Caption = 'Include Field';
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the field is included in the migration';
+                    Editable = IncludedEditable;
                 }
             }
         }
@@ -71,11 +72,10 @@ page 50405 "ICM Config. Package Fields"
                 trigger OnAction()
                 var
                     CMIConfigPackageFieldL: Record "ICM Config. Package Field";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
+                    ICMMgtL: Codeunit "ICM Management";
                 begin
                     CMIConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgt.ActivateIncludePackageField(CMIConfigPackageFieldL);
+                    ICMMgtL.ActivateIncludePackageField(CMIConfigPackageFieldL);
                     CurrPage.Update(false);
                 end;
             }
@@ -87,15 +87,24 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
+                    ICMConfigPackageFieldL: Record "ICM Config. Package Field";
+                    ICMMgtL: Codeunit "ICM Management";
                 begin
-                    CMIConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgt.DeactivateIncludePackageField(CMIConfigPackageFieldL);
+                    Rec.CalcFields("ICM Apply Table Fields");
+                    Rec.TestField("ICM Apply Table Fields", "ICM Apply Table Fields"::"Some Fields");
+                    ICMConfigPackageFieldL.CopyFilters(Rec);
+                    ICMMgtL.DeactivateIncludePackageField(ICMConfigPackageFieldL);
                     CurrPage.Update(false);
                 end;
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        IncludedEditable := not Rec."ICM Primary Key";
+    end;
+
+    var
+        IncludedEditable: Boolean;
 }

@@ -43,13 +43,21 @@ table 50404 "ICM Config. Package Field"
             trigger OnValidate()
             begin
                 if "ICM Include Field" = false then
-                    TestField("ICM Primary Key", true);
+                    TestField("ICM Primary Key", false);
             end;
         }
         field(8; "ICM Primary Key"; Boolean)
         {
             Caption = 'Primary Key';
             Editable = false;
+        }
+        field(9; "ICM Apply Table Fields"; Enum "ICM Apply Table Fields")
+        {
+            CalcFormula = lookup("ICM Config. Package Line"."ICM Apply Table Fields" where("ICM Package Code" = field("ICM Package Code"),
+                                                                                           "ICM Table ID" = field("ICM Table ID")));
+            Caption = 'Apply Table Fields';
+            Editable = false;
+            FieldClass = FlowField;
         }
     }
 

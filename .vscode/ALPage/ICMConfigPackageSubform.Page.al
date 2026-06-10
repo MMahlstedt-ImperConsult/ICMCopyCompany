@@ -62,23 +62,11 @@ page 50403 "ICM Config. Package Subform"
                 {
                     ApplicationArea = All;
                     Caption = 'No. of Fields Available';
-                    AssistEdit = true;
-                    trigger OnAssistEdit()
-                    begin
-                        Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
-                        AssistEdit();
-                    end;
                 }
                 field("ICM No. of Fields Included"; Rec."ICM No. of Fields Included")
                 {
                     ApplicationArea = All;
                     Caption = 'No. of Fields Included';
-                    //AssistEdit = true;
-                    //trigger OnAssistEdit()
-                    //begin
-                    //    Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
-                    //    AssistEdit();
-                    //end;
                 }
                 field("ICM Source Comp. Record Count"; Rec."ICM Source Comp. Record Count")
                 {
@@ -94,16 +82,4 @@ page 50403 "ICM Config. Package Subform"
         }
 
     }
-
-    local procedure AssistEdit()
-    var
-        ConfigPackageFieldL: Record "ICM Config. Package Field";
-        ConfigPackageFieldsL: Page "ICM Config. Package Fields";
-    begin
-        ConfigPackageFieldL.Reset();
-        ConfigPackageFieldL.SetRange("ICM Package Code", Rec."ICM Package Code");
-        ConfigPackageFieldL.SetRange("ICM Table ID", Rec."ICM Table ID");
-        ConfigPackageFieldsL.SetTableView(ConfigPackageFieldL);
-        ConfigPackageFieldsL.Run();
-    end;
 }

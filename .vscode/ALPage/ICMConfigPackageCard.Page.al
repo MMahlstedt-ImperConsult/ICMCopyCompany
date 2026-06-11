@@ -42,6 +42,12 @@ page 50402 "ICM Config. Package Card"
                     Caption = 'Target Company';
                     ToolTip = 'Specifies the target company for the configuration package.';
                 }
+                field("No. of Tables"; Rec."ICM No. of Tables")
+                {
+                    ApplicationArea = All;
+                    Caption = 'No. of Tables';
+                    ToolTip = 'Specifies the No. of Tables for the configuration package.';
+                }
             }
             part(Lines; "ICM Config. Package Subform")
             {
@@ -77,6 +83,44 @@ page 50402 "ICM Config. Package Card"
                     ICMMgtL: Codeunit "ICM Management";
                 begin
                     ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
+                end;
+            }
+            action("Copy Config. Package")
+            {
+                Caption = 'Copy Config. Package';
+                ToolTip = 'Copy Config. Package';
+                Image = Copy;
+
+                trigger OnAction()
+                var
+                    ICMMgtL: Codeunit "ICM Management";
+                begin
+                    //ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
+                end;
+            }
+        }
+        area(Navigation)
+        {
+            action("ICM Setup")
+            {
+                Caption = 'ICM Setup';
+                ToolTip = 'Open ICM Setup';
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Setup");
+                end;
+            }
+            action("Configuration Packages")
+            {
+                Caption = 'Configuration Packages';
+                ToolTip = 'Open Configuration Packages List';
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Config. Package List");
                 end;
             }
         }

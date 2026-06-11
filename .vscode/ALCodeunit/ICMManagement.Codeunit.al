@@ -40,7 +40,7 @@ codeunit 50400 "ICM Management"
                     end;
                     RecRefL.Close();
                 end;
-                ICMConfigPackLineL.Modify(true);
+                ICMConfigPackLineL.Modify();
             until ICMConfigPackLineL.Next() = 0;
         end;
     end;
@@ -278,7 +278,7 @@ codeunit 50400 "ICM Management"
                     WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
                 End;
 
-                SourceRecRefL.Open(ICMTableL."ICM Table ID", false, ICMTableL."ICM Company Name");
+                SourceRecRefL.Open(ICMTableL."ICM Table ID", false, FromCompanyName); //ICMTableL."ICM Company Name");
                 TargetRecRefL.Open(ICMTableL."ICM Table ID", false, ToCompanyName);
 
                 Clear(CopiedTableCountL);
@@ -287,44 +287,37 @@ codeunit 50400 "ICM Management"
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
 
+                ICMTableFieldL.Reset();
+                //prüfen key
+                ICMTableFieldL.SetRange("ICM Company Name", ICMTableL."ICM Company Name");
+                ICMTableFieldL.SetRange("ICM Table ID", ICMTableL."ICM Table ID");
+                ICMTableFieldL.SetRange("ICM Include Field", true);
+
                 if SourceRecRefL.FindSet() then begin
                     repeat
-                        TargetRecRefL.Init();
+                        //TargetRecRefL.Init();
 
-                        /*for i := 1 to SourceRecRef.FieldCount() do begin
-                            FieldRef := SourceRecRef.FieldIndex(i);
-
-
-                            if not (FieldRef.Class() = FieldClass::FlowField) then begin
-                                TargetFieldRef := TargetRecRef.FieldIndex(i);
-                                TargetFieldRef.Value := FieldRef.Value;
-                            end;
-                        end;*/
-
-                        ICMTableFieldL.Reset();
-                        ICMTableFieldL.SetRange("ICM Company Name", ICMTableL."ICM Company Name");
-                        ICMTableFieldL.SetRange("ICM Table ID", ICMTableL."ICM Table ID");
-                        ICMTableFieldL.SetRange("ICM Include Field", true);
                         if ICMTableFieldL.FindSet() then begin
                             repeat
-                                FieldRefL := SourceRecRefL.FieldIndex(ICMTableFieldL."ICM Field ID");
+                                FieldRefL := SourceRecRefL.Field(ICMTableFieldL."ICM Field ID");
 
                                 if not (FieldRefL.Class() = FieldClass::FlowField) then begin
-                                    TargetFieldRefL := TargetRecRefL.FieldIndex(ICMTableFieldL."ICM Field ID");
+                                    TargetFieldRefL := TargetRecRefL.Field(ICMTableFieldL."ICM Field ID");
                                     TargetFieldRefL.Value := FieldRefL.Value;
                                 end;
                             until ICMTableFieldL.Next() = 0;
                         end;
+                        TargetRecRefL.Insert();
 
-
-                        if TryInsertRecord(TargetRecRefL) then
-                            CopiedTableCountL += 1
-                        else
-                            SkippedTableCountL += 1;
+                    //if TryInsertRecord(TargetRecRefL) then
+                    //    CopiedTableCountL += 1
+                    //else
+                    //    SkippedTableCountL += 1;
 
                     until SourceRecRefL.Next() = 0;
                 end;
 
+                CopiedTableCountL += 1;
                 SourceRecRefL.Close();
                 TargetRecRefL.Close();
 
@@ -335,7 +328,8 @@ codeunit 50400 "ICM Management"
             WindowDialog.Close();
 
         if GuiAllowed then
-            Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
+            Message(Text007Lbl, CopiedTableCountL);
+        //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
     end;
 
     procedure CopyTablesFromToCompany2(PackageCodeR: Code[20])
@@ -352,8 +346,6 @@ codeunit 50400 "ICM Management"
         SkippedTableCountL: Integer;
         i: Integer;
     begin
-        //Message('ToDo: Applying configuration package and copying tables.');
-
         ICMSetupL.Get();
         ICMConfigPackageL.Get(PackageCodeR);
 
@@ -376,74 +368,79 @@ codeunit 50400 "ICM Management"
             WindowDialogCount1 := ICMConfigPackageLineL.Count;
         End;
 
-        repeat
-            if GuiAllowed then Begin
-                WindowDialogIndex1 += 1;
-                WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
-            End;
+        if ICMConfigPackageLineL.FindSet() then
+            repeat
+                if GuiAllowed then Begin
+                    WindowDialogIndex1 += 1;
+                    WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
+                End;
 
-            SourceRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Source Company Name");
-            TargetRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Target Company Name");
+                SourceRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Source Company Name");
+                TargetRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Target Company Name");
 
-            Clear(CopiedTableCountL);
-            Clear(SkippedTableCountL);
+                Clear(CopiedTableCountL);
+                Clear(SkippedTableCountL);
 
-            if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
-                TryDeleteAll(TargetRecRefL);
+                if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
+                    TryDeleteAll(TargetRecRefL);
 
-            if SourceRecRefL.FindSet() then begin
-                repeat
-                    TargetRecRefL.Init();
+                if SourceRecRefL.FindSet() then begin
+                    repeat
+                        //TargetRecRefL.Init();
 
-                    ICMConfigPackageFieldL.Reset();
-                    ICMConfigPackageFieldL.SetRange("ICM Package Code", ICMConfigPackageLineL."ICM Package Code");
-                    ICMConfigPackageFieldL.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Table ID");
-                    ICMConfigPackageFieldL.SetRange("ICM Include Field", true);
-                    if ICMConfigPackageFieldL.FindSet() then begin
-                        repeat
-                            FieldRefL := SourceRecRefL.FieldIndex(ICMConfigPackageFieldL."ICM Field ID");
+                        ICMConfigPackageFieldL.Reset();
+                        ICMConfigPackageFieldL.SetRange("ICM Package Code", ICMConfigPackageLineL."ICM Package Code");
+                        ICMConfigPackageFieldL.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Table ID");
+                        ICMConfigPackageFieldL.SetRange("ICM Include Field", true);
+                        if ICMConfigPackageFieldL.FindSet() then begin
+                            repeat
+                                FieldRefL := SourceRecRefL.Field(ICMConfigPackageFieldL."ICM Field ID");
 
-                            if not (FieldRefL.Class() = FieldClass::FlowField) then begin
-                                TargetFieldRefL := TargetRecRefL.FieldIndex(ICMConfigPackageFieldL."ICM Field ID");
-                                TargetFieldRefL.Value := FieldRefL.Value;
-                            end;
-                        until ICMConfigPackageFieldL.Next() = 0;
-                    end;
+                                if not (FieldRefL.Class() = FieldClass::FlowField) then begin
+                                    TargetFieldRefL := TargetRecRefL.Field(ICMConfigPackageFieldL."ICM Field ID");
+                                    TargetFieldRefL.Value := FieldRefL.Value;
+                                end;
+                            until ICMConfigPackageFieldL.Next() = 0;
+                        end;
+                        TargetRecRefL.Insert();
+
+                    //if TryInsertRecord(TargetRecRefL) then
+                    //    CopiedTableCountL += 1
+                    //else
+                    //    SkippedTableCountL += 1;
+
+                    until SourceRecRefL.Next() = 0;
+                end;
+
+                CopiedTableCountL += 1;
+
+                SourceRecRefL.Close();
+                TargetRecRefL.Close();
 
 
-                    if TryInsertRecord(TargetRecRefL) then
-                        CopiedTableCountL += 1
-                    else
-                        SkippedTableCountL += 1;
-
-                until SourceRecRefL.Next() = 0;
-            end;
-
-            SourceRecRefL.Close();
-            TargetRecRefL.Close();
-
-
-        until ICMConfigPackageLineL.Next() = 0;
+            until ICMConfigPackageLineL.Next() = 0;
 
         if GuiAllowed then
             WindowDialog.Close();
 
         if GuiAllowed then
-            Message(Text004Lbl, CopiedTableCountL);
+            Message(Text007Lbl, CopiedTableCountL);
+        //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
 
     end;
 
 
     [TryFunction]
-    local procedure TryInsertRecord(var RecRef: RecordRef)
+    local procedure TryInsertRecord(var RecRefR: RecordRef)
     begin
-        RecRef.Insert();
+        RecRefR.Insert();
     end;
 
     [TryFunction]
-    local procedure TryDeleteAll(var RecRef: RecordRef)
+    local procedure TryDeleteAll(var RecRefR: RecordRef)
     begin
-        RecRef.DeleteAll();
+        if RecRefR.Number <> 0 then
+            RecRefR.DeleteAll();
     end;
 
     procedure LookupCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Table")
@@ -470,6 +467,7 @@ codeunit 50400 "ICM Management"
         ICMConfigPackageLineL: Record "ICM Config. Package Line";
     begin
         //Message('Package %1 wird angewendet...', PackageCode);
+        //ToDo Felder berücksichtigen
         ICMConfigPackageLineL.Reset();
         ICMConfigPackageLineL.SetRange("ICM Package Code", PackageCodeR);
 
@@ -483,6 +481,14 @@ codeunit 50400 "ICM Management"
                 end;
             until ICMConfigPackageLineL.Next() = 0;
         end;
+    end;
+
+    local procedure CopyConfigPackage(PackageCodeR: Code[20])
+    var
+        ICMConfigPackageL: Record "ICM Config. Package";
+        ICMConfigPackageLineL: Record "ICM Config. Package Line";
+    begin
+
     end;
 
     procedure IsKeyField(TableID: Integer; FieldID: Integer): Boolean
@@ -578,7 +584,8 @@ codeunit 50400 "ICM Management"
         Text001Lbl: Label 'Lines has been updated.';
         Text002Lbl: Label 'The Field Active has been set to %1 for all filtered table lines.';
         Text003Lbl: Label 'No active tables found.';
-        Text004Lbl: Label '%1 tables copied. %2 tables skipped.';
+        Text004Lbl: Label '%1 table copied. %2 tables skipped.';
         Text005Lbl: Label 'The list of Tables is being updated...\\';
         Text006Lbl: Label 'The list of Tables is being copied...\\';
+        Text007Lbl: Label '%1 table copied.';
 }

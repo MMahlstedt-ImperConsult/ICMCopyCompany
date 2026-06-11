@@ -182,7 +182,4 @@ table 50403 "ICM Config. Package Line"
         if ICMConfigPackageFieldL.FindSet() then
             ICMConfigPackageFieldL.ModifyAll("ICM Include Field", true);
     end;
-
-    var
-        RemoveSelectionsQst: Label 'You have changed the %1 field to no longer be %2. Do you want to remove the field selections?', Comment = '%1: Field caption, %2: The selected log action. Example: You have changed the Log Modification field to no longer be Some Fields';
 }

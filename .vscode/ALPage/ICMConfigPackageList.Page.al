@@ -74,6 +74,31 @@ page 50404 "ICM Config. Package List"
                 end;
             }
         }
+        area(Navigation)
+        {
+            action("ICM Setup")
+            {
+                Caption = 'ICM Setup';
+                ToolTip = 'Open ICM Setup';
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Setup");
+                end;
+            }
+            action("Tables List")
+            {
+                Caption = 'Tables List';
+                ToolTip = 'Open Tables List';
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Tables List");
+                end;
+            }
+        }
     }
     var
         SelectedPackageCodeL: Code[20];

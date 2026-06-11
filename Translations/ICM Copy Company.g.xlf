@@ -88,11 +88,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Config. Package Line - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1878644193 - NamedType 1265805973" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You have changed the %1 field to no longer be %2. Do you want to remove the field selections?</source>
-          <note from="Developer" annotates="general" priority="2">%1: Field caption, %2: The selected log action. Example: You have changed the Log Modification field to no longer be Some Fields</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Config. Package Line - NamedType RemoveSelectionsQst</note>
-        </trans-unit>
         <trans-unit id="Table 1878644193 - Field 970397981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -309,7 +304,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text003Lbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 3354317960 - NamedType 3140410629" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 tables copied. %2 tables skipped.</source>
+          <source>%1 table copied. %2 tables skipped.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text004Lbl</note>
         </trans-unit>
@@ -363,6 +358,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control From Company Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3822461471 - Control 666729213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the No. of Tables for the configuration package.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control No. of Tables - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Control 666729213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Tables</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control No. of Tables - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3822461471 - Control 2521186109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the target company for the configuration package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -372,6 +377,36 @@
           <source>Target Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control To Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1930717187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Configuration Packages List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Configuration Packages - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1930717187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Configuration Packages</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Configuration Packages - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1451704708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open ICM Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action ICM Setup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICM Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action ICM Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 569009029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Config. Package</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Copy Config. Package - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 569009029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Config. Package</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Copy Config. Package - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3822461471 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy tables from one company to another</source>
@@ -507,6 +542,26 @@
           <source>Target Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Control Target Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3535873749 - Action 1451704708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open ICM Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action ICM Setup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3535873749 - Action 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICM Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action ICM Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3535873749 - Action 592107873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Tables List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action Tables List - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3535873749 - Action 592107873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tables List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action Tables List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3535873749 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create new Company</source>
@@ -917,6 +972,11 @@
           <source>Overwrite existing data</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ICM Table Data Processing - EnumValue Overwrite existing data - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3354317960 - NamedType 576348388" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 table copied.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text007Lbl</note>
         </trans-unit>
       </group>
     </body>

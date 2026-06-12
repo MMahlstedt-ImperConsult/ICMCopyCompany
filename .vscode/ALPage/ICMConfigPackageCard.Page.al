@@ -30,13 +30,13 @@ page 50402 "ICM Config. Package Card"
                     Caption = 'Description';
                     ToolTip = 'Specifies the description of the configuration package.';
                 }
-                field("From Company Name"; Rec."ICM Source Company Name")
+                field("Source Company Name"; Rec."ICM Source Company Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Source Company';
                     ToolTip = 'Specifies the source company for the configuration package.';
                 }
-                field("To Company Name"; Rec."ICM Target Company Name")
+                field("Target Company Name"; Rec."ICM Target Company Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Target Company';
@@ -85,17 +85,21 @@ page 50402 "ICM Config. Package Card"
                     ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
                 end;
             }
-            action("Copy Config. Package")
+            action(CopyConfigPackage)
             {
+                ApplicationArea = Basic, Suite;
                 Caption = 'Copy Config. Package';
-                ToolTip = 'Copy Config. Package';
-                Image = Copy;
+                Image = CopyWorksheet;
+                ToolTip = 'Copy an existing configuration package to create a new package based on the same content.';
 
                 trigger OnAction()
                 var
-                    ICMMgtL: Codeunit "ICM Management";
+                    CopyConfigPackageL: Report "ICM Copy Config Package";
                 begin
-                    //ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
+                    Rec.TestField("ICM Code");
+                    CopyConfigPackageL.Set(Rec);
+                    CopyConfigPackageL.RunModal();
+                    Clear(CopyConfigPackageL);
                 end;
             }
         }

@@ -95,12 +95,6 @@ page 50400 "ICM Tables List"
                 field("ICM Apply Table Fields"; Rec."ICM Apply Table Fields")
                 {
                     ToolTip = 'Specifies the subtype of the table.';
-                    //AssistEdit = true;
-                    //trigger OnAssistEdit()
-                    //begin
-                    //    Rec.TestField("ICM Apply Table Fields", Rec."ICM Apply Table Fields"::"Some Fields");
-                    //    AssistEdit();
-                    //end;
                 }
                 field("No. of Fields Available"; Rec."ICM No. of Fields Available")
                 {
@@ -113,6 +107,7 @@ page 50400 "ICM Tables List"
                 field("Included in the License"; Rec."ICM Included in the License")
                 {
                     ToolTip = 'Specifies if the table is included in the license.';
+                    Visible = false;
                 }
                 field("Record Count"; Rec."ICM Record Count")
                 {
@@ -129,6 +124,17 @@ page 50400 "ICM Tables List"
     {
         area(Processing)
         {
+            action("Create new Company")
+            {
+                Caption = 'Create new Company';
+                ToolTip = 'Create new Company';
+                Image = Open;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::Companies);
+                end;
+            }
             action("Update tables")
             {
                 Caption = 'Update tables';
@@ -145,8 +151,8 @@ page 50400 "ICM Tables List"
             }
             action("Set Field Active")
             {
-                Caption = 'Set Field Active';
-                ToolTip = 'Set the Active field to true or false';
+                Caption = 'Set Field Active to true or false';
+                ToolTip = 'Set the Active field to true or false, existing filters are considered';
                 Image = CheckList;
 
                 trigger OnAction()
@@ -168,17 +174,7 @@ page 50400 "ICM Tables List"
                     CurrPage.Update(false);
                 end;
             }
-            action("Create new Company")
-            {
-                Caption = 'Create new Company';
-                ToolTip = 'Create new Company';
-                Image = Open;
 
-                trigger OnAction()
-                begin
-                    Page.Run(Page::Companies);
-                end;
-            }
             action("Copy Tables")
             {
                 Caption = 'Copy Tables';
@@ -188,28 +184,6 @@ page 50400 "ICM Tables List"
                 trigger OnAction()
                 begin
                     Report.Run(Report::"ICM Copy Tables");
-                end;
-            }
-            action("Apply configuration package")
-            {
-                Caption = 'Apply configuration package';
-                ToolTip = 'Apply configuration package to fill tables';
-                Image = Setup;
-
-                trigger OnAction()
-                var
-                    CMIConfigPackageListL: Page "ICM Config. Package List";
-                    SelectedPackageCodeL: Code[20];
-                begin
-                    if CMIConfigPackageListL.RunModal() = Action::OK then begin
-                        SelectedPackageCodeL := CMIConfigPackageListL.GetSelectedPackage();
-                        if SelectedPackageCodeL <> '' then
-                            ICMMgt.ApplyConfigurationPackage(SelectedPackageCodeL, Rec);
-                        ShowActive := true;
-                        Rec.Reset();
-                        Rec.SetRange("ICM Active", ShowActive);
-                        CurrPage.Update(false);
-                    end;
                 end;
             }
             action("Toggle Active Tables Visibility")
@@ -222,6 +196,8 @@ page 50400 "ICM Tables List"
                 begin
                     ShowActive := not ShowActive;
                     Rec.SetRange("ICM Active", ShowActive);
+                    if CompanyName <> '' then
+                        Rec.SetRange("ICM Company Name", CompanyName);
                     CurrPage.Update(false);
                 end;
             }

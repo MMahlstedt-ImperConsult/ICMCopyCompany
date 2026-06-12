@@ -444,6 +444,13 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text006Lbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3354317960 - NamedType 576348388" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 table copied.</source>
+          <target>[NAB: REVIEW]%1 table copied.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text007Lbl</note>
+        </trans-unit>
         <trans-unit id="Page 3822461471 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuration Package</source>
           <target>[NAB: REVIEW]Configuration Package</target>
@@ -486,20 +493,6 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3822461471 - Control 1148245802 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the source company for the configuration package.</source>
-          <target>[NAB: REVIEW]Specifies the source company for the configuration package.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control From Company Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3822461471 - Control 1148245802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Source Company</source>
-          <target>[NAB: REVIEW]Source Company</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control From Company Name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3822461471 - Control 666729213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the No. of Tables for the configuration package.</source>
           <target>[NAB: REVIEW]Specifies the No. of Tables for the configuration package.</target>
@@ -514,19 +507,33 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control No. of Tables - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3822461471 - Control 2521186109 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3822461471 - Control 3291697743 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the source company for the configuration package.</source>
+          <target>[NAB: REVIEW]Specifies the source company for the configuration package.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control Source Company Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Control 3291697743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company</source>
+          <target>[NAB: REVIEW]Source Company</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control Source Company Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Control 804250715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the target company for the configuration package.</source>
           <target>[NAB: REVIEW]Specifies the target company for the configuration package.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control To Company Name - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control Target Company Name - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3822461471 - Control 2521186109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3822461471 - Control 804250715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Target Company</source>
           <target>[NAB: REVIEW]Target Company</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control To Company Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Control Target Company Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3822461471 - Action 1930717187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Configuration Packages List</source>
@@ -556,20 +563,6 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action ICM Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3822461471 - Action 569009029 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Config. Package</source>
-          <target>[NAB: REVIEW]Copy Config. Package</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Copy Config. Package - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3822461471 - Action 569009029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Config. Package</source>
-          <target>[NAB: REVIEW]Copy Config. Package</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Copy Config. Package - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3822461471 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy tables from one company to another</source>
           <target>[NAB: REVIEW]Copy tables from one company to another</target>
@@ -583,6 +576,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action Copy Tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1587922023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy an existing configuration package to create a new package based on the same content.</source>
+          <target>[NAB: REVIEW]Copy an existing configuration package to create a new package based on the same content.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action CopyConfigPackage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3822461471 - Action 1587922023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Config. Package</source>
+          <target>[NAB: REVIEW]Copy Config. Package</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package Card - Action CopyConfigPackage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3822461471 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create new Company</source>
@@ -1186,20 +1193,6 @@
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action ICM Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1743074228 - Action 25220178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply configuration package to fill tables</source>
-          <target>[NAB: REVIEW]Apply configuration package to fill tables</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Apply configuration package - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1743074228 - Action 25220178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply configuration package</source>
-          <target>[NAB: REVIEW]Apply configuration package</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Apply configuration package - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1743074228 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy tables from one company to another</source>
           <target>[NAB: REVIEW]Copy tables from one company to another</target>
@@ -1229,17 +1222,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Create new Company - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1743074228 - Action 1280535072 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Set the Active field to true or false</source>
-          <target>[NAB: REVIEW]Set the Active field to true or false</target>
+          <source>Set the Active field to true or false, existing filters are considered</source>
+          <target>[NAB: REVIEW]Set the Active field to true or false, existing filters are considered</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Set Field Active - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1743074228 - Action 1280535072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Set Field Active</source>
-          <target>[NAB: REVIEW]Set Field Active</target>
+          <source>Set Field Active to true or false</source>
+          <target>[NAB: REVIEW]Set Field Active to true or false</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Set Field Active - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1743074228 - Action 520441351 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -1269,6 +1262,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Update tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy - Configuration Package</source>
+          <target>[NAB: REVIEW]Copy - Configuration Package</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - NamedType 2517729803" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package %1 already exists.</source>
+          <target>[NAB: REVIEW]Package %1 already exists.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - NamedType PackageAlreadyExistsErr</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The target company must be different from the source company.</source>
+          <target>[NAB: REVIEW]The target company must be different from the source company.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - NamedType Text001Err</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 4105281732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <target>[NAB: REVIEW]Options</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control GroupName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 1184707923 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The company to copy data from</source>
+          <target>[NAB: REVIEW]The company to copy data from</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control FromCompany - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 1184707923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Company</source>
+          <target>[NAB: REVIEW]From Company</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control FromCompany - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 3820220526 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the code that the new configuration package gets after copying.</source>
+          <target>[NAB: REVIEW]Specifies the code that the new configuration package gets after copying.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control Package - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 3820220526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Package Code</source>
+          <target>[NAB: REVIEW]New Package Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control Package - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 2542273248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The company to copy data to</source>
+          <target>[NAB: REVIEW]The company to copy data to</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control ToCompany - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 4123819022 - Control 2542273248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To Company</source>
+          <target>[NAB: REVIEW]To Company</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control ToCompany - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Tables to Another Company</source>
@@ -1360,13 +1423,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ICM Table Data Processing - EnumValue Overwrite existing data - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3354317960 - NamedType 576348388" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 table copied.</source>
-          <target>[NAB: REVIEW]%1 table copied.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation. Target copied from source.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ICM Management - NamedType Text007Lbl</note>
         </trans-unit>
       </group>
     </body>

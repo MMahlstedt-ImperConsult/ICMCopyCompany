@@ -16,27 +16,29 @@ report 50401 "ICM Copy Config Package"
 
             trigger OnAfterGetRecord()
             begin
-                ICMConfigPackage.Init();
-                ICMConfigPackage.TransferFields(UseICMConfigPackage);
-                ICMConfigPackage."ICM Code" := NewPackageCode;
-                ICMConfigPackage.Insert();
+                ICMConfigPackageNew.Init();
+                ICMConfigPackageNew.TransferFields(UseICMConfigPackage);
+                ICMConfigPackageNew."ICM Code" := NewPackageCode;
+                ICMConfigPackageNew."ICM Source Company Name" := SourceCompanyName;
+                ICMConfigPackageNew."ICM Target Company Name" := TargetCompanyName;
+                ICMConfigPackageNew.Insert();
 
-                ICMConfigPackageLines.SetRange("ICM Package Code", "ICM Code");
+                ICMConfigPackageLines.SetRange("ICM Package Code", UseICMConfigPackage."ICM Code");
                 if ICMConfigPackageLines.FindSet() then
                     repeat
-                        ICMConfigPackageLines2.Init();
-                        ICMConfigPackageLines2.TransferFields(ICMConfigPackageLines);
-                        ICMConfigPackageLines2."ICM Package Code" := ICMConfigPackage."ICM Code";
-                        ICMConfigPackageLines2.Insert();
+                        ICMConfigPackageLinesNew.Init();
+                        ICMConfigPackageLinesNew.TransferFields(ICMConfigPackageLines);
+                        ICMConfigPackageLinesNew."ICM Package Code" := NewPackageCode;
+                        ICMConfigPackageLinesNew.Insert();
                     until ICMConfigPackageLines.Next() = 0;
 
-                ICMConfigPackageFields.SetRange("ICM Package Code", "ICM Code");
+                ICMConfigPackageFields.SetRange("ICM Package Code", UseICMConfigPackage."ICM Code");
                 if ICMConfigPackageFields.FindSet() then
                     repeat
-                        ICMConfigPackageFields2.Init();
-                        ICMConfigPackageFields2.TransferFields(ICMConfigPackageFields);
-                        ICMConfigPackageFields2."ICM Package Code" := ICMConfigPackageFields."ICM Package Code";
-                        ICMConfigPackageFields2.Insert();
+                        ICMConfigPackageFieldsNew.Init();
+                        ICMConfigPackageFieldsNew.TransferFields(ICMConfigPackageFields);
+                        ICMConfigPackageFieldsNew."ICM Package Code" := NewPackageCode;
+                        ICMConfigPackageFieldsNew.Insert();
                     until ICMConfigPackageFields.Next() = 0;
             end;
 
@@ -66,7 +68,7 @@ report 50401 "ICM Copy Config Package"
 
                         trigger OnValidate()
                         begin
-                            if ICMConfigPackage.Get(NewPackageCode) then
+                            if ICMConfigPackageNew.Get(NewPackageCode) then
                                 Error(PackageAlreadyExistsErr, NewPackageCode);
                         end;
                     }
@@ -74,8 +76,14 @@ report 50401 "ICM Copy Config Package"
                     {
                         Caption = 'From Company';
                         ToolTip = 'The company to copy data from';
-                        Editable = false;
+                        TableRelation = Company.Name;
                         ApplicationArea = All;
+                        trigger OnValidate()
+                        begin
+                            if SourceCompanyName = TargetCompanyName then
+                                Error(Text001Err);
+
+                        end;
                     }
                     field(ToCompany; TargetCompanyName)
                     {
@@ -84,10 +92,11 @@ report 50401 "ICM Copy Config Package"
                         TableRelation = Company.Name;
                         ApplicationArea = All;
 
-                        //trigger OnValidate()
-                        //begin
-                        //    ValidateCompanies();
-                        //end;
+                        trigger OnValidate()
+                        begin
+                            if SourceCompanyName = TargetCompanyName then
+                                Error(Text001Err);
+                        end;
                     }
                     //field(CopyData; CopyData)
                     //{
@@ -98,40 +107,26 @@ report 50401 "ICM Copy Config Package"
                 }
             }
         }
-
-        actions
-        {
-            area(processing)
-            {
-                action(LayoutName)
-                {
-
-                }
-            }
-        }
     }
 
-    trigger OnInitReport()
+    procedure Set(ICMConfigPackageR: Record "ICM Config. Package")
     begin
+        UseICMConfigPackage := ICMConfigPackageR;
         SourceCompanyName := UseICMConfigPackage."ICM Source Company Name";
         TargetCompanyName := UseICMConfigPackage."ICM Target Company Name";
     end;
 
     var
         UseICMConfigPackage: Record "ICM Config. Package";
-        ICMConfigPackage: Record "ICM Config. Package";
+        ICMConfigPackageNew: Record "ICM Config. Package";
         ICMConfigPackageLines: Record "ICM Config. Package Line";
-        ICMConfigPackageLines2: Record "ICM Config. Package Line";
+        ICMConfigPackageLinesNew: Record "ICM Config. Package Line";
         ICMConfigPackageFields: Record "ICM Config. Package Field";
-        ICMConfigPackageFields2: Record "ICM Config. Package Field";
+        ICMConfigPackageFieldsNew: Record "ICM Config. Package Field";
         NewPackageCode: Code[20];
         SourceCompanyName: Text[30];
         TargetCompanyName: Text[30];
         CopyData: Boolean;
         PackageAlreadyExistsErr: Label 'Package %1 already exists.';
-
-    procedure Set(ICMConfigPackage2: Record "ICM Config. Package")
-    begin
-        UseICMConfigPackage := ICMConfigPackage2;
-    end;
+        Text001Err: Label 'The target company must be different from the source company.';
 }

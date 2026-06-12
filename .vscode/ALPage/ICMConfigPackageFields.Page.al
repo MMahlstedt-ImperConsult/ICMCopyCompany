@@ -6,6 +6,8 @@ page 50405 "ICM Config. Package Fields"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ICM Config. Package Field";
+    InsertAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {

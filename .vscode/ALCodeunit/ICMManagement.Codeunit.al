@@ -462,7 +462,7 @@ codeunit 50400 "ICM Management"
         if ICMTableR.Find('-') then;
     end;
 
-    procedure ApplyConfigurationPackage(PackageCodeR: Code[20]; var ICMTableR: Record "ICM Table")
+    /*procedure ApplyConfigurationPackage(PackageCodeR: Code[20]; var ICMTableR: Record "ICM Table")
     var
         ICMConfigPackageLineL: Record "ICM Config. Package Line";
     begin
@@ -481,7 +481,7 @@ codeunit 50400 "ICM Management"
                 end;
             until ICMConfigPackageLineL.Next() = 0;
         end;
-    end;
+    end; */
 
     local procedure CopyConfigPackage(PackageCodeR: Code[20])
     var

@@ -6,6 +6,8 @@ page 50406 "ICM Table Fields"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ICM Table Field";
+    InsertAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {
@@ -31,7 +33,7 @@ page 50406 "ICM Table Fields"
                 {
                     Caption = 'Field ID';
                     ApplicationArea = All;
-                    //Editable = false;
+                    Editable = false;
                     ToolTip = 'Specifies the ID of the field for the table';
                 }
                 field("ICM Field Name"; Rec."ICM Field Name")
@@ -108,7 +110,7 @@ page 50406 "ICM Table Fields"
     }
     trigger OnAfterGetRecord()
     begin
-        IncludedEditable := not Rec."ICM Primary Key";
+        IncludedEditable := (not Rec."ICM Primary Key");
     end;
 
     var

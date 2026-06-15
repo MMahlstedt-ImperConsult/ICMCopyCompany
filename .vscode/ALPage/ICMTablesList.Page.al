@@ -12,9 +12,11 @@ page 50400 "ICM Tables List"
     PageType = Worksheet;
     SourceTable = "ICM Table";
     UsageCategory = Tasks;
-    AutosplitKey = true;
-    delayedinsert = true;
-    savevalues = true;
+    InsertAllowed = false;
+    DeleteAllowed = false;
+    //AutosplitKey = true;
+    //delayedinsert = true;
+    //savevalues = true;
 
 
     layout
@@ -138,7 +140,7 @@ page 50400 "ICM Tables List"
             action("Update tables")
             {
                 Caption = 'Update tables';
-                ToolTip = 'Fills the table with data from the current Company';
+                ToolTip = 'Fill the page with information about all available tables and update any changed data';
                 Image = Refresh;
 
                 trigger OnAction()
@@ -152,22 +154,27 @@ page 50400 "ICM Tables List"
             action("Set Field Active")
             {
                 Caption = 'Set Field Active to true or false';
-                ToolTip = 'Set the Active field to true or false, existing filters are considered';
+                ToolTip = 'Set the Active field for selected rows or all filtered rows';
                 Image = CheckList;
 
                 trigger OnAction()
                 var
-                    ICMTable: Record "ICM Table";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
+                    ICMTableL: Record "ICM Table";
+                    ICMMgtL: Codeunit "ICM Management";
+                    ChoiceL: Integer;
+                    SelectedCountL: Integer;
                 begin
-                    ICMTable.CopyFilters(Rec);
-                    Choice := StrMenu(Text001Lbl, 1, Text002Lbl);
-                    case Choice of
+                    CurrPage.SetSelectionFilter(ICMTableL);
+                    SelectedCountL := ICMTableL.Count();
+
+                    ICMTableL.CopyFilters(Rec);
+
+                    ChoiceL := StrMenu(Text001Lbl, 1, Text002Lbl);
+                    case ChoiceL of
                         1:
-                            ICMMgt.SetActiveStatus(ICMTable, true);
+                            ICMMgtL.SetActiveStatus(ICMTableL, true);
                         2:
-                            ICMMgt.SetActiveStatus(ICMTable, false);
+                            ICMMgtL.SetActiveStatus(ICMTableL, false);
                         3:
                             exit;
                     end;
@@ -204,17 +211,6 @@ page 50400 "ICM Tables List"
         }
         area(Navigation)
         {
-            action("ICM Setup")
-            {
-                Caption = 'ICM Setup';
-                ToolTip = 'Open ICM Setup';
-                Image = Setup;
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::"ICM Setup");
-                end;
-            }
             action("Configuration Packages")
             {
                 Caption = 'Configuration Packages';

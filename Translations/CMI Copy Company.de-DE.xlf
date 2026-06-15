@@ -5,7 +5,7 @@
       <group id="body">
         <trans-unit id="Table 4040366827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Configuration Package</source>
-          <target>Konfigurationspaket</target>
+          <target>Datentransfer Paket</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Config. Package - Property Caption</note>
         </trans-unit>
@@ -657,18 +657,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Control Target Company Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3535873749 - Action 1451704708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open ICM Setup</source>
-          <target>ICM Einrichtung öffnen</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action ICM Setup - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3535873749 - Action 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Setup</source>
-          <target>ICM Einrichtung</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Config. Package List - Action ICM Setup - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3535873749 - Action 592107873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Tables List</source>
           <target>Tabellenliste öffnen</target>
@@ -1011,18 +999,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Configuration Packages - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1743074228 - Action 1451704708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open ICM Setup</source>
-          <target>ICM Einrichtung öffnen</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action ICM Setup - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1743074228 - Action 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Setup</source>
-          <target>ICM Einrichtung</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action ICM Setup - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1743074228 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy tables from one company to another</source>
           <target>Tabellen von einem Mandanten zu einem anderen kopieren</target>
@@ -1048,8 +1024,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Create new Company - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1743074228 - Action 1280535072 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Set the Active field to true or false, existing filters are considered</source>
-          <target>Das Feld Aktiv aktivieren oder deaktivieren, vorhandene Filter werden berücksichtigt</target>
+          <source>Set the Active field for selected rows or all filtered rows</source>
+          <target>Das Feld Aktiv aktivieren oder deaktivieren, ausgewählte Zeilen oder gefilterte Zeilen werden berücksichtigt</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Set Field Active - Property ToolTip</note>
         </trans-unit>
@@ -1072,8 +1048,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Toggle Active Tables Visibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1743074228 - Action 4231587896 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fills the table with data from the current Company</source>
-          <target>Füllt die Tabellen mit Daten aus dem aktuellen Mandanten</target>
+          <source>Fill the page with information about all available tables and update any changed data</source>
+          <target>Füllt die Seite mit Informationen zu allen verfügbaren Tabellen und ergänzt geänderte Daten.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Tables List - Action Update tables - Property ToolTip</note>
         </trans-unit>
@@ -1144,20 +1120,20 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control ToCompany - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Tables to Another Company</source>
-          <target>Tabellen kopieren</target>
+          <source>Copies records from a source Company to a target Company</source>
+          <target>Kopiert Datensätze von einen Quellmandant zu einem Zielmandanten</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The “From Company” field must be filled.</source>
-          <target>Das Feld „Mandant Von“ muss ausgefüllt werden.</target>
+          <source>The “Source Company” field must be filled.</source>
+          <target>Das Feld „Quell-Mandant“ muss ausgefüllt werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - NamedType Text001Err</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - NamedType 1858590414" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The “To Company” field must be filled.</source>
-          <target>Das Feld „Mandant Zu“ muss ausgefüllt werden.</target>
+          <source>The “Target Company” field must be filled.</source>
+          <target>Das Feld „Ziel-Mandant“ muss ausgefüllt werden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - NamedType Text002Err</note>
         </trans-unit>
@@ -1180,8 +1156,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control FromCompany - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - Control 1184707923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From Company</source>
-          <target>Mandant von</target>
+          <source>Source Company</source>
+          <target>Quell-Mandant</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control FromCompany - Property Caption</note>
         </trans-unit>
@@ -1192,8 +1168,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control ToCompany - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 1315529305 - Control 2542273248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To Company</source>
-          <target>Mandant zu</target>
+          <source>Target Company</source>
+          <target>Ziel-Mandant</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control ToCompany - Property Caption</note>
         </trans-unit>

@@ -10,7 +10,7 @@ codeunit 50400 "ICM Management"
 {
     procedure UpdateConfigPackageLines(PackageCodeR: Code[20])
     var
-        ICMConfigPackLineL: Record "ICM Config. Package Line";
+        ICMConfigPackLineL: Record "ICM Data Transfer Package Line";
         RecRefL: RecordRef;
         RecordCountL: Integer;
     begin
@@ -139,10 +139,25 @@ codeunit 50400 "ICM Management"
     local procedure UpdateICMTableLine(var AllObjWithCaptionR: Record AllObjWithCaption; CompanyNameR: Text[30])
     var
         ICMTableL: Record "ICM Table";
-        RecRef: RecordRef;
-        RecordCount: Integer;
+        RecRefL: RecordRef;
+        RecordCountL: Integer;
     begin
-        if not ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
+        Clear(RecRefL);
+        if ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
+            if ICMTableL."ICM Table Subtype" = 'Normal' then begin
+                RecRefL.Open(ICMTableL."ICM Table ID");
+
+                RecordCountL := RecRefL.Count();
+                ICMTableL."ICM Has Records" := RecordCountL > 0;
+                ICMTableL."ICM Record Count" := RecordCountL;
+                //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
+                //ICMTableL."ICM Included in the License" := true;
+                ICMTableL."ICM Active" := true;
+                ICMTableL.Modify();
+
+                RecRefL.Close();
+            end;
+        end else begin
             ICMTableL.Init();
             ICMTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
             ICMTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
@@ -153,19 +168,32 @@ codeunit 50400 "ICM Management"
 
             ICMTableL.Insert(true);
         end;
+        /* if not ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
+             ICMTableL.Init();
+             ICMTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
+             ICMTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
+             ICMTableL."ICM Table Caption" := AllObjWithCaptionR."Object Caption";
+             ICMTableL."ICM Table Subtype" := AllObjWithCaptionR."Object Subtype";
+             ICMTableL."ICM Company Name" := CompanyNameR;
+             ICMTableL."ICM Active" := false;
 
-        if ICMTableL."ICM Table Subtype" = 'Normal' then begin
-            if SafeOpenTable(AllObjWithCaptionR."Object ID", RecRef) then begin
-                RecordCount := RecRef.Count();
-                ICMTableL."ICM Has Records" := RecordCount > 0;
-                ICMTableL."ICM Record Count" := RecordCount;
-                //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
-                ICMTableL."ICM Included in the License" := true;
-                ICMTableL."ICM Active" := true;
-                ICMTableL.Modify();
-            end;
-        end;
-        recRef.Close();
+             ICMTableL.Insert(true);
+         end else begin 
+
+         end;
+
+         if ICMTableL."ICM Table Subtype" = 'Normal' then begin
+             //if SafeOpenTable(AllObjWithCaptionR."Object ID", RecRefL) then begin
+                 RecordCountL := RecRefL.Count();
+                 ICMTableL."ICM Has Records" := RecordCountL > 0;
+                 ICMTableL."ICM Record Count" := RecordCountL;
+                 //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
+                 ICMTableL."ICM Included in the License" := true;
+                 ICMTableL."ICM Active" := true;
+                 ICMTableL.Modify();
+             //end;
+         end;
+         RecRefL.Close(); */
     end;
 
     /// <summary>
@@ -191,7 +219,7 @@ codeunit 50400 "ICM Management"
             Message(Text002Lbl, ActiveStatus);
     end;
 
-    procedure ActivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
+    procedure ActivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Data Transf. Package Field")
     begin
         if CMIConfigPackageFieldR.FindSet(true) then
             repeat
@@ -200,9 +228,9 @@ codeunit 50400 "ICM Management"
             until CMIConfigPackageFieldR.Next() = 0;
     end;
 
-    procedure DeactivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Config. Package Field")
+    procedure DeactivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Data Transf. Package Field")
     var
-        ICMConfigPackageLineL: Record "ICM Config. Package Line";
+        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
     begin
         if ICMConfigPackageLineL.Get(CMIConfigPackageFieldR."ICM Package Code", CMIConfigPackageFieldR."ICM Table ID") then
             ICMConfigPackageLineL.TestField("ICM Apply Table Fields", ICMConfigPackageLineL."ICM Apply Table Fields"::"Some Fields");
@@ -335,9 +363,9 @@ codeunit 50400 "ICM Management"
     procedure CopyTablesFromToCompany2(PackageCodeR: Code[20])
     var
         ICMSetupL: Record "ICM Setup";
-        ICMConfigPackageL: Record "ICM Config. Package";
-        ICMConfigPackageLineL: Record "ICM Config. Package Line";
-        ICMConfigPackageFieldL: Record "ICM Config. Package Field";
+        ICMConfigPackageL: Record "ICM Data Transfer Package";
+        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
+        ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
         SourceRecRefL: RecordRef;
         TargetRecRefL: RecordRef;
         FieldRefL: FieldRef;
@@ -462,31 +490,10 @@ codeunit 50400 "ICM Management"
         if ICMTableR.Find('-') then;
     end;
 
-    /*procedure ApplyConfigurationPackage(PackageCodeR: Code[20]; var ICMTableR: Record "ICM Table")
-    var
-        ICMConfigPackageLineL: Record "ICM Config. Package Line";
-    begin
-        //Message('Package %1 wird angewendet...', PackageCode);
-        //ToDo Felder berücksichtigen
-        ICMConfigPackageLineL.Reset();
-        ICMConfigPackageLineL.SetRange("ICM Package Code", PackageCodeR);
-
-        if ICMConfigPackageLineL.FindSet() then begin
-            ICMTableR.Reset();
-            ICMTableR.ModifyAll("ICM Active", false);
-            repeat
-                ICMTableR.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Table ID");
-                if ICMTableR.FindSet() then begin
-                    ICMTableR.ModifyAll("ICM Active", true);
-                end;
-            until ICMConfigPackageLineL.Next() = 0;
-        end;
-    end; */
-
     local procedure CopyConfigPackage(PackageCodeR: Code[20])
     var
-        ICMConfigPackageL: Record "ICM Config. Package";
-        ICMConfigPackageLineL: Record "ICM Config. Package Line";
+        ICMConfigPackageL: Record "ICM Data Transfer Package";
+        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
     begin
 
     end;

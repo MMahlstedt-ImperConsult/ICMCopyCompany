@@ -2,11 +2,13 @@ namespace ImperConsult.CopyCompany;
 
 using System.Reflection;
 
-table 50404 "ICM Config. Package Field"
+table 50404 "ICM Data Transf. Package Field"
 {
     DataClassification = ToBeClassified;
     LookupPageId = "ICM Config. Package Fields";
     DrilldownPageId = "ICM Config. Package Fields";
+    DataPerCompany = false;
+    Caption = 'Data Transfer Package Field';
 
     fields
     {
@@ -14,7 +16,7 @@ table 50404 "ICM Config. Package Field"
         {
             Caption = 'Package Code';
             NotBlank = true;
-            TableRelation = "ICM Config. Package";
+            TableRelation = "ICM Data Transfer Package";
         }
         field(2; "ICM Table ID"; Integer)
         {
@@ -53,7 +55,7 @@ table 50404 "ICM Config. Package Field"
         }
         field(9; "ICM Apply Table Fields"; Enum "ICM Apply Table Fields")
         {
-            CalcFormula = lookup("ICM Config. Package Line"."ICM Apply Table Fields" where("ICM Package Code" = field("ICM Package Code"),
+            CalcFormula = lookup("ICM Data Transfer Package Line"."ICM Apply Table Fields" where("ICM Package Code" = field("ICM Package Code"),
                                                                                            "ICM Table ID" = field("ICM Table ID")));
             Caption = 'Apply Table Fields';
             Editable = false;

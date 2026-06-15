@@ -2,10 +2,10 @@ namespace ImperConsult.CopyCompany;
 
 using System.Environment;
 
-table 50402 "ICM Config. Package"
+table 50402 "ICM Data Transfer Package"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Configuration Package';
+    Caption = 'Data Transfer Package';
     LookupPageId = "ICM Config. Package List";
     DrillDownPageId = "ICM Config. Package List";
     DataPerCompany = false;
@@ -49,7 +49,7 @@ table 50402 "ICM Config. Package"
         }
         field(5; "ICM No. of Tables"; Integer)
         {
-            CalcFormula = count("ICM Config. Package Line" where("ICM Package Code" = field("ICM Code")));
+            CalcFormula = count("ICM Data Transfer Package Line" where("ICM Package Code" = field("ICM Code")));
             Caption = 'No. of Tables';
             Editable = false;
             FieldClass = FlowField;
@@ -73,8 +73,8 @@ table 50402 "ICM Config. Package"
 
     trigger OnDelete()
     var
-        ConfigPackageLineL: Record "ICM Config. Package Line";
-        ConfigPackageFieldL: Record "ICM Config. Package Field";
+        ConfigPackageLineL: Record "ICM Data Transfer Package Line";
+        ConfigPackageFieldL: Record "ICM Data Transf. Package Field";
     begin
         ConfigPackageLineL.Setrange("ICM Package Code", "ICM Code");
         ConfigPackageLineL.DeleteAll();

@@ -110,7 +110,15 @@ page 50406 "ICM Table Fields"
     }
     trigger OnAfterGetRecord()
     begin
-        IncludedEditable := (not Rec."ICM Primary Key");
+        IncludedEditable := SetIncludedEditable();
+    end;
+
+    local procedure SetIncludedEditable(): Boolean
+    var
+        ICMTableL: Record "ICM Table";
+    begin
+        ICMTableL.Get(Rec."ICM Company Name", Rec."ICM Table ID");
+        exit((not Rec."ICM Primary Key") and (ICMTableL."ICM Apply Table Fields" <> ICMTableL."ICM Apply Table Fields"::"All Fields"));
     end;
 
     var

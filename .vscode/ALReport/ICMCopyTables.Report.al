@@ -6,7 +6,7 @@ using Microsoft.Foundation.Company;
 report 50400 "ICM Copy Tables"
 {
     ApplicationArea = All;
-    Caption = 'Copy Tables to Another Company';
+    Caption = 'Copies records from a source Company to a target Company';
     ProcessingOnly = true;
     UsageCategory = Tasks;
 
@@ -26,14 +26,14 @@ report 50400 "ICM Copy Tables"
                     Caption = 'Options';
                     field(FromCompany; FromCompanyName)
                     {
-                        Caption = 'From Company';
+                        Caption = 'Source Company';
                         ToolTip = 'The company to copy data from';
                         Editable = false;
                         ApplicationArea = All;
                     }
                     field(ToCompany; ToCompanyName)
                     {
-                        Caption = 'To Company';
+                        Caption = 'Target Company';
                         ToolTip = 'The company to copy data to';
                         TableRelation = Company.Name;
                         ApplicationArea = All;
@@ -83,7 +83,7 @@ report 50400 "ICM Copy Tables"
     var
         FromCompanyName: Text[30];
         ToCompanyName: Text[30];
-        Text001Err: Label 'The “From Company” field must be filled.';
-        Text002Err: Label 'The “To Company” field must be filled.';
+        Text001Err: Label 'The “Source Company” field must be filled.';
+        Text002Err: Label 'The “Target Company” field must be filled.';
         Text003Err: Label 'The target company must be different from the source company.';
 }

@@ -2,10 +2,10 @@ namespace ImperConsult.CopyCompany;
 
 using System.Reflection;
 
-table 50403 "ICM Config. Package Line"
+table 50403 "ICM Data Transfer Package Line"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Configuration Package Line';
+    Caption = 'Data Transfer Package Line';
     DataPerCompany = false;
 
     fields
@@ -47,14 +47,14 @@ table 50403 "ICM Config. Package Line"
         {
             Caption = 'Source Company Name';
             FieldClass = FlowField;
-            CalcFormula = Lookup("ICM Config. Package"."ICM Source Company Name" where("ICM Code" = field("ICM Package Code")));
+            CalcFormula = Lookup("ICM Data Transfer Package"."ICM Source Company Name" where("ICM Code" = field("ICM Package Code")));
             Editable = false;
         }
         field(6; "ICM Target Company Name"; Text[30])
         {
             Caption = 'Target Company Name';
             FieldClass = FlowField;
-            CalcFormula = Lookup("ICM Config. Package"."ICM Target Company Name" where("ICM Code" = field("ICM Package Code")));
+            CalcFormula = Lookup("ICM Data Transfer Package"."ICM Target Company Name" where("ICM Code" = field("ICM Package Code")));
             Editable = false;
         }
         field(7; "ICM Active"; Boolean)
@@ -75,7 +75,7 @@ table 50403 "ICM Config. Package Line"
         }
         field(14; "ICM No. of Fields Available"; Integer)
         {
-            CalcFormula = count("ICM Config. Package Field" where("ICM Package Code" = field("ICM Package Code"),
+            CalcFormula = count("ICM Data Transf. Package Field" where("ICM Package Code" = field("ICM Package Code"),
                                                                "ICM Table ID" = field("ICM Table ID")));
             Caption = 'No. of Fields Included';
             Editable = false;
@@ -83,7 +83,7 @@ table 50403 "ICM Config. Package Line"
         }
         field(15; "ICM No. of Fields Included"; Integer)
         {
-            CalcFormula = count("ICM Config. Package Field" where("ICM Package Code" = field("ICM Package Code"),
+            CalcFormula = count("ICM Data Transf. Package Field" where("ICM Package Code" = field("ICM Package Code"),
                                                                "ICM Table ID" = field("ICM Table ID"),
                                                                "ICM Include Field" = const(true)));
             Caption = 'No. of Fields Included';
@@ -138,7 +138,7 @@ table 50403 "ICM Config. Package Line"
     local procedure InitPackageFields()
     var
         FieldL: Record Field;
-        ConfigPackageFieldL: Record "ICM Config. Package Field";
+        ConfigPackageFieldL: Record "ICM Data Transf. Package Field";
         ICMMgtL: Codeunit "ICM Management";
     begin
         ConfigPackageFieldL.Setrange("ICM Package Code", "ICM Package Code");
@@ -174,7 +174,7 @@ table 50403 "ICM Config. Package Line"
 
     local procedure UpdateTableFields()
     var
-        ICMConfigPackageFieldL: Record "ICM Config. Package Field";
+        ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
     begin
         ICMConfigPackageFieldL.Reset();
         ICMConfigPackageFieldL.Setrange("ICM Package Code", "ICM Package Code");

@@ -5,7 +5,7 @@ page 50403 "ICM Config. Package Subform"
     PageType = ListPart;
     ApplicationArea = All;
     Caption = 'Tables';
-    SourceTable = "ICM Config. Package Line";
+    SourceTable = "ICM Data Transfer Package Line";
 
     layout
     {
@@ -62,6 +62,20 @@ page 50403 "ICM Config. Package Subform"
                 {
                     ApplicationArea = All;
                     Caption = 'No. of Fields Available';
+                    /*trigger OnLookup(var Text: Text): Boolean
+                    var
+                        ICMTableFieldL: Record "ICM Table Field";
+                        ICMTableFieldsL: Page "ICM Table Fields";
+                    begin
+                        ICMTableFieldL.SetRange("ICM Table ID", Rec."ICM Table ID");
+                        ICMTableFieldL.SetRange("ICM Company Name", Rec."ICM Source Company Name");
+                        ICMTableFieldL.FilterGroup(2);
+                        ICMTableFieldsL.Editable(false);
+                        ICMTableFieldsL.SetTableView(ICMTableFieldL);
+                        ICMTableFieldsL.RunModal();
+                        //Page.RunModal(Page::"ICM Table Fields", ICMTableFieldL);
+                        exit(true);
+                    end; */
                 }
                 field("ICM No. of Fields Included"; Rec."ICM No. of Fields Included")
                 {

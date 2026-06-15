@@ -7,7 +7,7 @@ page 50404 "ICM Config. Package List"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ICM Config. Package";
+    SourceTable = "ICM Data Transfer Package";
     CardPageID = "ICM Config. Package Card";
     Caption = 'Configuration Packages';
     Editable = false;
@@ -76,17 +76,6 @@ page 50404 "ICM Config. Package List"
         }
         area(Navigation)
         {
-            action("ICM Setup")
-            {
-                Caption = 'ICM Setup';
-                ToolTip = 'Open ICM Setup';
-                Image = Setup;
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::"ICM Setup");
-                end;
-            }
             action("Tables List")
             {
                 Caption = 'Tables List';

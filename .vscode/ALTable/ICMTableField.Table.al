@@ -7,6 +7,7 @@ table 50405 "ICM Table Field"
     DataClassification = ToBeClassified;
     LookupPageId = "ICM Table Fields";
     DrilldownPageId = "ICM Table Fields";
+    DataPerCompany = false;
 
     fields
     {

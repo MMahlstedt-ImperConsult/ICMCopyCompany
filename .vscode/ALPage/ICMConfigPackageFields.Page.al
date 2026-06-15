@@ -5,7 +5,7 @@ page 50405 "ICM Config. Package Fields"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ICM Config. Package Field";
+    SourceTable = "ICM Data Transf. Package Field";
     InsertAllowed = false;
     DeleteAllowed = false;
 
@@ -73,7 +73,7 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    CMIConfigPackageFieldL: Record "ICM Config. Package Field";
+                    CMIConfigPackageFieldL: Record "ICM Data Transf. Package Field";
                     ICMMgtL: Codeunit "ICM Management";
                 begin
                     CMIConfigPackageFieldL.CopyFilters(Rec);
@@ -89,7 +89,7 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    ICMConfigPackageFieldL: Record "ICM Config. Package Field";
+                    ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
                     ICMMgtL: Codeunit "ICM Management";
                 begin
                     Rec.CalcFields("ICM Apply Table Fields");
@@ -104,7 +104,15 @@ page 50405 "ICM Config. Package Fields"
 
     trigger OnAfterGetRecord()
     begin
-        IncludedEditable := not Rec."ICM Primary Key";
+        IncludedEditable := SetIncludedEditable();
+    end;
+
+    local procedure SetIncludedEditable(): Boolean
+    var
+        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
+    begin
+        ICMConfigPackageLineL.Get(Rec."ICM Package Code", Rec."ICM Table ID");
+        exit((not Rec."ICM Primary Key") and (ICMConfigPackageLineL."ICM Apply Table Fields" <> ICMConfigPackageLineL."ICM Apply Table Fields"::"All Fields"));
     end;
 
     var

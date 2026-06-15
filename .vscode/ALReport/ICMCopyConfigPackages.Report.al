@@ -10,7 +10,7 @@ report 50401 "ICM Copy Config Package"
 
     dataset
     {
-        dataitem("ICM Config. Package"; "ICM Config. Package")
+        dataitem("ICM Config. Package"; "ICM Data Transfer Package")
         {
             DataItemTableView = sorting("ICM Code");
 
@@ -109,7 +109,7 @@ report 50401 "ICM Copy Config Package"
         }
     }
 
-    procedure Set(ICMConfigPackageR: Record "ICM Config. Package")
+    procedure Set(ICMConfigPackageR: Record "ICM Data Transfer Package")
     begin
         UseICMConfigPackage := ICMConfigPackageR;
         SourceCompanyName := UseICMConfigPackage."ICM Source Company Name";
@@ -117,12 +117,12 @@ report 50401 "ICM Copy Config Package"
     end;
 
     var
-        UseICMConfigPackage: Record "ICM Config. Package";
-        ICMConfigPackageNew: Record "ICM Config. Package";
-        ICMConfigPackageLines: Record "ICM Config. Package Line";
-        ICMConfigPackageLinesNew: Record "ICM Config. Package Line";
-        ICMConfigPackageFields: Record "ICM Config. Package Field";
-        ICMConfigPackageFieldsNew: Record "ICM Config. Package Field";
+        UseICMConfigPackage: Record "ICM Data Transfer Package";
+        ICMConfigPackageNew: Record "ICM Data Transfer Package";
+        ICMConfigPackageLines: Record "ICM Data Transfer Package Line";
+        ICMConfigPackageLinesNew: Record "ICM Data Transfer Package Line";
+        ICMConfigPackageFields: Record "ICM Data Transf. Package Field";
+        ICMConfigPackageFieldsNew: Record "ICM Data Transf. Package Field";
         NewPackageCode: Code[20];
         SourceCompanyName: Text[30];
         TargetCompanyName: Text[30];

@@ -7,7 +7,7 @@ page 50402 "ICM Config. Package Card"
     PageType = Document;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "ICM Config. Package";
+    SourceTable = "ICM Data Transfer Package";
     Caption = 'Configuration Package';
 
     layout

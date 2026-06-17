@@ -23,8 +23,13 @@ table 50403 "ICM Data Transfer Package Line"
                                                                 "Object Subtype" = const('Normal'));
             trigger OnValidate()
             begin
-                if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then
+                if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then begin
                     InitPackageFields();
+
+                    CalcFields("ICM Source Company Name", "ICM Target Company Name");
+                    "ICM Source Comp. Record Count" := UpdateRecordCount("ICM Source Company Name");
+                    "ICM Target Comp. Record Count" := UpdateRecordCount("ICM Target Company Name");
+                end;
             end;
         }
         field(3; "ICM Table Name"; Text[250])
@@ -114,8 +119,18 @@ table 50403 "ICM Data Transfer Package Line"
     trigger OnInsert()
     begin
         InitPackageFields();
-        "ICM Source Comp. Record Count" := UpdateRecordCount("ICM Source Company Name");
-        "ICM Target Comp. Record Count" := UpdateRecordCount("ICM Target Company Name");
+        if "ICM Table ID" <> 0 then begin
+            "ICM Source Comp. Record Count" := UpdateRecordCount("ICM Source Company Name");
+            "ICM Target Comp. Record Count" := UpdateRecordCount("ICM Target Company Name");
+        end;
+    end;
+
+    trigger OnModify()
+    begin
+        if "ICM Table ID" <> 0 then begin
+            "ICM Source Comp. Record Count" := UpdateRecordCount("ICM Source Company Name");
+            "ICM Target Comp. Record Count" := UpdateRecordCount("ICM Target Company Name");
+        end;
     end;
 
     procedure UpdateRecordCount(CompanyNameR: Text[30]): integer
@@ -124,7 +139,7 @@ table 50403 "ICM Data Transfer Package Line"
         RecordCountL: Integer;
     begin
         Clear(RecordCountL);
-        if (CompanyName <> '') and ("ICM Table ID" <> 0) then begin
+        if (CompanyNameR <> '') and ("ICM Table ID" <> 0) then begin
             RecRefL.Open("ICM Table ID");
             RecRefL.ChangeCompany(CompanyNameR);
             if RecRefL.ReadPermission() then begin
@@ -139,7 +154,7 @@ table 50403 "ICM Data Transfer Package Line"
     var
         FieldL: Record Field;
         ConfigPackageFieldL: Record "ICM Data Transf. Package Field";
-        ICMMgtL: Codeunit "ICM Management";
+        ICMMgtL: Codeunit "ICM Data Transfer Management";
     begin
         ConfigPackageFieldL.Setrange("ICM Package Code", "ICM Package Code");
         ConfigPackageFieldL.Setrange("ICM Table ID", "ICM Table ID");

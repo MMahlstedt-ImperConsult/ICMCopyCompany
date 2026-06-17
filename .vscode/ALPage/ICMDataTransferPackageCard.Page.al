@@ -2,7 +2,7 @@ namespace ImperConsult.CopyCompany;
 
 using Microsoft.Foundation.Company;
 
-page 50402 "ICM Config. Package Card"
+page 50402 "ICM Data Transfer Package Card"
 {
     PageType = Document;
     ApplicationArea = All;
@@ -49,7 +49,7 @@ page 50402 "ICM Config. Package Card"
                     ToolTip = 'Specifies the No. of Tables for the configuration package.';
                 }
             }
-            part(Lines; "ICM Config. Package Subform")
+            part(Lines; "ICM Data Transfer Pack.Subform")
             {
                 ApplicationArea = All;
                 SubPageLink = "ICM Package Code" = field("ICM Code");
@@ -72,18 +72,9 @@ page 50402 "ICM Config. Package Card"
                     Page.Run(Page::Companies);
                 end;
             }
-            action("Copy Tables")
+            separator(Sep1)
             {
-                Caption = 'Copy Tables';
-                ToolTip = 'Copy tables from one company to another';
-                Image = Copy;
-
-                trigger OnAction()
-                var
-                    ICMMgtL: Codeunit "ICM Management";
-                begin
-                    ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
-                end;
+                Caption = '', Locked = true;
             }
             action(CopyConfigPackage)
             {
@@ -102,6 +93,24 @@ page 50402 "ICM Config. Package Card"
                     Clear(CopyConfigPackageL);
                 end;
             }
+            separator(Sep2)
+            {
+                Caption = '', Locked = true;
+            }
+            action("Copy Tables")
+            {
+                Caption = 'Copy Tables';
+                ToolTip = 'Copy tables from one company to another';
+                Image = Copy;
+
+                trigger OnAction()
+                var
+                    ICMMgtL: Codeunit "ICM Data Transfer Management";
+                begin
+                    ICMMgtL.CopyTablesFromToCompany2(Rec."ICM Code");
+                end;
+            }
+
         }
         area(Navigation)
         {
@@ -113,7 +122,7 @@ page 50402 "ICM Config. Package Card"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"ICM Setup");
+                    Page.Run(Page::"ICM Data Transfer Setup");
                 end;
             }
             action("Configuration Packages")
@@ -124,7 +133,7 @@ page 50402 "ICM Config. Package Card"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"ICM Config. Package List");
+                    Page.Run(Page::"ICM Data Transfer Package List");
                 end;
             }
         }

@@ -6,7 +6,7 @@ using System.Environment;
 using Microsoft.Foundation.Company;
 
 
-codeunit 50400 "ICM Management"
+codeunit 50400 "ICM Data Transfer Management"
 {
     procedure UpdateConfigPackageLines(PackageCodeR: Code[20])
     var
@@ -49,7 +49,7 @@ codeunit 50400 "ICM Management"
     var
         AllObjWithCaptionL: Record AllObjWithCaption;
         CompanyL: Record Company;
-        ICMTableL: Record "ICM Table";
+        ICMTableL: Record "ICM Data Transfer Table";
         RecRefL: RecordRef;
         TableCountL: Integer;
     begin
@@ -138,19 +138,19 @@ codeunit 50400 "ICM Management"
     /// </summary>
     local procedure UpdateICMTableLine(var AllObjWithCaptionR: Record AllObjWithCaption; CompanyNameR: Text[30])
     var
-        ICMTableL: Record "ICM Table";
+        ICMTableL: Record "ICM Data Transfer Table";
         RecRefL: RecordRef;
         RecordCountL: Integer;
     begin
         Clear(RecRefL);
-        if ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
+        if ICMTableL.Get(CompanyNameR, AllObjWithCaptionR."Object ID") then begin
             if ICMTableL."ICM Table Subtype" = 'Normal' then begin
                 RecRefL.Open(ICMTableL."ICM Table ID");
 
                 RecordCountL := RecRefL.Count();
                 ICMTableL."ICM Has Records" := RecordCountL > 0;
                 ICMTableL."ICM Record Count" := RecordCountL;
-                //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
+                ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
                 //ICMTableL."ICM Included in the License" := true;
                 ICMTableL."ICM Active" := true;
                 ICMTableL.Modify();
@@ -199,12 +199,13 @@ codeunit 50400 "ICM Management"
     /// <summary>
     /// Sets the Active field to the specified value in all filtered rows of the ICM table
     /// </summary>
-    procedure SetActiveStatus(var ICMTable: Record "ICM Table"; ActiveStatus: Boolean)
+    procedure SetActiveStatus(var ICMTable: Record "ICM Data Transfer Table"; ActiveStatus: Boolean)
     begin
         if ICMTable.FindSet(true) then
             repeat
                 if ActiveStatus = true then begin
                     if ICMTable."ICM Included in the License" and (ICMTable."ICM Table Subtype" = 'Normal') then begin
+                        //if ICMTable."ICM Table Subtype" = 'Normal' then begin
 
                         ICMTable."ICM Active" := ActiveStatus;
                         ICMTable.Modify();
@@ -242,7 +243,7 @@ codeunit 50400 "ICM Management"
             until CMIConfigPackageFieldR.Next() = 0;
     end;
 
-    procedure ActivateIncludeTableField(var CMITableFieldR: Record "ICM Table Field")
+    procedure ActivateIncludeTableField(var CMITableFieldR: Record "ICM Data Transfer Table Field")
     begin
         if CMITableFieldR.FindSet(true) then
             repeat
@@ -251,9 +252,9 @@ codeunit 50400 "ICM Management"
             until CMITableFieldR.Next() = 0;
     end;
 
-    procedure DeactivateIncludeTableField(var CMITableFieldR: Record "ICM Table Field")
+    procedure DeactivateIncludeTableField(var CMITableFieldR: Record "ICM Data Transfer Table Field")
     var
-        ICMTableL: Record "ICM Table";
+        ICMTableL: Record "ICM Data Transfer Table";
     begin
         if ICMTableL.Get(CMITableFieldR."ICM Company Name", CMITableFieldR."ICM Table ID") then
             ICMTableL.TestField("ICM Apply Table Fields", ICMTableL."ICM Apply Table Fields"::"Some Fields");
@@ -267,9 +268,9 @@ codeunit 50400 "ICM Management"
 
     procedure CopyTablesFromToCompany(FromCompanyName: Text[30]; ToCompanyName: Text[30])
     var
-        ICMTableL: Record "ICM Table";
-        ICMTableFieldL: Record "ICM Table Field";
-        ICMSetupL: Record "ICM Setup";
+        ICMTableL: Record "ICM Data Transfer Table";
+        ICMTableFieldL: Record "ICM Data Transfer Table Field";
+        ICMSetupL: Record "ICM Data Transfer Setup";
         SourceRecRefL: RecordRef;
         TargetRecRefL: RecordRef;
         FieldRefL: FieldRef;
@@ -362,7 +363,7 @@ codeunit 50400 "ICM Management"
 
     procedure CopyTablesFromToCompany2(PackageCodeR: Code[20])
     var
-        ICMSetupL: Record "ICM Setup";
+        ICMSetupL: Record "ICM Data Transfer Setup";
         ICMConfigPackageL: Record "ICM Data Transfer Package";
         ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
         ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
@@ -471,7 +472,7 @@ codeunit 50400 "ICM Management"
             RecRefR.DeleteAll();
     end;
 
-    procedure LookupCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Table")
+    procedure LookupCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Data Transfer Table")
     var
         CompanyL: Record Company;
     begin
@@ -482,7 +483,7 @@ codeunit 50400 "ICM Management"
         end;
     end;
 
-    local procedure SetCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Table")
+    local procedure SetCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Data Transfer Table")
     begin
         ICMTableR.FilterGroup := 2;
         ICMTableR.SetRange("ICM Company Name", CurrentCompanyNameR);

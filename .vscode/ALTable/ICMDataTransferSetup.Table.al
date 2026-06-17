@@ -1,6 +1,6 @@
 namespace ImperConsult.CopyCompany;
 
-table 50401 "ICM Setup"
+table 50401 "ICM Data Transfer Setup"
 {
     Caption = 'ICM Setup';
     DataClassification = ToBeClassified;

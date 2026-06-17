@@ -6,8 +6,8 @@ table 50402 "ICM Data Transfer Package"
 {
     DataClassification = ToBeClassified;
     Caption = 'Data Transfer Package';
-    LookupPageId = "ICM Config. Package List";
-    DrillDownPageId = "ICM Config. Package List";
+    LookupPageId = "ICM Data Transfer Package List";
+    DrillDownPageId = "ICM Data Transfer Package List";
     DataPerCompany = false;
 
     fields
@@ -68,7 +68,7 @@ table 50402 "ICM Data Transfer Package"
         if "ICM Source Company Name" = '' then
             "ICM Source Company Name" := CompanyName();
 
-        ICMMgt.UpdateConfigPackageLines("ICM Code");
+        //ICMMgt.UpdateConfigPackageLines("ICM Code");
     end;
 
     trigger OnDelete()
@@ -84,6 +84,6 @@ table 50402 "ICM Data Transfer Package"
     end;
 
     var
-        ICMMgt: Codeunit "ICM Management";
+        ICMMgt: Codeunit "ICM Data Transfer Management";
         Text001Err: Label 'The target company must be different from the source company.';
 }

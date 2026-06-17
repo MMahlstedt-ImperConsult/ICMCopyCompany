@@ -5,8 +5,8 @@ using System.Reflection;
 table 50404 "ICM Data Transf. Package Field"
 {
     DataClassification = ToBeClassified;
-    LookupPageId = "ICM Config. Package Fields";
-    DrilldownPageId = "ICM Config. Package Fields";
+    LookupPageId = "ICM Data Transfer Pack. Fields";
+    DrilldownPageId = "ICM Data Transfer Pack. Fields";
     DataPerCompany = false;
     Caption = 'Data Transfer Package Field';
 

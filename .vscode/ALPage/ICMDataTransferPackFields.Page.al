@@ -1,11 +1,11 @@
 namespace ImperConsult.CopyCompany;
 
-page 50406 "ICM Table Fields"
+page 50405 "ICM Data Transfer Pack. Fields"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ICM Table Field";
+    SourceTable = "ICM Data Transf. Package Field";
     InsertAllowed = false;
     DeleteAllowed = false;
 
@@ -15,18 +15,18 @@ page 50406 "ICM Table Fields"
         {
             repeater(GroupName)
             {
+                field("Package Code"; Rec."ICM Package Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Package Code';
+                    ToolTip = 'Specifies the Package Code.';
+                    Visible = false;
+                }
                 field("ICM Table ID"; Rec."ICM Table ID")
                 {
                     ApplicationArea = All;
                     Caption = 'Table ID';
                     ToolTip = 'Specifies the Table ID.';
-                    Visible = false;
-                }
-                field("ICM Company Name"; Rec."ICM Company Name")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Company Name';
-                    ToolTip = 'Specifies the name of the company.';
                     Visible = false;
                 }
                 field("ICM Field ID"; Rec."ICM Field ID")
@@ -60,12 +60,7 @@ page 50406 "ICM Table Fields"
                 }
             }
         }
-        area(Factboxes)
-        {
-
-        }
     }
-
     actions
     {
         area(Processing)
@@ -78,12 +73,11 @@ page 50406 "ICM Table Fields"
 
                 trigger OnAction()
                 var
-                    CMITableFieldL: Record "ICM Table Field";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
+                    CMIConfigPackageFieldL: Record "ICM Data Transf. Package Field";
+                    ICMMgtL: Codeunit "ICM Data Transfer Management";
                 begin
-                    CMITableFieldL.CopyFilters(Rec);
-                    ICMMgt.ActivateIncludeTableField(CMITableFieldL);
+                    CMIConfigPackageFieldL.CopyFilters(Rec);
+                    ICMMgtL.ActivateIncludePackageField(CMIConfigPackageFieldL);
                     CurrPage.Update(false);
                 end;
             }
@@ -95,19 +89,19 @@ page 50406 "ICM Table Fields"
 
                 trigger OnAction()
                 var
-                    CMITableFieldL: Record "ICM Table Field";
-                    ICMMgt: Codeunit "ICM Management";
-                    Choice: Integer;
+                    ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
+                    ICMMgtL: Codeunit "ICM Data Transfer Management";
                 begin
                     Rec.CalcFields("ICM Apply Table Fields");
                     Rec.TestField("ICM Apply Table Fields", "ICM Apply Table Fields"::"Some Fields");
-                    CMITableFieldL.CopyFilters(Rec);
-                    ICMMgt.DeactivateIncludeTableField(CMITableFieldL);
+                    ICMConfigPackageFieldL.CopyFilters(Rec);
+                    ICMMgtL.DeactivateIncludePackageField(ICMConfigPackageFieldL);
                     CurrPage.Update(false);
                 end;
             }
         }
     }
+
     trigger OnAfterGetRecord()
     begin
         IncludedEditable := SetIncludedEditable();
@@ -115,10 +109,10 @@ page 50406 "ICM Table Fields"
 
     local procedure SetIncludedEditable(): Boolean
     var
-        ICMTableL: Record "ICM Table";
+        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
     begin
-        ICMTableL.Get(Rec."ICM Company Name", Rec."ICM Table ID");
-        exit((not Rec."ICM Primary Key") and (ICMTableL."ICM Apply Table Fields" <> ICMTableL."ICM Apply Table Fields"::"All Fields"));
+        ICMConfigPackageLineL.Get(Rec."ICM Package Code", Rec."ICM Table ID");
+        exit((not Rec."ICM Primary Key") and (ICMConfigPackageLineL."ICM Apply Table Fields" <> ICMConfigPackageLineL."ICM Apply Table Fields"::"All Fields"));
     end;
 
     var

@@ -2,13 +2,13 @@ namespace ImperConsult.CopyCompany;
 
 using Microsoft.Foundation.Company;
 
-page 50404 "ICM Config. Package List"
+page 50404 "ICM Data Transfer Package List"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "ICM Data Transfer Package";
-    CardPageID = "ICM Config. Package Card";
+    CardPageID = "ICM Data Transfer Package Card";
     Caption = 'Configuration Packages';
     Editable = false;
 
@@ -84,7 +84,7 @@ page 50404 "ICM Config. Package List"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"ICM Tables List");
+                    Page.Run(Page::"ICM Data Transfer Tables List");
                 end;
             }
         }

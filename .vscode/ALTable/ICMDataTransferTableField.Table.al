@@ -2,11 +2,11 @@ namespace ImperConsult.CopyCompany;
 
 using System.Reflection;
 
-table 50405 "ICM Table Field"
+table 50405 "ICM Data Transfer Table Field"
 {
     DataClassification = ToBeClassified;
-    LookupPageId = "ICM Table Fields";
-    DrilldownPageId = "ICM Table Fields";
+    LookupPageId = "ICM Data Transfer Table Fields";
+    DrilldownPageId = "ICM Data Transfer Table Fields";
     DataPerCompany = false;
 
     fields
@@ -53,7 +53,7 @@ table 50405 "ICM Table Field"
         }
         field(9; "ICM Apply Table Fields"; Enum "ICM Apply Table Fields")
         {
-            CalcFormula = lookup("ICM Table"."ICM Apply Table Fields" where("ICM Table ID" = field("ICM Table ID"),
+            CalcFormula = lookup("ICM Data Transfer Table"."ICM Apply Table Fields" where("ICM Table ID" = field("ICM Table ID"),
                                                                             "ICM Company Name" = field("ICM Company Name")));
             Caption = 'Apply Table Fields';
             Editable = false;

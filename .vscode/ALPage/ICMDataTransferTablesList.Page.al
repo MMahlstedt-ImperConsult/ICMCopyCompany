@@ -5,18 +5,15 @@ using Microsoft.Foundation.Company;
 /// <summary>
 /// List-Page für Tabelleninformationen
 /// </summary>
-page 50400 "ICM Tables List"
+page 50400 "ICM Data Transfer Tables List"
 {
     ApplicationArea = All;
     Caption = 'Tables List';
     PageType = Worksheet;
-    SourceTable = "ICM Table";
+    SourceTable = "ICM Data Transfer Table";
     UsageCategory = Tasks;
     InsertAllowed = false;
     DeleteAllowed = false;
-    //AutosplitKey = true;
-    //delayedinsert = true;
-    //savevalues = true;
 
 
     layout
@@ -137,6 +134,7 @@ page 50400 "ICM Tables List"
                     Page.Run(Page::Companies);
                 end;
             }
+
             action("Update tables")
             {
                 Caption = 'Update tables';
@@ -145,11 +143,15 @@ page 50400 "ICM Tables List"
 
                 trigger OnAction()
                 var
-                    ICMMgt: Codeunit "ICM Management";
+                    ICMMgt: Codeunit "ICM Data Transfer Management";
                 begin
                     ICMMgt.FillCompanyTableInformation();
                     CurrPage.Update(false);
                 end;
+            }
+            separator(Sep1)
+            {
+                Caption = '', Locked = true;
             }
             action("Set Field Active")
             {
@@ -159,8 +161,8 @@ page 50400 "ICM Tables List"
 
                 trigger OnAction()
                 var
-                    ICMTableL: Record "ICM Table";
-                    ICMMgtL: Codeunit "ICM Management";
+                    ICMTableL: Record "ICM Data Transfer Table";
+                    ICMMgtL: Codeunit "ICM Data Transfer Management";
                     ChoiceL: Integer;
                     SelectedCountL: Integer;
                 begin
@@ -181,7 +183,10 @@ page 50400 "ICM Tables List"
                     CurrPage.Update(false);
                 end;
             }
-
+            separator(Sep2)
+            {
+                Caption = '', Locked = true;
+            }
             action("Copy Tables")
             {
                 Caption = 'Copy Tables';
@@ -192,6 +197,10 @@ page 50400 "ICM Tables List"
                 begin
                     Report.Run(Report::"ICM Copy Tables");
                 end;
+            }
+            separator(Sep3)
+            {
+                Caption = '', Locked = true;
             }
             action("Toggle Active Tables Visibility")
             {
@@ -219,7 +228,7 @@ page 50400 "ICM Tables List"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"ICM Config. Package List");
+                    Page.Run(Page::"ICM Data Transfer Package List");
                 end;
             }
         }
@@ -227,7 +236,7 @@ page 50400 "ICM Tables List"
 
     var
         ShowActive: Boolean;
-        ICMMgt: Codeunit "ICM Management";
+        ICMMgt: Codeunit "ICM Data Transfer Management";
         CompanyName: Text[30];
         Text001Lbl: Label 'Activated,Deactivated,Cancel';
         Text002Lbl: Label 'Select action:';

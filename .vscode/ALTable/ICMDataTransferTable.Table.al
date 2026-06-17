@@ -1,7 +1,7 @@
 namespace ImperConsult.CopyCompany;
 using System.Reflection;
 
-table 50400 "ICM Table"
+table 50400 "ICM Data Transfer Table"
 {
     DataPerCompany = false;
     Caption = 'Company Table Information';
@@ -74,7 +74,7 @@ table 50400 "ICM Table"
         }
         field(11; "ICM No. of Fields Available"; Integer)
         {
-            CalcFormula = count("ICM Table Field" where("ICM Table ID" = field("ICM Table ID"),
+            CalcFormula = count("ICM Data Transfer Table Field" where("ICM Table ID" = field("ICM Table ID"),
                                                     "ICM Company Name" = field("ICM Company Name")));
             Caption = 'No. of Fields Available';
             Editable = false;
@@ -82,7 +82,7 @@ table 50400 "ICM Table"
         }
         field(12; "ICM No. of Fields Included"; Integer)
         {
-            CalcFormula = count("ICM Table Field" where("ICM Table ID" = field("ICM Table ID"),
+            CalcFormula = count("ICM Data Transfer Table Field" where("ICM Table ID" = field("ICM Table ID"),
                                                             "ICM Company Name" = field("ICM Company Name"),
                                                             "ICM Include Field" = const(true)));
             Caption = 'No. of Fields Included';
@@ -120,7 +120,7 @@ table 50400 "ICM Table"
 
     trigger OnDelete()
     var
-        TableFieldL: Record "ICM Table Field";
+        TableFieldL: Record "ICM Data Transfer Table Field";
     begin
         TableFieldL.Setrange("ICM Company Name", "ICM Company Name");
         TableFieldL.Setrange("ICM Table ID", "ICM Table ID");
@@ -130,8 +130,8 @@ table 50400 "ICM Table"
     local procedure InitPackageFields()
     var
         FieldL: Record Field;
-        TableFieldL: Record "ICM Table Field";
-        ICMMgtL: Codeunit "ICM Management";
+        TableFieldL: Record "ICM Data Transfer Table Field";
+        ICMMgtL: Codeunit "ICM Data Transfer Management";
     begin
         TableFieldL.Setrange("ICM Company Name", "ICM Company Name");
         TableFieldL.Setrange("ICM Table ID", "ICM Table ID");
@@ -168,7 +168,7 @@ table 50400 "ICM Table"
 
     local procedure UpdateTableFields()
     var
-        TableFieldL: Record "ICM Table Field";
+        TableFieldL: Record "ICM Data Transfer Table Field";
     begin
         TableFieldL.Reset();
         TableFieldL.Setrange("ICM Company Name", "ICM Company Name");

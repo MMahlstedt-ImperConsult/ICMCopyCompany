@@ -75,7 +75,7 @@ report 50400 "ICM Copy Tables"
 
     trigger OnPostReport()
     var
-        ICMMgt: Codeunit "ICM Management";
+        ICMMgt: Codeunit "ICM Data Transfer Management";
     begin
         ICMMgt.CopyTablesFromToCompany(FromCompanyName, ToCompanyName);
     end;

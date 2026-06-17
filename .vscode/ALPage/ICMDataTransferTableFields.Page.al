@@ -1,11 +1,11 @@
 namespace ImperConsult.CopyCompany;
 
-page 50405 "ICM Config. Package Fields"
+page 50406 "ICM Data Transfer Table Fields"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ICM Data Transf. Package Field";
+    SourceTable = "ICM Data Transfer Table Field";
     InsertAllowed = false;
     DeleteAllowed = false;
 
@@ -15,18 +15,18 @@ page 50405 "ICM Config. Package Fields"
         {
             repeater(GroupName)
             {
-                field("Package Code"; Rec."ICM Package Code")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Package Code';
-                    ToolTip = 'Specifies the Package Code.';
-                    Visible = false;
-                }
                 field("ICM Table ID"; Rec."ICM Table ID")
                 {
                     ApplicationArea = All;
                     Caption = 'Table ID';
                     ToolTip = 'Specifies the Table ID.';
+                    Visible = false;
+                }
+                field("ICM Company Name"; Rec."ICM Company Name")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Company Name';
+                    ToolTip = 'Specifies the name of the company.';
                     Visible = false;
                 }
                 field("ICM Field ID"; Rec."ICM Field ID")
@@ -60,7 +60,12 @@ page 50405 "ICM Config. Package Fields"
                 }
             }
         }
+        area(Factboxes)
+        {
+
+        }
     }
+
     actions
     {
         area(Processing)
@@ -73,11 +78,12 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    CMIConfigPackageFieldL: Record "ICM Data Transf. Package Field";
-                    ICMMgtL: Codeunit "ICM Management";
+                    CMITableFieldL: Record "ICM Data Transfer Table Field";
+                    ICMMgt: Codeunit "ICM Data Transfer Management";
+                    Choice: Integer;
                 begin
-                    CMIConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgtL.ActivateIncludePackageField(CMIConfigPackageFieldL);
+                    CMITableFieldL.CopyFilters(Rec);
+                    ICMMgt.ActivateIncludeTableField(CMITableFieldL);
                     CurrPage.Update(false);
                 end;
             }
@@ -89,19 +95,19 @@ page 50405 "ICM Config. Package Fields"
 
                 trigger OnAction()
                 var
-                    ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
-                    ICMMgtL: Codeunit "ICM Management";
+                    CMITableFieldL: Record "ICM Data Transfer Table Field";
+                    ICMMgt: Codeunit "ICM Data Transfer Management";
+                    Choice: Integer;
                 begin
                     Rec.CalcFields("ICM Apply Table Fields");
                     Rec.TestField("ICM Apply Table Fields", "ICM Apply Table Fields"::"Some Fields");
-                    ICMConfigPackageFieldL.CopyFilters(Rec);
-                    ICMMgtL.DeactivateIncludePackageField(ICMConfigPackageFieldL);
+                    CMITableFieldL.CopyFilters(Rec);
+                    ICMMgt.DeactivateIncludeTableField(CMITableFieldL);
                     CurrPage.Update(false);
                 end;
             }
         }
     }
-
     trigger OnAfterGetRecord()
     begin
         IncludedEditable := SetIncludedEditable();
@@ -109,10 +115,10 @@ page 50405 "ICM Config. Package Fields"
 
     local procedure SetIncludedEditable(): Boolean
     var
-        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
+        ICMTableL: Record "ICM Data Transfer Table";
     begin
-        ICMConfigPackageLineL.Get(Rec."ICM Package Code", Rec."ICM Table ID");
-        exit((not Rec."ICM Primary Key") and (ICMConfigPackageLineL."ICM Apply Table Fields" <> ICMConfigPackageLineL."ICM Apply Table Fields"::"All Fields"));
+        ICMTableL.Get(Rec."ICM Company Name", Rec."ICM Table ID");
+        exit((not Rec."ICM Primary Key") and (ICMTableL."ICM Apply Table Fields" <> ICMTableL."ICM Apply Table Fields"::"All Fields"));
     end;
 
     var

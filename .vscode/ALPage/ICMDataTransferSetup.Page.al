@@ -1,10 +1,10 @@
 namespace ImperConsult.CopyCompany;
 
-page 50401 "ICM Setup"
+page 50401 "ICM Data Transfer Setup"
 {
     PageType = Card;
-    SourceTable = "ICM Setup";
-    Caption = 'ICM Setup';
+    SourceTable = "ICM Data Transfer Setup";
+    Caption = 'Data Transfer Setup';
     InsertAllowed = false;
     DeleteAllowed = false;
 

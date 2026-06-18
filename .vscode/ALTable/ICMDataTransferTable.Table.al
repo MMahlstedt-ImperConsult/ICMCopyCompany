@@ -100,6 +100,11 @@ table 50400 "ICM Data Transfer Table"
                     UpdateTableFields();
             end;
         }
+        field(14; "ICM Records transferred"; boolean)
+        {
+            Caption = 'Records has been transferred ';
+            Editable = false;
+        }
     }
 
     keys

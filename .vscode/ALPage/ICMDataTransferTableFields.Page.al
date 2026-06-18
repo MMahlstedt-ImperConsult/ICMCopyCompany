@@ -8,6 +8,7 @@ page 50406 "ICM Data Transfer Table Fields"
     SourceTable = "ICM Data Transfer Table Field";
     InsertAllowed = false;
     DeleteAllowed = false;
+    Caption = 'Data Transfer Table Fields';
 
     layout
     {

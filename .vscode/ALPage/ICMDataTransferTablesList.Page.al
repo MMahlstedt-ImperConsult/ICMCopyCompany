@@ -116,6 +116,10 @@ page 50400 "ICM Data Transfer Tables List"
                 {
                     ToolTip = 'Specifies if the table information is active.';
                 }
+                field("ICM Records transferred"; Rec."ICM Records transferred")
+                {
+                    ToolTip = 'Specifies if the Records has been transferred.';
+                }
             }
         }
     }
@@ -123,18 +127,6 @@ page 50400 "ICM Data Transfer Tables List"
     {
         area(Processing)
         {
-            action("Create new Company")
-            {
-                Caption = 'Create new Company';
-                ToolTip = 'Create new Company';
-                Image = Open;
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::Companies);
-                end;
-            }
-
             action("Update tables")
             {
                 Caption = 'Update tables';
@@ -187,10 +179,10 @@ page 50400 "ICM Data Transfer Tables List"
             {
                 Caption = '', Locked = true;
             }
-            action("Copy Tables")
+            action("Transfer Data")
             {
-                Caption = 'Copy Tables';
-                ToolTip = 'Copy tables from one company to another';
+                Caption = 'Transfer Data Between Companies';
+                ToolTip = 'Transfer data between clients for all tables where the “Active” field has been checked';
                 Image = Copy;
 
                 trigger OnAction()
@@ -220,10 +212,10 @@ page 50400 "ICM Data Transfer Tables List"
         }
         area(Navigation)
         {
-            action("Configuration Packages")
+            action("Data Transfer Packages")
             {
-                Caption = 'Configuration Packages';
-                ToolTip = 'Open Configuration Packages List';
+                Caption = 'Data Transfer Packages';
+                ToolTip = 'Open Data Transfer Packages List';
                 Image = Setup;
 
                 trigger OnAction()

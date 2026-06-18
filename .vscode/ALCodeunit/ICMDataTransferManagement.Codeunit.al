@@ -10,38 +10,38 @@ codeunit 50400 "ICM Data Transfer Management"
 {
     procedure UpdateConfigPackageLines(PackageCodeR: Code[20])
     var
-        ICMConfigPackLineL: Record "ICM Data Transfer Package Line";
+        ICMDataTransPackLineL: Record "ICM Data Transfer Package Line";
         RecRefL: RecordRef;
         RecordCountL: Integer;
     begin
-        IcMConfigPackLineL.Reset();
-        IcMConfigPackLineL.SetRange("ICM Package Code", PackageCodeR);
-        if ICMConfigPackLineL.FindSet() then begin
+        ICMDataTransPackLineL.Reset();
+        ICMDataTransPackLineL.SetRange("ICM Package Code", PackageCodeR);
+        if ICMDataTransPackLineL.FindSet() then begin
             repeat
                 Clear(RecordCountL);
-                ICMConfigPackLineL.CalcFields("ICM Source Company Name", "ICM Target Company Name");
-                if (ICMConfigPackLineL."ICM Source Company Name" <> '') then begin
-                    RecRefL.Open(ICMConfigPackLineL."ICM Table ID");
-                    RecRefL.ChangeCompany(ICMConfigPackLineL."ICM Source Company Name");
+                ICMDataTransPackLineL.CalcFields("ICM Source Company Name", "ICM Target Company Name");
+                if (ICMDataTransPackLineL."ICM Source Company Name" <> '') then begin
+                    RecRefL.Open(ICMDataTransPackLineL."ICM Table ID");
+                    RecRefL.ChangeCompany(ICMDataTransPackLineL."ICM Source Company Name");
                     if RecRefL.ReadPermission() then begin
                         RecordCountL := RecRefL.Count();
-                        ICMConfigPackLineL."ICM Source Comp. Record Count" := RecordCountL;
+                        ICMDataTransPackLineL."ICM Source Comp. Record Count" := RecordCountL;
                     end;
                     RecRefL.Close();
                 end;
 
                 Clear(RecordCountL);
-                if (ICMConfigPackLineL."ICM Target Company Name" <> '') then begin
-                    RecRefL.Open(ICMConfigPackLineL."ICM Table ID");
-                    RecRefL.ChangeCompany(ICMConfigPackLineL."ICM Target Company Name");
+                if (ICMDataTransPackLineL."ICM Target Company Name" <> '') then begin
+                    RecRefL.Open(ICMDataTransPackLineL."ICM Table ID");
+                    RecRefL.ChangeCompany(ICMDataTransPackLineL."ICM Target Company Name");
                     if RecRefL.ReadPermission() then begin
                         RecordCountL := RecRefL.Count();
-                        ICMConfigPackLineL."ICM Target Comp. Record Count" := RecordCountL;
+                        ICMDataTransPackLineL."ICM Target Comp. Record Count" := RecordCountL;
                     end;
                     RecRefL.Close();
                 end;
-                ICMConfigPackLineL.Modify();
-            until ICMConfigPackLineL.Next() = 0;
+                ICMDataTransPackLineL.Modify();
+            until ICMDataTransPackLineL.Next() = 0;
         end;
     end;
 
@@ -49,7 +49,7 @@ codeunit 50400 "ICM Data Transfer Management"
     var
         AllObjWithCaptionL: Record AllObjWithCaption;
         CompanyL: Record Company;
-        ICMTableL: Record "ICM Data Transfer Table";
+        ICMDataTransferTableL: Record "ICM Data Transfer Table";
         RecRefL: RecordRef;
         TableCountL: Integer;
     begin
@@ -123,7 +123,6 @@ codeunit 50400 "ICM Data Transfer Management"
         RecRef: RecordRef;
         RecordCount: Integer;
     begin
-        //RecRef.Open(TableNo);
         if SafeOpenTable(TableNo, RecRef) then begin
             if RecRef.ReadPermission() then begin
                 RecordCount := RecRef.Count();
@@ -138,62 +137,36 @@ codeunit 50400 "ICM Data Transfer Management"
     /// </summary>
     local procedure UpdateICMTableLine(var AllObjWithCaptionR: Record AllObjWithCaption; CompanyNameR: Text[30])
     var
-        ICMTableL: Record "ICM Data Transfer Table";
+        ICMDataTransferTableL: Record "ICM Data Transfer Table";
         RecRefL: RecordRef;
         RecordCountL: Integer;
     begin
         Clear(RecRefL);
-        if ICMTableL.Get(CompanyNameR, AllObjWithCaptionR."Object ID") then begin
-            if ICMTableL."ICM Table Subtype" = 'Normal' then begin
-                RecRefL.Open(ICMTableL."ICM Table ID");
+        if ICMDataTransferTableL.Get(CompanyNameR, AllObjWithCaptionR."Object ID") then begin
+            if ICMDataTransferTableL."ICM Table Subtype" = 'Normal' then begin
+                RecRefL.Open(ICMDataTransferTableL."ICM Table ID");
 
                 RecordCountL := RecRefL.Count();
-                ICMTableL."ICM Has Records" := RecordCountL > 0;
-                ICMTableL."ICM Record Count" := RecordCountL;
-                ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
+                ICMDataTransferTableL."ICM Has Records" := RecordCountL > 0;
+                ICMDataTransferTableL."ICM Record Count" := RecordCountL;
+                ICMDataTransferTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
                 //ICMTableL."ICM Included in the License" := true;
-                ICMTableL."ICM Active" := true;
-                ICMTableL.Modify();
+                ICMDataTransferTableL."ICM Active" := true;
+                ICMDataTransferTableL.Modify();
 
                 RecRefL.Close();
             end;
         end else begin
-            ICMTableL.Init();
-            ICMTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
-            ICMTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
-            ICMTableL."ICM Table Caption" := AllObjWithCaptionR."Object Caption";
-            ICMTableL."ICM Table Subtype" := AllObjWithCaptionR."Object Subtype";
-            ICMTableL."ICM Company Name" := CompanyNameR;
-            ICMTableL."ICM Active" := false;
+            ICMDataTransferTableL.Init();
+            ICMDataTransferTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
+            ICMDataTransferTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
+            ICMDataTransferTableL."ICM Table Caption" := AllObjWithCaptionR."Object Caption";
+            ICMDataTransferTableL."ICM Table Subtype" := AllObjWithCaptionR."Object Subtype";
+            ICMDataTransferTableL."ICM Company Name" := CompanyNameR;
+            ICMDataTransferTableL."ICM Active" := false;
 
-            ICMTableL.Insert(true);
+            ICMDataTransferTableL.Insert(true);
         end;
-        /* if not ICMTableL.Get(CompanyNameR, ICMTableL."ICM Table ID") then begin
-             ICMTableL.Init();
-             ICMTableL."ICM Table ID" := AllObjWithCaptionR."Object ID";
-             ICMTableL."ICM Table Name" := AllObjWithCaptionR."Object Name";
-             ICMTableL."ICM Table Caption" := AllObjWithCaptionR."Object Caption";
-             ICMTableL."ICM Table Subtype" := AllObjWithCaptionR."Object Subtype";
-             ICMTableL."ICM Company Name" := CompanyNameR;
-             ICMTableL."ICM Active" := false;
-
-             ICMTableL.Insert(true);
-         end else begin 
-
-         end;
-
-         if ICMTableL."ICM Table Subtype" = 'Normal' then begin
-             //if SafeOpenTable(AllObjWithCaptionR."Object ID", RecRefL) then begin
-                 RecordCountL := RecRefL.Count();
-                 ICMTableL."ICM Has Records" := RecordCountL > 0;
-                 ICMTableL."ICM Record Count" := RecordCountL;
-                 //ICMTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
-                 ICMTableL."ICM Included in the License" := true;
-                 ICMTableL."ICM Active" := true;
-                 ICMTableL.Modify();
-             //end;
-         end;
-         RecRefL.Close(); */
     end;
 
     /// <summary>
@@ -266,7 +239,7 @@ codeunit 50400 "ICM Data Transfer Management"
             until CMITableFieldR.Next() = 0;
     end;
 
-    procedure CopyTablesFromToCompany(FromCompanyName: Text[30]; ToCompanyName: Text[30])
+    procedure CopyToCompanyFromDataTransferTables(SourceCompanyR: Text[30]; TargetCompanyR: Text[30])
     var
         ICMTableL: Record "ICM Data Transfer Table";
         ICMTableFieldL: Record "ICM Data Transfer Table Field";
@@ -277,11 +250,14 @@ codeunit 50400 "ICM Data Transfer Management"
         TargetFieldRefL: FieldRef;
         CopiedTableCountL: Integer;
         SkippedTableCountL: Integer;
+        CopiedRecordCountL: Integer;
+        SkippedRecordCountL: Integer;
+        RecordsTransferedL: Boolean;
         iL: Integer;
     begin
         ICMSetupL.Get();
         ICMTableL.SetRange("ICM Active", true);
-        ICMTableL.SetRange("ICM Company Name", FromCompanyName);
+        ICMTableL.SetRange("ICM Company Name", SourceCompanyR);
 
         if ICMTableL.IsEmpty() then begin
             if guiAllowed then
@@ -299,25 +275,24 @@ codeunit 50400 "ICM Data Transfer Management"
         End;
 
 
+        Clear(CopiedTableCountL);
+        Clear(SkippedTableCountL);
         if ICMTableL.FindSet() then
             repeat
-
+                Clear(RecordsTransferedL);
                 if GuiAllowed then Begin
                     WindowDialogIndex1 += 1;
                     WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
                 End;
 
-                SourceRecRefL.Open(ICMTableL."ICM Table ID", false, FromCompanyName); //ICMTableL."ICM Company Name");
-                TargetRecRefL.Open(ICMTableL."ICM Table ID", false, ToCompanyName);
-
-                Clear(CopiedTableCountL);
-                Clear(SkippedTableCountL);
+                SourceRecRefL.Open(ICMTableL."ICM Table ID", false, SourceCompanyR);
+                TargetRecRefL.Open(ICMTableL."ICM Table ID", false, TargetCompanyR);
 
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
 
                 ICMTableFieldL.Reset();
-                //prüfen key
+
                 ICMTableFieldL.SetRange("ICM Company Name", ICMTableL."ICM Company Name");
                 ICMTableFieldL.SetRange("ICM Table ID", ICMTableL."ICM Table ID");
                 ICMTableFieldL.SetRange("ICM Include Field", true);
@@ -336,20 +311,24 @@ codeunit 50400 "ICM Data Transfer Management"
                                 end;
                             until ICMTableFieldL.Next() = 0;
                         end;
-                        TargetRecRefL.Insert();
+                        //TargetRecRefL.Insert();
 
-                    //if TryInsertRecord(TargetRecRefL) then
-                    //    CopiedTableCountL += 1
-                    //else
-                    //    SkippedTableCountL += 1;
+                        if TryInsertRecord(TargetRecRefL) then begin
+                            CopiedRecordCountL += 1;
+                            RecordsTransferedL := true;
+                        end else
+                            SkippedRecordCountL += 1;
 
                     until SourceRecRefL.Next() = 0;
                 end;
 
                 CopiedTableCountL += 1;
+
+                ICMTableL."ICM Records transferred" := RecordsTransferedL;
+                ICMTableL.Modify();
+
                 SourceRecRefL.Close();
                 TargetRecRefL.Close();
-
 
             until ICMTableL.Next() = 0;
 
@@ -361,7 +340,7 @@ codeunit 50400 "ICM Data Transfer Management"
         //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
     end;
 
-    procedure CopyTablesFromToCompany2(PackageCodeR: Code[20])
+    procedure CopyToCompanyFromDataTransferPackage(PackageCodeR: Code[20])
     var
         ICMSetupL: Record "ICM Data Transfer Setup";
         ICMConfigPackageL: Record "ICM Data Transfer Package";
@@ -397,6 +376,9 @@ codeunit 50400 "ICM Data Transfer Management"
             WindowDialogCount1 := ICMConfigPackageLineL.Count;
         End;
 
+        Clear(CopiedTableCountL);
+        Clear(SkippedTableCountL);
+
         if ICMConfigPackageLineL.FindSet() then
             repeat
                 if GuiAllowed then Begin
@@ -406,9 +388,6 @@ codeunit 50400 "ICM Data Transfer Management"
 
                 SourceRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Source Company Name");
                 TargetRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Target Company Name");
-
-                Clear(CopiedTableCountL);
-                Clear(SkippedTableCountL);
 
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
@@ -431,12 +410,12 @@ codeunit 50400 "ICM Data Transfer Management"
                                 end;
                             until ICMConfigPackageFieldL.Next() = 0;
                         end;
-                        TargetRecRefL.Insert();
+                        //TargetRecRefL.Insert();
 
-                    //if TryInsertRecord(TargetRecRefL) then
-                    //    CopiedTableCountL += 1
-                    //else
-                    //    SkippedTableCountL += 1;
+                        if TryInsertRecord(TargetRecRefL) then
+                            CopiedTableCountL += 1
+                        else
+                            SkippedTableCountL += 1;
 
                     until SourceRecRefL.Next() = 0;
                 end;

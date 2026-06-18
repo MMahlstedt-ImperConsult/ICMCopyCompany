@@ -4,7 +4,7 @@ page 50403 "ICM Data Transfer Pack.Subform"
 {
     PageType = ListPart;
     ApplicationArea = All;
-    Caption = 'Tables';
+    Caption = 'Data Transfer Tables';
     SourceTable = "ICM Data Transfer Package Line";
 
     layout

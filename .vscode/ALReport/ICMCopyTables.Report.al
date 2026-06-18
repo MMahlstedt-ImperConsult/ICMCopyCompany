@@ -77,7 +77,7 @@ report 50400 "ICM Copy Tables"
     var
         ICMMgt: Codeunit "ICM Data Transfer Management";
     begin
-        ICMMgt.CopyTablesFromToCompany(FromCompanyName, ToCompanyName);
+        ICMMgt.CopyToCompanyFromDataTransferTables(FromCompanyName, ToCompanyName);
     end;
 
     var

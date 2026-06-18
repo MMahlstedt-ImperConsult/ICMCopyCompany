@@ -9,7 +9,7 @@ page 50404 "ICM Data Transfer Package List"
     UsageCategory = Lists;
     SourceTable = "ICM Data Transfer Package";
     CardPageID = "ICM Data Transfer Package Card";
-    Caption = 'Configuration Packages';
+    Caption = 'Data Transfer Packages';
     Editable = false;
 
     layout
@@ -60,26 +60,12 @@ page 50404 "ICM Data Transfer Package List"
     }
     actions
     {
-        area(Processing)
-        {
-            action("Create new Company")
-            {
-                Caption = 'Create new Company';
-                ToolTip = 'Create new Company';
-                Image = Open;
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::Companies);
-                end;
-            }
-        }
         area(Navigation)
         {
-            action("Tables List")
+            action("Data Transfer Tables List")
             {
-                Caption = 'Tables List';
-                ToolTip = 'Open Tables List';
+                Caption = 'Data Transfer Tables List';
+                ToolTip = 'Open Data Transfer Tables List';
                 Image = Setup;
 
                 trigger OnAction()

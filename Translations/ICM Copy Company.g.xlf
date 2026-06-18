@@ -223,6 +223,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transfer Table - Field ICM Record Count - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1336824230 - Field 24722947 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Records has been transferred </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transfer Table - Field ICM Records transferred - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1336824230 - Field 3975857153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table Caption</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -409,7 +414,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack. Fields - Action Set Included - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1737592339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tables</source>
+          <source>Data Transfer Tables</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Property Caption</note>
         </trans-unit>
@@ -474,7 +479,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Control Target Company Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuration Package</source>
+          <source>Data Transfer Package</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Property Caption</note>
         </trans-unit>
@@ -484,7 +489,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the code of the configuration package.</source>
+          <source>Specifies the code of the data transfer package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Code - Property ToolTip</note>
         </trans-unit>
@@ -494,7 +499,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the description of the configuration package.</source>
+          <source>Specifies the description of the data transfer package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Description - Property ToolTip</note>
         </trans-unit>
@@ -504,7 +509,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Control 666729213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the No. of Tables for the configuration package.</source>
+          <source>Specifies the No. of Tables for the data transfer package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control No. of Tables - Property ToolTip</note>
         </trans-unit>
@@ -514,7 +519,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control No. of Tables - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Control 3291697743 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the source company for the configuration package.</source>
+          <source>Specifies the source company for the data transfer package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Source Company Name - Property ToolTip</note>
         </trans-unit>
@@ -524,7 +529,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Source Company Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Control 804250715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the target company for the configuration package.</source>
+          <source>Specifies the target company for the data transfer package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Target Company Name - Property ToolTip</note>
         </trans-unit>
@@ -533,38 +538,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Target Company Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1930717187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open Configuration Packages List</source>
+        <trans-unit id="Page 734110406 - Action 1124080478 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Data Transfer Packages List</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Configuration Packages - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Data Transfer Packages - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1930717187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuration Packages</source>
+        <trans-unit id="Page 734110406 - Action 1124080478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Packages</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Configuration Packages - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1451704708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open ICM Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action ICM Setup - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1451704708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action ICM Setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy tables from one company to another</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Copy Tables - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 3972523836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Tables</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Copy Tables - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Data Transfer Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Action 1587922023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy an existing configuration package to create a new package based on the same content.</source>
+          <source>Copy an existing data transfer package to create a new package based on the same content.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action CopyConfigPackage - Property ToolTip</note>
         </trans-unit>
@@ -573,18 +558,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action CopyConfigPackage - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 734110406 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
+        <trans-unit id="Page 734110406 - Action 1328122845 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer data between clients for all tables where the “Active” field has been checked</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Create new Company - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Transfer Data - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 734110406 - Action 964520465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
+        <trans-unit id="Page 734110406 - Action 1328122845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer Data Between Companies</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Create new Company - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Transfer Data - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 415956512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuration Packages</source>
+          <source>Data Transfer Packages</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Property Caption</note>
         </trans-unit>
@@ -613,25 +598,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Control Target Company Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 415956512 - Action 592107873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open Tables List</source>
+        <trans-unit id="Page 415956512 - Action 1977887624 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Data Transfer Tables List</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Tables List - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Data Transfer Tables List - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 415956512 - Action 592107873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tables List</source>
+        <trans-unit id="Page 415956512 - Action 1977887624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Tables List</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Tables List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 415956512 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Create new Company - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 415956512 - Action 964520465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Create new Company - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Data Transfer Tables List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 554812621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Transfer Setup</source>
@@ -644,7 +619,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Setup - Control General - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2076077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Data Transfer Table Fields</source>
+          <source>Data Transfer Table Fields</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Table Fields - Property Caption</note>
         </trans-unit>
@@ -768,6 +743,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Control ICM Apply Table Fields - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 995776925 - Control 24722947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the Records has been transferred.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Control ICM Records transferred - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 995776925 - Control 3641927271 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the unique identifier of the table.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -823,35 +803,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Control Company - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 995776925 - Action 1930717187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open Configuration Packages List</source>
+        <trans-unit id="Page 995776925 - Action 1124080478 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Data Transfer Packages List</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Configuration Packages - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Data Transfer Packages - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 995776925 - Action 1930717187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Configuration Packages</source>
+        <trans-unit id="Page 995776925 - Action 1124080478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Packages</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Configuration Packages - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 995776925 - Action 3972523836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy tables from one company to another</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Copy Tables - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 995776925 - Action 3972523836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Tables</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Copy Tables - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 995776925 - Action 964520465 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Create new Company - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 995776925 - Action 964520465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create new Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Create new Company - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Data Transfer Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 995776925 - Action 1280535072 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set the Active field for selected rows or all filtered rows</source>
@@ -872,6 +832,16 @@
           <source>Toggle Active Tables Visibility</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Toggle Active Tables Visibility - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 995776925 - Action 1328122845 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer data between clients for all tables where the “Active” field has been checked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Transfer Data - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 995776925 - Action 1328122845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer Data Between Companies</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Transfer Data - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 995776925 - Action 4231587896 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fill the page with information about all available tables and update any changed data</source>

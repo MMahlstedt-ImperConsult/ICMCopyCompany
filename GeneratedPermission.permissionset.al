@@ -22,5 +22,11 @@ permissionset 50400 "ICM Copy Company"
         tabledata "ICM Data Transfer Table Field" = RIMD,
         table "ICM Data Transfer Table Field" = X,
         page "ICM Data Transfer Table Fields" = X,
-        report "ICM Copy Config Package" = X;
+        report "ICM Copy Config Package" = X,
+        tabledata "ICM Data Transf. Pack. Filter" = RIMD,
+        tabledata "ICM Transfer Data Log" = RIMD,
+        table "ICM Data Transf. Pack. Filter" = X,
+        table "ICM Transfer Data Log" = X,
+        page "ICM Data Transf. Pack. Filters" = X,
+        page "ICM Transfer Data Log List" = X;
 }

@@ -197,4 +197,19 @@ table 50403 "ICM Data Transfer Package Line"
         if ICMConfigPackageFieldL.FindSet() then
             ICMConfigPackageFieldL.ModifyAll("ICM Include Field", true);
     end;
+
+    procedure ShowFilters()
+    var
+        ICMDataTransfPackFilter: Record "ICM Data Transf. Pack. Filter";
+        ConfigPackageFilters: Page "ICM Data Transf. Pack. Filters";
+    begin
+
+        ICMDataTransfPackFilter.FilterGroup(2);
+        ICMDataTransfPackFilter.SetRange("Package Code", "ICM Package Code");
+        ICMDataTransfPackFilter.SetRange("Table ID", "ICM Table ID");
+        ICMDataTransfPackFilter.FilterGroup(0);
+        ConfigPackageFilters.SetTableView(ICMDataTransfPackFilter);
+        ConfigPackageFilters.RunModal();
+        Clear(ConfigPackageFilters);
+    end;
 }

@@ -82,4 +82,22 @@ page 50403 "ICM Data Transfer Pack.Subform"
         }
 
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(PackageFilters)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Filters';
+                Image = "Filter";
+                ToolTip = 'View or set field filter values for a configuration package filter. By setting a value, you specify that only records with that value are included in the configuration package.';
+
+                trigger OnAction()
+                begin
+                    Rec.ShowFilters();
+                end;
+            }
+        }
+    }
 }

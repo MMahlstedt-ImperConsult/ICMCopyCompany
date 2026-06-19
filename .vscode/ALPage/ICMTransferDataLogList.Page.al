@@ -35,49 +35,49 @@ page 50407 "ICM Transfer Data Log List"
                 field("Table Caption"; Rec."Table Caption")
                 {
                     ApplicationArea = All;
-                    Caption = 'Tabellenbeschriftung';
+                    Caption = 'Table Caption';//'Tabellenbeschriftung';
                     ToolTip = 'Specifies the table caption.';
                 }
                 field("Records Available"; Rec."Records Available")
                 {
                     ApplicationArea = All;
-                    Caption = 'Datensätze vorhanden';
+                    Caption = 'Records Available';//'Datensätze vorhanden';
                     ToolTip = 'Specifies the number of records available in the source table.';
                 }
                 field("Records Transferred"; Rec."Records Transferred")
                 {
                     ApplicationArea = All;
-                    Caption = 'Datensätze übertragen';
+                    Caption = 'Records Transferred';//'Datensätze übertragen';
                     ToolTip = 'Specifies the number of records transferred.';
                 }
                 field("Source Company"; Rec."Source Company")
                 {
                     ApplicationArea = All;
-                    Caption = 'Quellmandant';
+                    Caption = 'Source Company';//'Quellmandant';
                     ToolTip = 'Specifies the source company.';
                 }
-                field("Destination Company"; Rec."Target Company")
+                field("Target Company"; Rec."Target Company")
                 {
                     ApplicationArea = All;
-                    Caption = 'Zielmandant';
-                    ToolTip = 'Specifies the destination company.';
+                    Caption = 'Target Company';//'Zielmandant';
+                    ToolTip = 'Specifies the Target company.';
                 }
                 field("Transferred Date"; Rec."Transferred Date")
                 {
                     ApplicationArea = All;
-                    Caption = 'Übertragen am';
+                    Caption = 'Transferred Date';//'Übertragen am';
                     ToolTip = 'Specifies the date and time when the records were transferred.';
                 }
                 field("Transferred By"; Rec."Transferred By")
                 {
                     ApplicationArea = All;
-                    Caption = 'Übertragen von';
+                    Caption = 'Transferred By';//'Übertragen von';
                     ToolTip = 'Specifies the user who transferred the records.';
                 }
                 field("Filter Exists"; Rec."Filter Exists")
                 {
                     ApplicationArea = All;
-                    Caption = 'Filter vorhanden';
+                    Caption = 'Filter Exists';//'Filter vorhanden';
                     ToolTip = 'Specifies if a filter was applied during the transfer.';
                 }
             }

@@ -496,6 +496,25 @@ codeunit 50400 "ICM Data Transfer Management"
         exit(false);
     end;
 
+    procedure SetFieldFilter(var "Field": Record "Field"; TableID: Integer; FieldID: Integer)
+    begin
+        Field.Reset();
+        if TableID > 0 then
+            Field.SetRange(TableNo, TableID);
+        if FieldID > 0 then
+            Field.SetRange("No.", FieldID)
+        else
+            Field.SetFilter("No.", '<>%1&<>%2&<>%3&<>%4&<>%5',
+                    Field.FieldNo(SystemId),
+                    Field.FieldNo(SystemCreatedAt),
+                    Field.FieldNo(SystemCreatedBy),
+                    Field.FieldNo(SystemModifiedAt),
+                    Field.FieldNo(SystemModifiedBy));
+        Field.SetRange(Class, Field.Class::Normal);
+        Field.SetRange(Enabled, true);
+        Field.SetFilter(ObsoleteState, '<>%1', Field.ObsoleteState::Removed);
+    end;
+
     procedure FormatPercentage(adPercentage: Decimal): Text
     var
         ltPercentage: Text;

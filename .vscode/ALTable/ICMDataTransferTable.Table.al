@@ -1,5 +1,7 @@
 namespace ImperConsult.CopyCompany;
+
 using System.Reflection;
+using System.IO;
 
 table 50400 "ICM Data Transfer Table"
 {
@@ -14,8 +16,10 @@ table 50400 "ICM Data Transfer Table"
             Editable = false;
             trigger OnValidate()
             begin
-                if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then
+                if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then begin
                     InitPackageFields();
+                    "ICM Page ID" := ConfigMgt.FindPage("ICM Table ID");
+                end
             end;
         }
         field(2; "ICM Table Name"; Text[249])
@@ -105,6 +109,19 @@ table 50400 "ICM Data Transfer Table"
             Caption = 'Records has been transferred ';
             Editable = false;
         }
+        field(15; "ICM Page ID"; Integer)
+        {
+            Caption = 'Page ID';
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
+
+            trigger OnLookup()
+            var
+                ConfigValidateMgt: Codeunit "Config. Validate Management";
+            begin
+                ConfigValidateMgt.LookupPage("ICM Page ID");
+                Validate("ICM Page ID");
+            end;
+        }
     }
 
     keys
@@ -182,7 +199,19 @@ table 50400 "ICM Data Transfer Table"
             TableFieldL.ModifyAll("ICM Include Field", true);
     end;
 
+    procedure ShowDatabaseRecords()
+    begin
+
+        if "ICM Page ID" <> 0 then
+            PAGE.Run("ICM Page ID")
+        else
+            Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
+
+    end;
+
     var
+        ConfigMgt: Codeunit "Config. Management";
         Text001Lbl: Label 'This table is not included in the license. Active status cannot be set to true.';
         Text002Lbl: Label 'Only tables with subtype "Normal" can be set to active.';
+        DefineDrillDownPageMsg: Label 'Define the drill-down page in the %1 field.';
 }

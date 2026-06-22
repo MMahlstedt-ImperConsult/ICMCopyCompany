@@ -1,6 +1,8 @@
 namespace ImperConsult.CopyCompany;
 
 using System.Reflection;
+using System.IO;
+
 
 table 50403 "ICM Data Transfer Package Line"
 {
@@ -25,6 +27,7 @@ table 50403 "ICM Data Transfer Package Line"
             begin
                 if ("ICM Table ID" <> 0) or (xRec."ICM Table ID" <> "ICM Table ID") then begin
                     InitPackageFields();
+                    "ICM Page ID" := ConfigMgt.FindPage("ICM Table ID");
 
                     CalcFields("ICM Source Company Name", "ICM Target Company Name");
                     "ICM Source Comp. Record Count" := UpdateRecordCount("ICM Source Company Name");
@@ -104,6 +107,19 @@ table 50403 "ICM Data Transfer Package Line"
                 if ("ICM Apply Table Fields" <> xRec."ICM Apply Table Fields") and
                  ("ICM Apply Table Fields" = "ICM Apply Table Fields"::"All Fields") then
                     UpdateTableFields();
+            end;
+        }
+        field(17; "ICM Page ID"; Integer)
+        {
+            Caption = 'Page ID';
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
+
+            trigger OnLookup()
+            var
+                ConfigValidateMgt: Codeunit "Config. Validate Management";
+            begin
+                ConfigValidateMgt.LookupPage("ICM Page ID");
+                Validate("ICM Page ID");
             end;
         }
     }
@@ -212,4 +228,7 @@ table 50403 "ICM Data Transfer Package Line"
         ConfigPackageFilters.RunModal();
         Clear(ConfigPackageFilters);
     end;
+
+    var
+        ConfigMgt: Codeunit "Config. Management";
 }

@@ -234,8 +234,20 @@ page 50400 "ICM Data Transfer Tables List"
                     Page.Run(Page::"ICM Transfer Data Log List");
                 end;
             }
+            action(DatabaseRecords)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Database Data';
+                Image = Database;
+                ToolTip = 'View the data that has been applied to the database.';
+
+                trigger OnAction()
+                begin
+                    Rec.ShowDatabaseRecords();
+                end;
+            }
         }
-       
+
     }
 
     var

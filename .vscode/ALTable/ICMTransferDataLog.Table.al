@@ -2,6 +2,7 @@ namespace ImperConsult.CopyCompany;
 
 using System.Environment;
 using System.Security.AccessControl;
+using System.Reflection;
 
 table 50406 "ICM Transfer Data Log"
 {
@@ -12,56 +13,66 @@ table 50406 "ICM Transfer Data Log"
 
     fields
     {
-        field(1; "Entry No."; BigInteger)
+        field(1; "ICM Entry No."; Integer)
         {
             Caption = 'Entry No.';
             AutoIncrement = true;
             Editable = false;
         }
-        field(2; "Table No."; Code[20])
+        field(2; "ICM Table No."; Integer)
         {
             Caption = 'Table No.';//'Tabellenr';
-            //TableRelation = "Object";
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table),
+                                                                "Object Subtype" = const('Normal'));
         }
-        field(3; "Table Caption"; Text[250])
+        field(3; "ICM Table Caption"; Text[250])
         {
-            Caption = 'Table Caption';//Tabellenbeschriftung';
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = const(Table),
+                                                                        "Object ID" = field("ICM Table No.")));
+            Caption = 'Table Caption';
             Editable = false;
+            FieldClass = FlowField;
         }
-        field(4; "Records Available"; Integer)
+        field(4; "ICM Records Available"; Integer)
         {
             Caption = 'Records Available';//'Datensätze vorhanden';
             MinValue = 0;
             Editable = false;
         }
-        field(5; "Records Transferred"; Integer)
+        field(5; "ICM Records Transferred"; Integer)
         {
             Caption = 'Records Transferred';//Datensätze übertragen';
             MinValue = 0;
             Editable = false;
         }
-        field(6; "Source Company"; Text[30])
+        field(6; "ICM Records Skipped"; Integer)
+        {
+            Caption = 'Records Transferred';//Datensätze übertragen';
+            MinValue = 0;
+            Editable = false;
+        }
+        field(7; "ICM Source Company"; Text[30])
         {
             Caption = 'Source Company';//Quellmandant';
             TableRelation = Company;
         }
-        field(7; "Target Company"; Text[30])
+        field(8; "ICM Target Company"; Text[30])
         {
             Caption = 'Target Company';//Zielmandant';
             TableRelation = Company;
         }
-        field(8; "Transferred Date"; DateTime)
+        field(9; "ICM Transferred Date"; DateTime)
         {
             Caption = 'Transferred Date';//Übertragen am';
             Editable = false;
         }
-        field(9; "Transferred By"; Code[50])
+        field(10; "ICM Transferred By"; Code[50])
         {
             Caption = 'Transferred By';//Übertragen von';
             TableRelation = User;
             Editable = false;
         }
-        field(10; "Filter Exists"; Boolean)
+        field(11; "ICM Filter Exists"; Boolean)
         {
             Caption = 'Filter Exists';//Filter vorhanden';
             Editable = false;
@@ -70,11 +81,11 @@ table 50406 "ICM Transfer Data Log"
 
     keys
     {
-        key(PK; "Entry No.")
+        key(PK; "ICM Entry No.")
         {
             Clustered = true;
         }
-        key(SK1; "Table No.", "Source Company", "Target Company", "Transferred Date")
+        key(SK1; "ICM Table No.", "ICM Source Company", "ICM Target Company", "ICM Transferred Date")
         {
         }
     }
@@ -93,5 +104,15 @@ table 50406 "ICM Transfer Data Log"
 
     trigger OnRename()
     begin
+    end;
+
+    procedure GetNextEntryNo(): Integer
+    var
+        ICMTransferDataLog: Record "ICM Transfer Data Log";
+    begin
+        if ICMTransferDataLog.FindLast() then
+            exit(ICMTransferDataLog."ICM Entry No." + 1)
+        else
+            exit(1);
     end;
 }

@@ -110,6 +110,17 @@ page 50402 "ICM Data Transfer Package Card"
                     Page.Run(Page::"ICM Data Transfer Package List");
                 end;
             }
+            action("Transfer Data Log")
+            {
+                Caption = 'Transfer Data Log';
+                ToolTip = 'Open Transfer Data Log List';
+                Image = Log;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Transfer Data Log List");
+                end;
+            }
         }
     }
 

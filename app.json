@@ -2,7 +2,7 @@
   "id": "fdb54300-28e1-456f-9f1b-ec61e5ea6e5f",
   "name": "ICM Copy Company",
   "publisher": "Imper Consult",
-  "version": "27.05.260622.6",
+  "version": "27.05.260623.7",
   "brief": "",
   "description": "",
   "privacyStatement": "https://imperconsult.de/datenschutzerklaerung-2",
@@ -24,7 +24,7 @@
     "allowDownloadingSource": false,
     "includeSourceInSymbolFile": false
   },
-  "runtime": "16.0",
+  "runtime": "17.0",
   "features": [
     "NoImplicitWith", "TranslationFile", "GenerateCaptions"
   ],

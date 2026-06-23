@@ -201,12 +201,10 @@ table 50400 "ICM Data Transfer Table"
 
     procedure ShowDatabaseRecords()
     begin
-
         if "ICM Page ID" <> 0 then
             PAGE.Run("ICM Page ID")
         else
             Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
-
     end;
 
     var

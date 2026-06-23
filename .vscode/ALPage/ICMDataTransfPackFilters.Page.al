@@ -14,7 +14,7 @@ page 50408 "ICM Data Transf. Pack. Filters"
         {
             repeater(Group)
             {
-                field("Field ID"; Rec."Field ID")
+                field("Field ID"; Rec."ICM Field ID")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the ID of the field on which you want to filter records in the data transfer table.';
@@ -25,24 +25,24 @@ page 50408 "ICM Data Transf. Pack. Filters"
                         ICMMgt: Codeunit "ICM Data Transfer Management";
                         FieldSelection: Codeunit "Field Selection";
                     begin
-                        ICMMgt.SetFieldFilter(Field, Rec."Table ID", 0);
+                        ICMMgt.SetFieldFilter(Field, Rec."ICM Table ID", 0);
                         if FieldSelection.Open(Field) then begin
-                            Rec.Validate("Field ID", Field."No.");
+                            Rec.Validate("ICM Field ID", Field."No.");
                             CurrPage.Update(true);
                         end;
                     end;
                 }
-                field("Field Name"; Rec."Field Name")
+                field("Field Name"; Rec."ICM Field Name")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the field on which you want to filter records in the data transfer table.';
                 }
-                field("Field Caption"; Rec."Field Caption")
+                field("Field Caption"; Rec."ICM Field Caption")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the field caption of the field on which you want to filter records in the data transfer table.';
                 }
-                field("Field Filter"; Rec."Field Filter")
+                field("Field Filter"; Rec."ICM Field Filter")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the field filter value for a data transfer package filter. By setting a value, you specify that only records with that value are included in the data transfer package.';

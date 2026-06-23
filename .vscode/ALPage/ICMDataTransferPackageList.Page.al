@@ -73,6 +73,17 @@ page 50404 "ICM Data Transfer Package List"
                     Page.Run(Page::"ICM Data Transfer Tables List");
                 end;
             }
+            action("Transfer Data Log")
+            {
+                Caption = 'Transfer Data Log';
+                ToolTip = 'Open Transfer Data Log List';
+                Image = Log;
+
+                trigger OnAction()
+                begin
+                    Page.Run(Page::"ICM Transfer Data Log List");
+                end;
+            }
         }
     }
     var

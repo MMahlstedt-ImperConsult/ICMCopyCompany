@@ -98,6 +98,30 @@ page 50403 "ICM Data Transfer Pack.Subform"
                     Rec.ShowFilters();
                 end;
             }
+            action(DatabaseRecords)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Database Data';
+                Image = Database;
+                ToolTip = 'View the data that has been applied to the database.';
+
+                trigger OnAction()
+                begin
+                    Rec.ShowDatabaseRecords();
+                end;
+            }
+            /*action(FilteredDatabaseRecords)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Filtered Database Data';
+                Image = Database;
+                ToolTip = 'View the filtered data that has been applied to the database.';
+
+                trigger OnAction()
+                begin
+                    Rec.ShowFilteredDatabaseRecords();
+                end;
+            } */
         }
     }
 }

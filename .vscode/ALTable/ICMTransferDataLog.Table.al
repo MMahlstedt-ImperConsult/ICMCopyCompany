@@ -3,6 +3,7 @@ namespace ImperConsult.CopyCompany;
 using System.Environment;
 using System.Security.AccessControl;
 using System.Reflection;
+using System.IO;
 
 table 50406 "ICM Transfer Data Log"
 {
@@ -77,6 +78,22 @@ table 50406 "ICM Transfer Data Log"
             Caption = 'Filter Exists';//Filter vorhanden';
             Editable = false;
         }
+        field(12; "ICM Page ID"; Integer)
+        {
+            Caption = 'Page ID';
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
+            Editable = false;
+        }
+        field(14; "Transaction ID"; Integer)
+        {
+            Caption = 'Transaction ID';
+            Editable = false;
+        }
+        field(15; "ICM Package Code"; Code[20])
+        {
+            Caption = 'Data Transfer Package Code';
+            Editable = false;
+        }
     }
 
     keys
@@ -115,4 +132,17 @@ table 50406 "ICM Transfer Data Log"
         else
             exit(1);
     end;
+
+    procedure ShowDatabaseRecords()
+    begin
+
+        if "ICM Page ID" <> 0 then
+            PAGE.Run("ICM Page ID")
+        else
+            Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
+
+    end;
+
+    var
+        DefineDrillDownPageMsg: Label 'Define the drill-down page in the %1 field.';
 }

@@ -86,20 +86,31 @@ page 50407 "ICM Transfer Data Log List"
                     Caption = 'Filter Exists';//'Filter vorhanden';
                     ToolTip = 'Specifies if a filter was applied during the transfer.';
                 }
-            }
-        }
-        area(Factboxes)
-        {
-            systempart(Control1900383207; Links)
-            {
-                ApplicationArea = RecordLinks;
-            }
-            systempart(Control1905767507; Notes)
-            {
-                ApplicationArea = Notes;
+                field("ICM Package Code"; Rec."ICM Package Code")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Package Code';
+                    ToolTip = 'Specifies Package Code if was applied during the transfer.';
+                }
             }
         }
     }
+    actions
+    {
+        area(Navigation)
+        {
+            action(DatabaseRecords)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Database Data';
+                Image = Database;
+                ToolTip = 'View the data that has been applied to the database.';
 
-
+                trigger OnAction()
+                begin
+                    Rec.ShowDatabaseRecords();
+                end;
+            }
+        }
+    }
 }

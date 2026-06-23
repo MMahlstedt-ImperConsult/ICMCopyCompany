@@ -9,16 +9,16 @@ table 50407 "ICM Data Transf. Pack. Filter"
 
     fields
     {
-        field(1; "Package Code"; Code[20])
+        field(1; "ICM Package Code"; Code[20])
         {
             Caption = 'Package Code';
             TableRelation = "ICM Data Transfer Package";
         }
-        field(2; "Table ID"; Integer)
+        field(2; "ICM Table ID"; Integer)
         {
             Caption = 'Table ID';
         }
-        field(5; "Field ID"; Integer)
+        field(5; "ICM Field ID"; Integer)
         {
             Caption = 'Field ID';
 
@@ -27,28 +27,28 @@ table 50407 "ICM Data Transf. Pack. Filter"
                 "Field": Record "Field";
                 TypeHelper: Codeunit "Type Helper";
             begin
-                Field.Get("Table ID", "Field ID");
+                Field.Get("ICM Table ID", "ICM Field ID");
                 TypeHelper.TestFieldIsNotObsolete(Field);
-                CalcFields("Field Name", "Field Caption");
+                CalcFields("ICM Field Name", "ICM Field Caption");
             end;
         }
-        field(6; "Field Name"; Text[30])
+        field(6; "ICM Field Name"; Text[30])
         {
-            CalcFormula = lookup(Field.FieldName where(TableNo = field("Table ID"),
-                                                        "No." = field("Field ID")));
+            CalcFormula = lookup(Field.FieldName where(TableNo = field("ICM Table ID"),
+                                                        "No." = field("ICM Field ID")));
             Caption = 'Field Name';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(7; "Field Caption"; Text[250])
+        field(7; "ICM Field Caption"; Text[250])
         {
-            CalcFormula = lookup(Field."Field Caption" where(TableNo = field("Table ID"),
-                                                              "No." = field("Field ID")));
+            CalcFormula = lookup(Field."Field Caption" where(TableNo = field("ICM Table ID"),
+                                                              "No." = field("ICM Field ID")));
             Caption = 'Field Caption';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(8; "Field Filter"; Text[250])
+        field(8; "ICM Field Filter"; Text[250])
         {
             Caption = 'Field Filter';
 
@@ -61,7 +61,7 @@ table 50407 "ICM Data Transf. Pack. Filter"
 
     keys
     {
-        key(Key1; "Package Code", "Table ID", "Field ID")
+        key(Key1; "ICM Package Code", "ICM Table ID", "ICM Field ID")
         {
             Clustered = true;
         }
@@ -72,10 +72,10 @@ table 50407 "ICM Data Transf. Pack. Filter"
         RecRef: RecordRef;
         FieldRef: FieldRef;
     begin
-        RecRef.Open("Table ID");
-        if "Field Filter" <> '' then begin
-            FieldRef := RecRef.Field("Field ID");
-            FieldRef.SetFilter("Field Filter");
+        RecRef.Open("ICM Table ID");
+        if "ICM Field Filter" <> '' then begin
+            FieldRef := RecRef.Field("ICM Field ID");
+            FieldRef.SetFilter("ICM Field Filter");
         end;
     end;
 }

@@ -3,7 +3,6 @@ namespace ImperConsult.CopyCompany;
 using System.Reflection;
 using System.IO;
 
-
 table 50403 "ICM Data Transfer Package Line"
 {
     DataClassification = ToBeClassified;
@@ -122,6 +121,7 @@ table 50403 "ICM Data Transfer Package Line"
                 Validate("ICM Page ID");
             end;
         }
+
     }
 
     keys
@@ -221,14 +221,74 @@ table 50403 "ICM Data Transfer Package Line"
     begin
 
         ICMDataTransfPackFilter.FilterGroup(2);
-        ICMDataTransfPackFilter.SetRange("Package Code", "ICM Package Code");
-        ICMDataTransfPackFilter.SetRange("Table ID", "ICM Table ID");
+        ICMDataTransfPackFilter.SetRange("ICM Package Code", "ICM Package Code");
+        ICMDataTransfPackFilter.SetRange("ICM Table ID", "ICM Table ID");
         ICMDataTransfPackFilter.FilterGroup(0);
         ConfigPackageFilters.SetTableView(ICMDataTransfPackFilter);
         ConfigPackageFilters.RunModal();
         Clear(ConfigPackageFilters);
     end;
 
+    procedure ShowDatabaseRecords()
+    begin
+        if "ICM Page ID" <> 0 then
+            PAGE.Run("ICM Page ID")
+        else
+            Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
+    end;
+
+    procedure ShowFilteredDatabaseRecords()
+    var
+        DataTransPackLineL: Record "ICM Data Transfer Package Line";
+        DataTransfPackFilterL: Record "ICM Data Transf. Pack. Filter";
+        ConfigValidateMgtL: Codeunit "Config. Validate Management";
+        RecRefL: RecordRef;
+        FieldRefL: FieldRef;
+        FilterTextL: Text;
+    begin
+        DataTransfPackFilterL.Reset();
+
+        /*ConfigPackageData.Reset();
+        ConfigPackageData.SetRange("Package Code", "Package Code");
+        ConfigPackageData.SetRange("Table ID", "Table ID");
+        ConfigPackageData.SetRange("No.", "No.");
+        if FindProcessingRuleFilters(ConfigPackageFilter, RuleNo) then begin
+            RecRefTemp.Open("Table ID", true);
+            repeat
+                ConfigPackageData.SetRange("Field ID", ConfigPackageFilter."Field ID");
+                if ConfigPackageData.FindFirst() then begin
+                    FieldRef := RecRefTemp.Field(ConfigPackageData."Field ID");
+                    ConfigValidateMgt.EvaluateTextToFieldRef(ConfigPackageData.Value, FieldRef, false);
+                    FieldRef.SetFilter(ConfigPackageFilter."Field Filter");
+                end else
+                    exit(false);
+            until ConfigPackageFilter.Next() = 0;
+            RecRefTemp.Insert();
+            if RecRefTemp.IsEmpty() then
+                exit(false);
+        end; 
+        exit(true); */
+        RecRefL.Open("ICM Table ID");
+
+        DataTransfPackFilterL.Reset();
+        DataTransfPackFilterL.SetRange("ICM Package Code", "ICM Package Code");
+        DataTransfPackFilterL.SetRange("ICM Table ID", "ICM Table ID");
+        if DataTransfPackFilterL.FindSet() then begin
+            repeat
+                FieldRefL := RecRefL.Field(DataTransfPackFilterL."ICM Field ID");
+                FilterTextL += FieldRefL.Name + ': ' + DataTransfPackFilterL."ICM Field Filter" + ' ,';
+            until DataTransfPackFilterL.Next = 0;
+        end;
+
+        RecRefL.SetView(FilterTextL);
+        Message(FilterTextL);
+        if "ICM Page ID" <> 0 then
+            PAGE.Run("ICM Page ID")
+        else
+            Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
+    end;
+
     var
         ConfigMgt: Codeunit "Config. Management";
+        DefineDrillDownPageMsg: Label 'Define the drill-down page in the %1 field.';
 }

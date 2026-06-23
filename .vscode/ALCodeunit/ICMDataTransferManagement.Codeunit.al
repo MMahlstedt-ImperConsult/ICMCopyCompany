@@ -150,9 +150,6 @@ codeunit 50400 "ICM Data Transfer Management"
                 RecordCountL := RecRefL.Count();
                 ICMDataTransferTableL."ICM Has Records" := RecordCountL > 0;
                 ICMDataTransferTableL."ICM Record Count" := RecordCountL;
-                //ICMDataTransferTableL."ICM Included in the License" := CheckTableInLicense(AllObjWithCaptionR."Object ID");
-                //ICMTableL."ICM Included in the License" := true;
-                //ICMDataTransferTableL."ICM Active" := true;
                 ICMDataTransferTableL.Modify();
 
                 RecRefL.Close();
@@ -306,6 +303,7 @@ codeunit 50400 "ICM Data Transfer Management"
                 ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
                 ICMTransferDataLogL."ICM Source Company" := SourceCompanyR;
                 ICMTransferDataLogL."ICM Target Company" := TargetCompanyR;
+                ICMTransferDataLogL."ICM Page ID" := ICMTableL."ICM Page ID";
                 ICMTransferDataLogL.Insert();
 
                 ICMTableFieldL.Reset();
@@ -367,13 +365,20 @@ codeunit 50400 "ICM Data Transfer Management"
         ICMConfigPackageL: Record "ICM Data Transfer Package";
         ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
         ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
+        ICMTransferDataLogL: Record "ICM Transfer Data Log";
+        DataTransfPackFilterL: Record "ICM Data Transf. Pack. Filter";
         SourceRecRefL: RecordRef;
         TargetRecRefL: RecordRef;
+        RecRefL: RecordRef;
+        FilterTextL: Text;
         FieldRefL: FieldRef;
         TargetFieldRefL: FieldRef;
         CopiedTableCountL: Integer;
         SkippedTableCountL: Integer;
-        i: Integer;
+        CopiedRecordCountL: Integer;
+        SkippedRecordCountL: Integer;
+        NextEntryNoL: Integer;
+        iL: Integer;
     begin
         ICMSetupL.Get();
         ICMConfigPackageL.Get(PackageCodeR);
@@ -413,6 +418,30 @@ codeunit 50400 "ICM Data Transfer Management"
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
 
+                //Filter einfügen
+                DataTransfPackFilterL.Reset();
+                DataTransfPackFilterL.SetRange("ICM Package Code", ICMConfigPackageL."ICM Code");
+                DataTransfPackFilterL.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Page ID");
+                if DataTransfPackFilterL.FindSet() then begin
+                    repeat
+                        FieldRefL := RecRefL.Field(DataTransfPackFilterL."ICM Field ID");
+                        FilterTextL += FieldRefL.Name + ': ' + DataTransfPackFilterL."ICM Field Filter" + ' ,';
+                    until DataTransfPackFilterL.Next = 0;
+                end;
+                SourceRecRefL.SetView(FilterTextL);
+
+                ICMTransferDataLogL.Reset();
+                NextEntryNoL := ICMTransferDataLogL.GetNextEntryNo;
+                ICMTransferDataLogL."ICM Entry No." := NextEntryNoL;
+                ICMTransferDataLogL."ICM Table No." := ICMConfigPackageLineL."ICM Table ID";
+                ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
+                ICMTransferDataLogL."ICM Package Code" := ICMConfigPackageL."ICM Code";
+                ICMTransferDataLogL."ICM Source Company" := ICMConfigPackageL."ICM Source Company Name";
+                ICMTransferDataLogL."ICM Target Company" := ICMConfigPackageL."ICM Target Company Name";
+                ICMTransferDataLogL."ICM Page ID" := ICMConfigPackageLineL."ICM Page ID";
+                ICMTransferDataLogL.Insert();
+
+
                 if SourceRecRefL.FindSet() then begin
                     repeat
                         //TargetRecRefL.Init();
@@ -434,15 +463,22 @@ codeunit 50400 "ICM Data Transfer Management"
                         //TargetRecRefL.Insert();
 
                         if TryInsertRecord(TargetRecRefL) then
-                            CopiedTableCountL += 1
+                            CopiedRecordCountL += 1
                         else
-                            SkippedTableCountL += 1;
+                            SkippedRecordCountL += 1;
 
                     until SourceRecRefL.Next() = 0;
                 end;
 
                 CopiedTableCountL += 1;
 
+                if ICMTransferDataLogL.Get(NextEntryNoL) then begin
+                    ICMTransferDataLogL."ICM Records Transferred" := CopiedRecordCountL;
+                    ICMTransferDataLogL."ICM Records Skipped" := SkippedRecordCountL;
+                    ICMTransferDataLogL."ICM Transferred By" := UserId;
+                    ICMTransferDataLogL."ICM Transferred Date" := CurrentDateTime;
+                    ICMTransferDataLogL.Modify();
+                end;
                 SourceRecRefL.Close();
                 TargetRecRefL.Close();
 
@@ -457,6 +493,35 @@ codeunit 50400 "ICM Data Transfer Management"
         //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
 
     end;
+
+    /*procedure TestFilter()
+    var
+        DataTransPackLineL: Record "ICM Data Transfer Package Line";
+        DataTransfPackFilterL: Record "ICM Data Transf. Pack. Filter";
+        ConfigValidateMgtL: Codeunit "Config. Validate Management";
+    begin
+        DataTransfPackFilterL.Reset();
+        ConfigPackageData.Reset();
+        ConfigPackageData.SetRange("Package Code", "Package Code");
+        ConfigPackageData.SetRange("Table ID", "Table ID");
+        ConfigPackageData.SetRange("No.", "No.");
+        if FindProcessingRuleFilters(ConfigPackageFilter, RuleNo) then begin
+            RecRefTemp.Open("Table ID", true);
+            repeat
+                ConfigPackageData.SetRange("Field ID", ConfigPackageFilter."Field ID");
+                if ConfigPackageData.FindFirst() then begin
+                    FieldRef := RecRefTemp.Field(ConfigPackageData."Field ID");
+                    ConfigValidateMgt.EvaluateTextToFieldRef(ConfigPackageData.Value, FieldRef, false);
+                    FieldRef.SetFilter(ConfigPackageFilter."Field Filter");
+                end else
+                    exit(false);
+            until ConfigPackageFilter.Next() = 0;
+            RecRefTemp.Insert();
+            if RecRefTemp.IsEmpty() then
+                exit(false);
+        end; 
+        exit(true); 
+    end; */
 
 
     [TryFunction]

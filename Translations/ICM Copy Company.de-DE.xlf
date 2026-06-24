@@ -9,41 +9,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 823559016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 3542180045 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Field Caption</source>
           <target>Feldbezeichnung</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Field Caption - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Field Caption - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 2484981670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 1452232503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Field Filter</source>
           <target>Feldfilter</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Field Filter - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Field Filter - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 869342929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 513630172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Field ID</source>
           <target>Feldnr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Field ID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Field ID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 3070320983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 3049349766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Field Name</source>
           <target>Feldname</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Field Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Field Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 4253581577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 3875498340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Code</source>
           <target>Paketcode</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Package Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Package Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1796839190 - Field 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 1796839190 - Field 2106729104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table ID</source>
           <target>Tabellennr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field Table ID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transf. Pack. Filter - Field ICM Table ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3486102911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Transfer Package Field</source>
@@ -149,9 +149,8 @@
         </trans-unit>
         <trans-unit id="Table 12918532 - NamedType 4263587774" size-unit="char" translate="yes" xml:space="preserve">
           <source>Define the drill-down page in the %1 field.</source>
-          <target>[NAB: SUGGESTION]Definieren Sie die Drilldown-Seite im Feld %1.</target>
+          <target>Definieren Sie die Drilldown-Seite im Feld %1.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Data Transfer Package Line - NamedType DefineDrillDownPageMsg</note>
         </trans-unit>
         <trans-unit id="Table 12918532 - Field 970397981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -442,11 +441,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Filter Exists - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1318717364 - Field 3792095990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter Text</source>
+          <target>Filter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Filter Text - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1318717364 - Field 3875498340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Transfer Package Code</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Datentransfer Paketcode</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Package Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1318717364 - Field 1106993915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -511,9 +515,8 @@
         </trans-unit>
         <trans-unit id="Table 1318717364 - Field 443943387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transaction ID</source>
-          <target>[NAB: SUGGESTION]Transaktions-ID</target>
+          <target>Transaktions-ID</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field Transaction ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 2254184601 - NamedType 1196336482" size-unit="char" translate="yes" xml:space="preserve">
@@ -770,16 +773,14 @@
         </trans-unit>
         <trans-unit id="Page 1737592339 - Action 1717631085 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View the data that has been applied to the database.</source>
-          <target>[NAB: SUGGESTION]Zeigt die Daten an, die auf die Datenbank angewendet wurden.</target>
+          <target>Zeigt die Daten an, die auf die Datenbank angewendet wurden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Action DatabaseRecords - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1737592339 - Action 1717631085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Database Data</source>
-          <target>[NAB: SUGGESTION]Datenbankdaten</target>
+          <target>Datenbankdaten</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Action DatabaseRecords - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1737592339 - Action 3832922659 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -880,17 +881,14 @@
         </trans-unit>
         <trans-unit id="Page 734110406 - Action 4156105233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Transfer Data Log List</source>
-          <target>[NAB: SUGGESTION]Datentransfer Archiv öffnen</target>
+          <target>Datentransfer Archiv öffnen</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Transfer Data Log - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Action 4156105233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Data Log</source>
-          <target>[NAB: SUGGESTION]Datentransfer Archive</target>
-          <target>[NAB: SUGGESTION]Datentransfer Archiv</target>
+          <target>Datentransfer Archiv</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Transfer Data Log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Action 1587922023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
@@ -967,17 +965,14 @@
         </trans-unit>
         <trans-unit id="Page 415956512 - Action 4156105233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Transfer Data Log List</source>
-          <target>[NAB: SUGGESTION]Datentransfer Archiv öffnen</target>
+          <target>Datentransfer Archiv öffnen</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Transfer Data Log - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 415956512 - Action 4156105233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Data Log</source>
-          <target>[NAB: SUGGESTION]Datentransfer Archive</target>
-          <target>[NAB: SUGGESTION]Datentransfer Archiv</target>
+          <target>Datentransfer Archiv</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Transfer Data Log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 554812621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1304,151 +1299,161 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 4249713904 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the entry number.</source>
           <target>Gibt die Lfd. Nr. an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Entry No. - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Entry No. - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 4249713904 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <target>Lfd. Nr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Entry No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Entry No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 1662719172 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 2559459937 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if a filter was applied during the transfer.</source>
-          <target>Gibt an welche Filter angewendet werden,während des Übertragens</target>
+          <target>Gibt an welche Filter angewendet werden, während des Übertragens.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Filter Exists - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Filter Exists - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 1662719172 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 2559459937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filter Exists</source>
           <target>Filter vorhanden</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Filter Exists - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Filter Exists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2632851142 - Control 3792095990 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies Filter if was applied during the transfer.</source>
+          <target>Gibt an ob Filter angewendet wurden, während des Übertragens.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Filter Text - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2632851142 - Control 3792095990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter</source>
+          <target>Filter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Filter Text - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2632851142 - Control 3875498340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies Package Code if was applied during the transfer.</source>
-          <target>[NAB: NOT TRANSLATED]</target>
+          <target>Gibt an welcher Paketcode während des Übertragens der Daten verwendet wurde.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">New translation.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Package Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2632851142 - Control 3875498340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Package Code</source>
-          <target>[NAB: SUGGESTION]Paketcode</target>
+          <target>Paketcode</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Package Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 531052001 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3150231252 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of records available in the source table.</source>
           <target>Gibt die Anzahl der Datensätze an die im Quellmandanten vorhanden sind.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Available - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Available - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 531052001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3150231252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Records Available</source>
           <target>Datensätze vorhanden</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Available - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Available - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3379727202 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 1187541683 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of records Skipped.</source>
           <target>Gibt die übersprungenen Datensätze an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Skipped - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Skipped - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3379727202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 1187541683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Records Skipped</source>
           <target>Übersprungene Datensätze</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Skipped - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Skipped - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 35128818 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 2830726115 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of records transferred.</source>
           <target>Gibt die übertragenen Datensätze an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Transferred - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Transferred - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 35128818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 2830726115 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Records Transferred</source>
-          <target>Datensätze übertragen.</target>
+          <target>Datensätze übertragen</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Records Transferred - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Records Transferred - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 893431294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3777644463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the source company.</source>
           <target>Gibt den Quellmandanten an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Source Company - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Source Company - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 893431294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3777644463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Company</source>
           <target>Quellmandant</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Source Company - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Source Company - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 1393533604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3975857153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the table caption.</source>
           <target>Gibt die Tabellenbezeichnung an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Table Caption - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Table Caption - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3975857153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table Caption</source>
           <target>Tabellenbezeichnung</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Table Caption - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Table Caption - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3017471043 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3057203266 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the table number.</source>
           <target>Gibt die Tabellennr. an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Table No. - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Table No. - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3017471043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 3057203266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table No.</source>
           <target>Tabellennr.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Table No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Table No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 634438274 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 1661295067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Target company.</source>
           <target>Gibt den Zielmandanten an.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Target Company - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Target Company - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 634438274 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 1661295067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Target Company</source>
           <target>Zielmandant</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Target Company - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Target Company - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 2952564645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 55184056 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the user who transferred the records.</source>
           <target>Gibt den Benutzer an der die Datensätze übertragen hat.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Transferred By - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Transferred By - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 2952564645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 55184056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transferred By</source>
           <target>Übertragen von</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Transferred By - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Transferred By - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3473897392 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 4220044845 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the date and time when the records were transferred.</source>
-          <target>Gibt das Datum und den Zeitpunkt an dem die Datensätze übertagen wurden.</target>
+          <target>Gibt das Datum und den Zeitpunkt an dem die Datensätze übertragen wurden.</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Transferred Date - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Transferred Date - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2632851142 - Control 3473897392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2632851142 - Control 4220044845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transferred Date</source>
           <target>Übertragen am</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control Transferred Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Control ICM Transferred Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2632851142 - Action 1717631085 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View the data that has been applied to the database.</source>
@@ -1623,6 +1628,12 @@
           <target>Datentransfer Paket Liste</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 2319250073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer Data Log List</source>
+          <target>Datentransfer Archiv Liste</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Transfer Tables</source>

@@ -11,6 +11,8 @@ table 50406 "ICM Transfer Data Log"
     DataClassification = ToBeClassified;
     Extensible = true;
     DataPerCompany = true;
+    DrillDownPageId = "ICM Transfer Data Log List";
+    LookupPageId = "ICM Transfer Data Log List";
 
     fields
     {
@@ -94,6 +96,12 @@ table 50406 "ICM Transfer Data Log"
             Caption = 'Data Transfer Package Code';
             Editable = false;
         }
+        field(16; "ICM Filter Text"; Text[250])
+        {
+            Caption = 'Filter Text';
+            Editable = false;
+        }
+
     }
 
     keys

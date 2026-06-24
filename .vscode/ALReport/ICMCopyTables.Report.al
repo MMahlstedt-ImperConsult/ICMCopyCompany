@@ -78,9 +78,12 @@ report 50400 "ICM Copy Tables"
         ICMMgt: Codeunit "ICM Data Transfer Management";
     begin
         ICMMgt.CopyToCompanyFromDataTransferTables(FromCompanyName, ToCompanyName);
+
+        TransferDataLogList.Run();
     end;
 
     var
+        TransferDataLogList: Page "ICM Transfer Data Log List";
         FromCompanyName: Text[30];
         ToCompanyName: Text[30];
         Text001Err: Label 'The “Source Company” field must be filled.';

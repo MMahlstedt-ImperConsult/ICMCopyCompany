@@ -30,6 +30,12 @@ page 50409 "ICM Role Center"
                     ApplicationArea = Basic, Suite;
                     RunObject = Page "ICM Data Transfer Package List";
                 }
+                action(DataTransferPackageLogList)
+                {
+                    Caption = 'Transfer Data Log List';
+                    ApplicationArea = Basic, Suite;
+                    RunObject = Page "ICM Transfer Data Log List";
+                }
             }
             group(Setup)
             {

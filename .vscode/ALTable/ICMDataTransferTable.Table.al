@@ -107,7 +107,6 @@ table 50400 "ICM Data Transfer Table"
         field(14; "ICM Records transferred"; boolean)
         {
             Caption = 'Records has been transferred ';
-            Editable = false;
         }
         field(15; "ICM Page ID"; Integer)
         {

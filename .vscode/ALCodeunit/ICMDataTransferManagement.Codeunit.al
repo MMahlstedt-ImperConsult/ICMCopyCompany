@@ -97,12 +97,12 @@ codeunit 50400 "ICM Data Transfer Management"
     end;
 
 
-    procedure CheckTableInLicense(TableId: Integer): Boolean
+    procedure CheckTableInLicense(TableIdR: Integer): Boolean
     var
         RecRefL: RecordRef;
         HasPermissionL: Boolean;
     begin
-        if SafeOpenTable(TableId, RecRefL) then begin
+        if SafeOpenTable(TableIdR, RecRefL) then begin
             if RecRefL.ReadPermission() then begin
                 HasPermissionL := true;
             end;
@@ -113,22 +113,22 @@ codeunit 50400 "ICM Data Transfer Management"
     end;
 
     [TryFunction]
-    local procedure SafeOpenTable(TableID: Integer; var RecRef: RecordRef)
+    local procedure SafeOpenTable(TableIDR: Integer; var RecRefR: RecordRef)
     begin
-        RecRef.Open(TableID);
+        RecRefR.Open(TableIDR);
     end;
 
-    local procedure HasTableRecords(TableNo: Integer): Boolean
+    local procedure HasTableRecords(TableNoR: Integer): Boolean
     var
-        RecRef: RecordRef;
-        RecordCount: Integer;
+        RecRefL: RecordRef;
+        RecordCountLL: Integer;
     begin
-        if SafeOpenTable(TableNo, RecRef) then begin
-            if RecRef.ReadPermission() then begin
-                RecordCount := RecRef.Count();
-                exit(RecordCount > 0);
+        if SafeOpenTable(TableNoR, RecRefL) then begin
+            if RecRefL.ReadPermission() then begin
+                RecordCountLL := RecRefL.Count();
+                exit(RecordCountLL > 0);
             end;
-            RecRef.Close();
+            RecRefL.Close();
         end;
     end;
 
@@ -172,71 +172,71 @@ codeunit 50400 "ICM Data Transfer Management"
     /// <summary>
     /// Sets the Active field to the specified value in all filtered rows of the ICM table
     /// </summary>
-    procedure SetActiveStatus(var ICMTable: Record "ICM Data Transfer Table"; ActiveStatus: Boolean)
+    procedure SetActiveStatus(var ICMDataTransferTableR: Record "ICM Data Transfer Table"; ActiveStatusR: Boolean)
     begin
-        if ICMTable.FindSet(true) then
+        if ICMDataTransferTableR.FindSet(true) then
             repeat
-                if ActiveStatus = true then begin
-                    if ICMTable."ICM Included in the License" and (ICMTable."ICM Table Subtype" = 'Normal') then begin
+                if ActiveStatusR = true then begin
+                    if ICMDataTransferTableR."ICM Included in the License" and (ICMDataTransferTableR."ICM Table Subtype" = 'Normal') then begin
                         //if ICMTable."ICM Table Subtype" = 'Normal' then begin
 
-                        ICMTable."ICM Active" := ActiveStatus;
-                        ICMTable.Modify();
+                        ICMDataTransferTableR."ICM Active" := ActiveStatusR;
+                        ICMDataTransferTableR.Modify();
                     end;
                 end else begin
-                    ICMTable."ICM Active" := ActiveStatus;
-                    ICMTable.Modify();
+                    ICMDataTransferTableR."ICM Active" := ActiveStatusR;
+                    ICMDataTransferTableR.Modify();
                 end;
-            until ICMTable.Next() = 0;
+            until ICMDataTransferTableR.Next() = 0;
 
         if guiAllowed then
-            Message(Text002Lbl, ActiveStatus);
+            Message(Text002Lbl, ActiveStatusR);
     end;
 
-    procedure ActivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Data Transf. Package Field")
+    procedure ActivateIncludePackageField(var CMIDataTransferPackageFieldR: Record "ICM Data Transf. Package Field")
     begin
-        if CMIConfigPackageFieldR.FindSet(true) then
+        if CMIDataTransferPackageFieldR.FindSet(true) then
             repeat
-                CMIConfigPackageFieldR."ICM Include Field" := true;
-                CMIConfigPackageFieldR.Modify();
-            until CMIConfigPackageFieldR.Next() = 0;
+                CMIDataTransferPackageFieldR."ICM Include Field" := true;
+                CMIDataTransferPackageFieldR.Modify();
+            until CMIDataTransferPackageFieldR.Next() = 0;
     end;
 
-    procedure DeactivateIncludePackageField(var CMIConfigPackageFieldR: Record "ICM Data Transf. Package Field")
+    procedure DeactivateIncludePackageField(var CMIDataTransfPackageFieldR: Record "ICM Data Transf. Package Field")
     var
-        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
+        ICMDataTransferPackageLineL: Record "ICM Data Transfer Package Line";
     begin
-        if ICMConfigPackageLineL.Get(CMIConfigPackageFieldR."ICM Package Code", CMIConfigPackageFieldR."ICM Table ID") then
-            ICMConfigPackageLineL.TestField("ICM Apply Table Fields", ICMConfigPackageLineL."ICM Apply Table Fields"::"Some Fields");
-        CMIConfigPackageFieldR.SetRange("ICM Primary Key", false);
-        if CMIConfigPackageFieldR.FindSet(true) then
+        if ICMDataTransferPackageLineL.Get(CMIDataTransfPackageFieldR."ICM Package Code", CMIDataTransfPackageFieldR."ICM Table ID") then
+            ICMDataTransferPackageLineL.TestField("ICM Apply Table Fields", ICMDataTransferPackageLineL."ICM Apply Table Fields"::"Some Fields");
+        CMIDataTransfPackageFieldR.SetRange("ICM Primary Key", false);
+        if CMIDataTransfPackageFieldR.FindSet(true) then
             repeat
-                CMIConfigPackageFieldR."ICM Include Field" := false;
-                CMIConfigPackageFieldR.Modify();
-            until CMIConfigPackageFieldR.Next() = 0;
+                CMIDataTransfPackageFieldR."ICM Include Field" := false;
+                CMIDataTransfPackageFieldR.Modify();
+            until CMIDataTransfPackageFieldR.Next() = 0;
     end;
 
-    procedure ActivateIncludeTableField(var CMITableFieldR: Record "ICM Data Transfer Table Field")
+    procedure ActivateIncludeTableField(var ICMTableFieldR: Record "ICM Data Transfer Table Field")
     begin
-        if CMITableFieldR.FindSet(true) then
+        if ICMTableFieldR.FindSet(true) then
             repeat
-                CMITableFieldR."ICM Include Field" := true;
-                CMITableFieldR.Modify();
-            until CMITableFieldR.Next() = 0;
+                ICMTableFieldR."ICM Include Field" := true;
+                ICMTableFieldR.Modify();
+            until ICMTableFieldR.Next() = 0;
     end;
 
-    procedure DeactivateIncludeTableField(var CMITableFieldR: Record "ICM Data Transfer Table Field")
+    procedure DeactivateIncludeTableField(var ICMTableFieldR: Record "ICM Data Transfer Table Field")
     var
-        ICMTableL: Record "ICM Data Transfer Table";
+        ICMDataTransferTableL: Record "ICM Data Transfer Table";
     begin
-        if ICMTableL.Get(CMITableFieldR."ICM Company Name", CMITableFieldR."ICM Table ID") then
-            ICMTableL.TestField("ICM Apply Table Fields", ICMTableL."ICM Apply Table Fields"::"Some Fields");
-        CMITableFieldR.SetRange("ICM Primary Key", false);
-        if CMITableFieldR.FindSet(true) then
+        if ICMDataTransferTableL.Get(ICMTableFieldR."ICM Company Name", ICMTableFieldR."ICM Table ID") then
+            ICMDataTransferTableL.TestField("ICM Apply Table Fields", ICMDataTransferTableL."ICM Apply Table Fields"::"Some Fields");
+        ICMTableFieldR.SetRange("ICM Primary Key", false);
+        if ICMTableFieldR.FindSet(true) then
             repeat
-                CMITableFieldR."ICM Include Field" := false;
-                CMITableFieldR.Modify();
-            until CMITableFieldR.Next() = 0;
+                ICMTableFieldR."ICM Include Field" := false;
+                ICMTableFieldR.Modify();
+            until ICMTableFieldR.Next() = 0;
     end;
 
     procedure CopyToCompanyFromDataTransferTables(SourceCompanyR: Text[30]; TargetCompanyR: Text[30])
@@ -245,6 +245,7 @@ codeunit 50400 "ICM Data Transfer Management"
         ICMTransferDataLogL: Record "ICM Transfer Data Log";
         ICMTableFieldL: Record "ICM Data Transfer Table Field";
         ICMSetupL: Record "ICM Data Transfer Setup";
+        ICMTransferDataLogListL: Page "ICM Transfer Data Log List";
         SourceRecRefL: RecordRef;
         TargetRecRefL: RecordRef;
         FieldRefL: FieldRef;
@@ -324,11 +325,16 @@ codeunit 50400 "ICM Data Transfer Management"
                             until ICMTableFieldL.Next() = 0;
                         end;
 
-                        if TryInsertRecord(TargetRecRefL) then begin
-                            CopiedRecordCountL += 1;
-                            RecordsTransferedL := true;
-                        end else
-                            SkippedRecordCountL += 1;
+                        if (ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Keep existing data") and
+                            TargetRecRefL.Find('=') then
+                            SkippedRecordCountL += 1
+                        else begin
+                            if TryInsertRecord(TargetRecRefL) then begin
+                                CopiedRecordCountL += 1;
+                                RecordsTransferedL := true;
+                            end else
+                                SkippedRecordCountL += 1;
+                        end;
 
                     until SourceRecRefL.Next() = 0;
                 end;
@@ -354,19 +360,21 @@ codeunit 50400 "ICM Data Transfer Management"
         if GuiAllowed then
             WindowDialog.Close();
 
-        if GuiAllowed then
-            Message(Text007Lbl, CopiedTableCountL, SourceCompanyR, TargetCompanyR);
+
+        //if GuiAllowed then
+        //    Message(Text007Lbl, CopiedTableCountL, SourceCompanyR, TargetCompanyR);
         //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
     end;
 
     procedure CopyToCompanyFromDataTransferPackage(PackageCodeR: Code[20])
     var
         ICMSetupL: Record "ICM Data Transfer Setup";
-        ICMConfigPackageL: Record "ICM Data Transfer Package";
-        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
-        ICMConfigPackageFieldL: Record "ICM Data Transf. Package Field";
+        ICMDataTransferPackageL: Record "ICM Data Transfer Package";
+        ICMDataTransferPackageLineL: Record "ICM Data Transfer Package Line";
+        ICMDataTransfPackageFieldL: Record "ICM Data Transf. Package Field";
         ICMTransferDataLogL: Record "ICM Transfer Data Log";
         DataTransfPackFilterL: Record "ICM Data Transf. Pack. Filter";
+        TransferDataLogListL: Page "ICM Transfer Data Log List";
         SourceRecRefL: RecordRef;
         TargetRecRefL: RecordRef;
         RecRefL: RecordRef;
@@ -381,13 +389,13 @@ codeunit 50400 "ICM Data Transfer Management"
         iL: Integer;
     begin
         ICMSetupL.Get();
-        ICMConfigPackageL.Get(PackageCodeR);
+        ICMDataTransferPackageL.Get(PackageCodeR);
 
-        ICMConfigPackageLineL.Reset();
-        ICMConfigPackageLineL.SetRange("ICM Package Code", PackageCodeR);
-        ICMConfigPackageLineL.SetRange("ICM Active", true);
+        ICMDataTransferPackageLineL.Reset();
+        ICMDataTransferPackageLineL.SetRange("ICM Package Code", PackageCodeR);
+        ICMDataTransferPackageLineL.SetRange("ICM Active", true);
 
-        if ICMConfigPackageLineL.IsEmpty then begin
+        if ICMDataTransferPackageLineL.IsEmpty then begin
             if guiAllowed then
                 Message(Text003Lbl);
             exit;
@@ -399,73 +407,78 @@ codeunit 50400 "ICM Data Transfer Management"
               '#2###################'
             );
             WindowDialogIndex1 := 0;
-            WindowDialogCount1 := ICMConfigPackageLineL.Count;
+            WindowDialogCount1 := ICMDataTransferPackageLineL.Count;
         End;
 
         Clear(CopiedTableCountL);
         Clear(SkippedTableCountL);
 
-        if ICMConfigPackageLineL.FindSet() then
+        if ICMDataTransferPackageLineL.FindSet() then
             repeat
                 if GuiAllowed then Begin
                     WindowDialogIndex1 += 1;
                     WindowDialog.Update(1, FormatPercentage(WindowDialogIndex1 / WindowDialogCount1 * 100));
                 End;
 
-                SourceRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Source Company Name");
-                TargetRecRefL.Open(ICMConfigPackageLineL."ICM Table ID", false, ICMConfigPackageL."ICM Target Company Name");
+                SourceRecRefL.Open(ICMDataTransferPackageLineL."ICM Table ID", false, ICMDataTransferPackageL."ICM Source Company Name");
+                TargetRecRefL.Open(ICMDataTransferPackageLineL."ICM Table ID", false, ICMDataTransferPackageL."ICM Target Company Name");
 
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
 
-                //Filter einfügen
-                DataTransfPackFilterL.Reset();
-                DataTransfPackFilterL.SetRange("ICM Package Code", ICMConfigPackageL."ICM Code");
-                DataTransfPackFilterL.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Page ID");
-                if DataTransfPackFilterL.FindSet() then begin
-                    repeat
-                        FieldRefL := RecRefL.Field(DataTransfPackFilterL."ICM Field ID");
-                        FilterTextL += FieldRefL.Name + ': ' + DataTransfPackFilterL."ICM Field Filter" + ' ,';
-                    until DataTransfPackFilterL.Next = 0;
-                end;
-                SourceRecRefL.SetView(FilterTextL);
-
                 ICMTransferDataLogL.Reset();
                 NextEntryNoL := ICMTransferDataLogL.GetNextEntryNo;
                 ICMTransferDataLogL."ICM Entry No." := NextEntryNoL;
-                ICMTransferDataLogL."ICM Table No." := ICMConfigPackageLineL."ICM Table ID";
+                ICMTransferDataLogL."ICM Table No." := ICMDataTransferPackageLineL."ICM Table ID";
                 ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
-                ICMTransferDataLogL."ICM Package Code" := ICMConfigPackageL."ICM Code";
-                ICMTransferDataLogL."ICM Source Company" := ICMConfigPackageL."ICM Source Company Name";
-                ICMTransferDataLogL."ICM Target Company" := ICMConfigPackageL."ICM Target Company Name";
-                ICMTransferDataLogL."ICM Page ID" := ICMConfigPackageLineL."ICM Page ID";
+                ICMTransferDataLogL."ICM Package Code" := ICMDataTransferPackageL."ICM Code";
+                ICMTransferDataLogL."ICM Source Company" := ICMDataTransferPackageL."ICM Source Company Name";
+                ICMTransferDataLogL."ICM Target Company" := ICMDataTransferPackageL."ICM Target Company Name";
+                ICMTransferDataLogL."ICM Page ID" := ICMDataTransferPackageLineL."ICM Page ID";
                 ICMTransferDataLogL.Insert();
 
+                //Filter einfügen
+                DataTransfPackFilterL.Reset();
+                DataTransfPackFilterL.SetRange("ICM Package Code", ICMDataTransferPackageL."ICM Code");
+                DataTransfPackFilterL.SetRange("ICM Table ID", ICMDataTransferPackageLineL."ICM Table ID");
+                if DataTransfPackFilterL.FindSet() then begin
+                    FilterTextL := SourceRecRefL.GetView() + ' Where(';
+                    repeat
+                        FieldRefL := SourceRecRefL.Field(DataTransfPackFilterL."ICM Field ID");
+                        FilterTextL += FieldRefL.Caption + '=Const(' + DataTransfPackFilterL."ICM Field Filter" + '), ';
+                    until DataTransfPackFilterL.Next = 0;
+                end;
+                FilterTextL := DelChr(FilterTextL, '>', ', ');
+                FilterTextL += ')';
+
+                SourceRecRefL.SetView(FilterTextL);
 
                 if SourceRecRefL.FindSet() then begin
                     repeat
-                        //TargetRecRefL.Init();
-
-                        ICMConfigPackageFieldL.Reset();
-                        ICMConfigPackageFieldL.SetRange("ICM Package Code", ICMConfigPackageLineL."ICM Package Code");
-                        ICMConfigPackageFieldL.SetRange("ICM Table ID", ICMConfigPackageLineL."ICM Table ID");
-                        ICMConfigPackageFieldL.SetRange("ICM Include Field", true);
-                        if ICMConfigPackageFieldL.FindSet() then begin
+                        ICMDataTransfPackageFieldL.Reset();
+                        ICMDataTransfPackageFieldL.SetRange("ICM Package Code", ICMDataTransferPackageLineL."ICM Package Code");
+                        ICMDataTransfPackageFieldL.SetRange("ICM Table ID", ICMDataTransferPackageLineL."ICM Table ID");
+                        ICMDataTransfPackageFieldL.SetRange("ICM Include Field", true);
+                        if ICMDataTransfPackageFieldL.FindSet() then begin
                             repeat
-                                FieldRefL := SourceRecRefL.Field(ICMConfigPackageFieldL."ICM Field ID");
+                                FieldRefL := SourceRecRefL.Field(ICMDataTransfPackageFieldL."ICM Field ID");
 
                                 if not (FieldRefL.Class() = FieldClass::FlowField) then begin
-                                    TargetFieldRefL := TargetRecRefL.Field(ICMConfigPackageFieldL."ICM Field ID");
+                                    TargetFieldRefL := TargetRecRefL.Field(ICMDataTransfPackageFieldL."ICM Field ID");
                                     TargetFieldRefL.Value := FieldRefL.Value;
                                 end;
-                            until ICMConfigPackageFieldL.Next() = 0;
+                            until ICMDataTransfPackageFieldL.Next() = 0;
                         end;
-                        //TargetRecRefL.Insert();
 
-                        if TryInsertRecord(TargetRecRefL) then
-                            CopiedRecordCountL += 1
-                        else
-                            SkippedRecordCountL += 1;
+                        if (ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Keep existing data") and
+                                                    TargetRecRefL.Find('=') then
+                            SkippedRecordCountL += 1
+                        else begin
+                            if TryInsertRecord(TargetRecRefL) then
+                                CopiedRecordCountL += 1
+                            else
+                                SkippedRecordCountL += 1;
+                        end;
 
                     until SourceRecRefL.Next() = 0;
                 end;
@@ -475,6 +488,9 @@ codeunit 50400 "ICM Data Transfer Management"
                 if ICMTransferDataLogL.Get(NextEntryNoL) then begin
                     ICMTransferDataLogL."ICM Records Transferred" := CopiedRecordCountL;
                     ICMTransferDataLogL."ICM Records Skipped" := SkippedRecordCountL;
+                    ICMTransferDataLogL."ICM Filter Text" := FilterTextL;
+                    if FilterTextL <> '' then
+                        ICMTransferDataLogL."ICM Filter Exists" := true;
                     ICMTransferDataLogL."ICM Transferred By" := UserId;
                     ICMTransferDataLogL."ICM Transferred Date" := CurrentDateTime;
                     ICMTransferDataLogL.Modify();
@@ -483,46 +499,16 @@ codeunit 50400 "ICM Data Transfer Management"
                 TargetRecRefL.Close();
 
 
-            until ICMConfigPackageLineL.Next() = 0;
+            until ICMDataTransferPackageLineL.Next() = 0;
 
         if GuiAllowed then
             WindowDialog.Close();
 
-        if GuiAllowed then
-            Message(Text007Lbl, CopiedTableCountL, ICMConfigPackageL."ICM Source Company Name", ICMConfigPackageL."ICM Target Company Name");
-        //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);
-
+        TransferDataLogListL.Run();
+        //if GuiAllowed then
+        //    Message(Text007Lbl, CopiedTableCountL, ICMConfigPackageL."ICM Source Company Name", ICMConfigPackageL."ICM Target Company Name");
+        //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);        
     end;
-
-    /*procedure TestFilter()
-    var
-        DataTransPackLineL: Record "ICM Data Transfer Package Line";
-        DataTransfPackFilterL: Record "ICM Data Transf. Pack. Filter";
-        ConfigValidateMgtL: Codeunit "Config. Validate Management";
-    begin
-        DataTransfPackFilterL.Reset();
-        ConfigPackageData.Reset();
-        ConfigPackageData.SetRange("Package Code", "Package Code");
-        ConfigPackageData.SetRange("Table ID", "Table ID");
-        ConfigPackageData.SetRange("No.", "No.");
-        if FindProcessingRuleFilters(ConfigPackageFilter, RuleNo) then begin
-            RecRefTemp.Open("Table ID", true);
-            repeat
-                ConfigPackageData.SetRange("Field ID", ConfigPackageFilter."Field ID");
-                if ConfigPackageData.FindFirst() then begin
-                    FieldRef := RecRefTemp.Field(ConfigPackageData."Field ID");
-                    ConfigValidateMgt.EvaluateTextToFieldRef(ConfigPackageData.Value, FieldRef, false);
-                    FieldRef.SetFilter(ConfigPackageFilter."Field Filter");
-                end else
-                    exit(false);
-            until ConfigPackageFilter.Next() = 0;
-            RecRefTemp.Insert();
-            if RecRefTemp.IsEmpty() then
-                exit(false);
-        end; 
-        exit(true); 
-    end; */
-
 
     [TryFunction]
     local procedure TryInsertRecord(var RecRefR: RecordRef)
@@ -556,110 +542,102 @@ codeunit 50400 "ICM Data Transfer Management"
         if ICMTableR.Find('-') then;
     end;
 
-    local procedure CopyConfigPackage(PackageCodeR: Code[20])
+    procedure IsKeyField(TableIDR: Integer; FieldIDR: Integer): Boolean
     var
-        ICMConfigPackageL: Record "ICM Data Transfer Package";
-        ICMConfigPackageLineL: Record "ICM Data Transfer Package Line";
+        RecRefL: RecordRef;
+        FieldRefL: FieldRef;
+        KeyRefL: KeyRef;
+        KeyFieldCountL: Integer;
     begin
-
-    end;
-
-    procedure IsKeyField(TableID: Integer; FieldID: Integer): Boolean
-    var
-        RecRef: RecordRef;
-        FieldRef: FieldRef;
-        KeyRef: KeyRef;
-        KeyFieldCount: Integer;
-    begin
-        RecRef.Open(TableID);
-        KeyRef := RecRef.KeyIndex(1);
-        for KeyFieldCount := 1 to KeyRef.FieldCount do begin
-            FieldRef := KeyRef.FieldIndex(KeyFieldCount);
-            if FieldRef.Number = FieldID then
+        RecRefL.Open(TableIDR);
+        KeyRefL := RecRefL.KeyIndex(1);
+        for KeyFieldCountL := 1 to KeyRefL.FieldCount do begin
+            FieldRefL := KeyRefL.FieldIndex(KeyFieldCountL);
+            if FieldRefL.Number = FieldIDR then
                 exit(true);
         end;
 
         exit(false);
     end;
 
-    procedure SetFieldFilter(var "Field": Record "Field"; TableID: Integer; FieldID: Integer)
+    procedure SetFieldFilter(var FieldR: Record "Field"; TableIDR: Integer; FieldIDR: Integer)
     begin
-        Field.Reset();
-        if TableID > 0 then
-            Field.SetRange(TableNo, TableID);
-        if FieldID > 0 then
-            Field.SetRange("No.", FieldID)
+        FieldR.Reset();
+        if TableIDR > 0 then
+            FieldR.SetRange(TableNo, TableIDR);
+        if FieldIDR > 0 then
+            FieldR.SetRange("No.", FieldIDR)
         else
-            Field.SetFilter("No.", '<>%1&<>%2&<>%3&<>%4&<>%5',
-                    Field.FieldNo(SystemId),
-                    Field.FieldNo(SystemCreatedAt),
-                    Field.FieldNo(SystemCreatedBy),
-                    Field.FieldNo(SystemModifiedAt),
-                    Field.FieldNo(SystemModifiedBy));
-        Field.SetRange(Class, Field.Class::Normal);
-        Field.SetRange(Enabled, true);
-        Field.SetFilter(ObsoleteState, '<>%1', Field.ObsoleteState::Removed);
+            FieldR.SetFilter("No.", '<>%1&<>%2&<>%3&<>%4&<>%5',
+                    FieldR.FieldNo(SystemId),
+                    FieldR.FieldNo(SystemCreatedAt),
+                    FieldR.FieldNo(SystemCreatedBy),
+                    FieldR.FieldNo(SystemModifiedAt),
+                    FieldR.FieldNo(SystemModifiedBy));
+        FieldR.SetRange(Class, FieldR.Class::Normal);
+        FieldR.SetRange(Enabled, true);
+        FieldR.SetFilter(ObsoleteState, '<>%1', FieldR.ObsoleteState::Removed);
     end;
 
-    procedure FormatPercentage(adPercentage: Decimal): Text
+    procedure FormatPercentage(adPercentageR: Decimal): Text
     var
-        ltPercentage: Text;
-        liPercentagePicture: integer;
+        PercentageL: Text;
+        PercentagePictureL: integer;
     begin
-        ltPercentage := format(Round(adPercentage, 1, '='), 2);
-        liPercentagePicture := Round(adPercentage, 4, '<');
-        case liPercentagePicture of
+        PercentageL := format(Round(adPercentageR, 1, '='), 2);
+        PercentagePictureL := Round(adPercentageR, 4, '<');
+        case PercentagePictureL of
             0:                                                //(hier sind keine grafischen Symbole. Es sieht nur so aus...)
-                exit(StrSubstNo('▓▒░░░░░░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('▓▒░░░░░░░░[%1%]░░░░░░░░░░', PercentageL));
             4:
-                exit(StrSubstNo('█▓▒░░░░░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('█▓▒░░░░░░░[%1%]░░░░░░░░░░', PercentageL));
             8:
-                exit(StrSubstNo('██▓▒░░░░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██▓▒░░░░░░[%1%]░░░░░░░░░░', PercentageL));
             12:
-                exit(StrSubstNo('███▓▒░░░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('███▓▒░░░░░[%1%]░░░░░░░░░░', PercentageL));
             16:
-                exit(StrSubstNo('████▓▒░░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('████▓▒░░░░[%1%]░░░░░░░░░░', PercentageL));
             20:
-                exit(StrSubstNo('█████▓▒░░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('█████▓▒░░░[%1%]░░░░░░░░░░', PercentageL));
             24:
-                exit(StrSubstNo('██████▓▒░░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████▓▒░░[%1%]░░░░░░░░░░', PercentageL));
             28:
-                exit(StrSubstNo('███████▓▒░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('███████▓▒░[%1%]░░░░░░░░░░', PercentageL));
             32:
-                exit(StrSubstNo('████████▓░[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('████████▓░[%1%]░░░░░░░░░░', PercentageL));
             36:
-                exit(StrSubstNo('█████████▓[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('█████████▓[%1%]░░░░░░░░░░', PercentageL));
             40:
-                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', PercentageL));
             44:
-                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', PercentageL));
             48:
-                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', PercentageL));
             52:
-                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]░░░░░░░░░░', PercentageL));
             56:
-                exit(StrSubstNo('██████████[%1%]▒░░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]▒░░░░░░░░░', PercentageL));
             60:
-                exit(StrSubstNo('██████████[%1%]▓▒░░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]▓▒░░░░░░░░', PercentageL));
             64:
-                exit(StrSubstNo('██████████[%1%]█▓▒░░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]█▓▒░░░░░░░', PercentageL));
             68:
-                exit(StrSubstNo('██████████[%1%]██▓▒░░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]██▓▒░░░░░░', PercentageL));
             72:
-                exit(StrSubstNo('██████████[%1%]███▓▒░░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]███▓▒░░░░░', PercentageL));
             76:
-                exit(StrSubstNo('██████████[%1%]████▓▒░░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]████▓▒░░░░', PercentageL));
             80:
-                exit(StrSubstNo('██████████[%1%]█████▓▒░░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]█████▓▒░░░', PercentageL));
             84:
-                exit(StrSubstNo('██████████[%1%]██████▓▒░░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]██████▓▒░░', PercentageL));
             88:
-                exit(StrSubstNo('██████████[%1%]███████▓▒░', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]███████▓▒░', PercentageL));
             92:
-                exit(StrSubstNo('██████████[%1%]████████▓▒', ltPercentage));
+                exit(StrSubstNo('██████████[%1%]████████▓▒', PercentageL));
             96:
-                if adPercentage < 98.5 then
-                    exit(StrSubstNo('██████████[%1%]█████████▓', ltPercentage))
+                if adPercentageR < 98.5 then
+                    exit(StrSubstNo('██████████[%1%]█████████▓', PercentageL))
                 else
                     exit('██████████[100]██████████');
             100:

@@ -426,32 +426,21 @@ codeunit 50400 "ICM Data Transfer Management"
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
                     TryDeleteAll(TargetRecRefL);
 
-                ICMTransferDataLogL.Reset();
-                NextEntryNoL := ICMTransferDataLogL.GetNextEntryNo;
-                ICMTransferDataLogL."ICM Entry No." := NextEntryNoL;
-                ICMTransferDataLogL."ICM Table No." := ICMDataTransferPackageLineL."ICM Table ID";
-                ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
-                ICMTransferDataLogL."ICM Package Code" := ICMDataTransferPackageL."ICM Code";
-                ICMTransferDataLogL."ICM Source Company" := ICMDataTransferPackageL."ICM Source Company Name";
-                ICMTransferDataLogL."ICM Target Company" := ICMDataTransferPackageL."ICM Target Company Name";
-                ICMTransferDataLogL."ICM Page ID" := ICMDataTransferPackageLineL."ICM Page ID";
-                ICMTransferDataLogL.Insert();
+                NextEntryNoL := CreateTransferDataLogFromPackage(ICMTransferDataLogL, ICMDataTransferPackageL, ICMDataTransferPackageLineL, SourceRecRefL);
 
-                //Filter einfügen
+                //add Filter
                 DataTransfPackFilterL.Reset();
                 DataTransfPackFilterL.SetRange("ICM Package Code", ICMDataTransferPackageL."ICM Code");
                 DataTransfPackFilterL.SetRange("ICM Table ID", ICMDataTransferPackageLineL."ICM Table ID");
-                if DataTransfPackFilterL.FindSet() then begin
-                    FilterTextL := SourceRecRefL.GetView() + ' Where(';
+                if DataTransfPackFilterL.FindSet() then
                     repeat
-                        FieldRefL := SourceRecRefL.Field(DataTransfPackFilterL."ICM Field ID");
-                        FilterTextL += FieldRefL.Caption + '=Const(' + DataTransfPackFilterL."ICM Field Filter" + '), ';
-                    until DataTransfPackFilterL.Next = 0;
-                end;
-                FilterTextL := DelChr(FilterTextL, '>', ', ');
-                FilterTextL += ')';
+                        if DataTransfPackFilterL."ICM Field Filter" <> '' then begin
+                            FieldRefL := SourceRecRefL.Field(DataTransfPackFilterL."ICM Field ID");
+                            FieldRefL.SetFilter(StrSubstNo('%1', DataTransfPackFilterL."ICM Field Filter"));
+                        end;
+                    until DataTransfPackFilterL.Next() = 0;
 
-                SourceRecRefL.SetView(FilterTextL);
+                FilterTextL := SourceRecRefL.GetView();
 
                 if SourceRecRefL.FindSet() then begin
                     repeat
@@ -485,16 +474,7 @@ codeunit 50400 "ICM Data Transfer Management"
 
                 CopiedTableCountL += 1;
 
-                if ICMTransferDataLogL.Get(NextEntryNoL) then begin
-                    ICMTransferDataLogL."ICM Records Transferred" := CopiedRecordCountL;
-                    ICMTransferDataLogL."ICM Records Skipped" := SkippedRecordCountL;
-                    ICMTransferDataLogL."ICM Filter Text" := FilterTextL;
-                    if FilterTextL <> '' then
-                        ICMTransferDataLogL."ICM Filter Exists" := true;
-                    ICMTransferDataLogL."ICM Transferred By" := UserId;
-                    ICMTransferDataLogL."ICM Transferred Date" := CurrentDateTime;
-                    ICMTransferDataLogL.Modify();
-                end;
+                UpdateTransferDataLog(ICMTransferDataLogL, NextEntryNoL, CopiedRecordCountL, SkippedRecordCountL, FilterTextL);
                 SourceRecRefL.Close();
                 TargetRecRefL.Close();
 
@@ -514,6 +494,38 @@ codeunit 50400 "ICM Data Transfer Management"
     local procedure TryInsertRecord(var RecRefR: RecordRef)
     begin
         RecRefR.Insert();
+    end;
+
+    local procedure CreateTransferDataLogFromPackage(var ICMTransferDataLogR: Record "ICM Transfer Data Log"; ICMDataTransferPackageR: Record "ICM Data Transfer Package"; ICMDataTransferPackageLineR: Record "ICM Data Transfer Package Line"; SourceRecRefR: RecordRef): Integer
+    var
+        NextEntryNoL: Integer;
+    begin
+        ICMTransferDataLogR.Reset();
+        NextEntryNoL := ICMTransferDataLogR.GetNextEntryNo;
+        ICMTransferDataLogR."ICM Entry No." := NextEntryNoL;
+        ICMTransferDataLogR."ICM Table No." := ICMDataTransferPackageLineR."ICM Table ID";
+        ICMTransferDataLogR."ICM Records Available" := SourceRecRefR.Count();
+        ICMTransferDataLogR."ICM Package Code" := ICMDataTransferPackageR."ICM Code";
+        ICMTransferDataLogR."ICM Source Company" := ICMDataTransferPackageR."ICM Source Company Name";
+        ICMTransferDataLogR."ICM Target Company" := ICMDataTransferPackageR."ICM Target Company Name";
+        ICMTransferDataLogR."ICM Page ID" := ICMDataTransferPackageLineR."ICM Page ID";
+        ICMTransferDataLogR.Insert();
+
+        exit(NextEntryNoL);
+    end;
+
+    local procedure UpdateTransferDataLog(var ICMTransferDataLogR: Record "ICM Transfer Data Log"; EntryNoR: Integer; CopiedRecordCountR: Integer; SkippedRecordCountR: Integer; FilterTextR: Text)
+    begin
+        if ICMTransferDataLogR.Get(EntryNoR) then begin
+            ICMTransferDataLogR."ICM Records Transferred" := CopiedRecordCountR;
+            ICMTransferDataLogR."ICM Records Skipped" := SkippedRecordCountR;
+            ICMTransferDataLogR."ICM Filter Text" := FilterTextR;
+            if FilterTextR <> '' then
+                ICMTransferDataLogR."ICM Filter Exists" := true;
+            ICMTransferDataLogR."ICM Transferred By" := UserId;
+            ICMTransferDataLogR."ICM Transferred Date" := CurrentDateTime;
+            ICMTransferDataLogR.Modify();
+        end;
     end;
 
     [TryFunction]

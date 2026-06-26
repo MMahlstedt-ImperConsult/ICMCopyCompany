@@ -98,6 +98,23 @@ page 50403 "ICM Data Transfer Pack.Subform"
                     Rec.ShowFilters();
                 end;
             }
+            action(PackageFields)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Fields';
+                Image = CheckList;
+                ToolTip = 'View the fields that are used in the Data Transfer Process.';
+
+                trigger OnAction()
+                var
+                    DataTransfPackageFieldsL: Record "ICM Data Transf. Package Field";
+                begin
+                    DataTransfPackageFieldsL.Reset();
+                    DataTransfPackageFieldsL.SetRange("ICM Package Code", Rec."ICM Package Code");
+                    DataTransfPackageFieldsL.SetRange("ICM Table ID", Rec."ICM Table ID");
+                    Page.Run(Page::"ICM Data Transfer Pack. Fields", DataTransfPackageFieldsL);
+                end;
+            }
             action(DatabaseRecords)
             {
                 ApplicationArea = Basic, Suite;

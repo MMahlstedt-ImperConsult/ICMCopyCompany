@@ -653,6 +653,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Action DatabaseRecords - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1737592339 - Action 904905565 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the fields that are used in the Data Transfer Process.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Action PackageFields - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1737592339 - Action 904905565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fields</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Pack.Subform - Action PackageFields - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1737592339 - Action 3832922659 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View or set field filter values for a configuration package filter. By setting a value, you specify that only records with that value are included in the configuration package.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -722,16 +732,6 @@
           <source>Target Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Control Target Company Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1124080478 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open Data Transfer Packages List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Data Transfer Packages - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 734110406 - Action 1124080478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Packages</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package Card - Action Data Transfer Packages - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 734110406 - Action 4156105233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Transfer Data Log List</source>
@@ -948,6 +948,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Control ICM Apply Table Fields - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 995776925 - Control 1106993915 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Page ID for the table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Control ICM Page ID - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 995776925 - Control 24722947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if the Records has been transferred.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1027,6 +1032,16 @@
           <source>Database Data</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action DatabaseRecords - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 995776925 - Action 904905565 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the fields that are used in the Data Transfer Process.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action PackageFields - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 995776925 - Action 904905565 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fields</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action PackageFields - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 995776925 - Action 4156105233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open Transfer Data Log List</source>

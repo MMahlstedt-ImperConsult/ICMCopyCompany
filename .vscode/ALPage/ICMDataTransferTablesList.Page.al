@@ -120,6 +120,11 @@ page 50400 "ICM Data Transfer Tables List"
                 {
                     ToolTip = 'Specifies if the Records has been transferred.';
                 }
+                field("ICM Page ID"; Rec."ICM Page ID")
+                {
+                    ToolTip = 'Specifies the Page ID for the table';
+                    Visible = false;
+                }
             }
         }
     }
@@ -221,6 +226,24 @@ page 50400 "ICM Data Transfer Tables List"
                 trigger OnAction()
                 begin
                     Page.Run(Page::"ICM Data Transfer Package List");
+                end;
+            }
+            action(PackageFields)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Fields';
+                Image = CheckList;
+                ToolTip = 'View the fields that are used in the Data Transfer Process.';
+
+                trigger OnAction()
+                var
+                    DataTransferTableFieldsL: Record "ICM Data Transfer Table Field";
+                begin
+                    DataTransferTableFieldsL.Reset();
+                    DataTransferTableFieldsL.SetRange("ICM Company Name", Rec."ICM Company Name");
+                    DataTransferTableFieldsL.SetRange("ICM Table ID", Rec."ICM Table ID");
+
+                    Page.Run(Page::"ICM Data Transfer Table Fields", DataTransferTableFieldsL);
                 end;
             }
             action("Transfer Data Log")

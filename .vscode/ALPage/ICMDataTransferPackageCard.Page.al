@@ -99,17 +99,6 @@ page 50402 "ICM Data Transfer Package Card"
         }
         area(Navigation)
         {
-            /*action("Data Transfer Packages")
-            {
-                Caption = 'Data Transfer Packages';
-                ToolTip = 'Open Data Transfer Packages List';
-                Image = Setup;
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::"ICM Data Transfer Package List");
-                end;
-            }*/
             action("Transfer Data Log")
             {
                 Caption = 'Transfer Data Log';

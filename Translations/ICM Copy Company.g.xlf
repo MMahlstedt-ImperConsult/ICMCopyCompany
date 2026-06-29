@@ -1093,6 +1093,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Update tables - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1461664492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICM Data Transfer Role Center</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 1414057293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 3821831941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Package List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 2319250073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer Data Log List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Tables</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferTables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 3929915254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action CopyCompany - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1461664492 - Action 2184016096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferSetup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2632851142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Data Log</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1238,6 +1278,51 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Transfer Data Log List - Action DatabaseRecords - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3306186039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copies records from a source Company to a target Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The “Source Company” field must be filled.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - NamedType Text001Err</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - NamedType 1858590414" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The “Target Company” field must be filled.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - NamedType Text002Err</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - NamedType 672156893" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The target company must be different from the source company.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - NamedType Text003Err</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - Control 1184707923 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The company to copy data from</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Control FromCompany - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - Control 1184707923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Control FromCompany - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - Control 2542273248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The company to copy data to</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Control ToCompany - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 3306186039 - Control 2542273248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Company - Control ToCompany - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4123819022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy - Configuration Package</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1288,51 +1373,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Config Package - Control ToCompany - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 1315529305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copies records from a source Company to a target Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The “Source Company” field must be filled.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - NamedType Text001Err</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - NamedType 1858590414" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The “Target Company” field must be filled.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - NamedType Text002Err</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - NamedType 672156893" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The target company must be different from the source company.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - NamedType Text003Err</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Options</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control Options - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - Control 1184707923 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The company to copy data from</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control FromCompany - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - Control 1184707923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Source Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control FromCompany - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - Control 2542273248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The company to copy data to</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control ToCompany - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Report 1315529305 - Control 2542273248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Target Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report ICM Copy Tables - Control ToCompany - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Profile 3306186039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1357,41 +1397,6 @@
           <source>Overwrite existing data</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ICM Table Data Processing - EnumValue Overwrite existing data - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Data Transfer Role Center</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 1414057293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransfer - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 3821831941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Package List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 2319250073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Data Log List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Tables</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferTables - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action Setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 2184016096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferSetup - Property Caption</note>
         </trans-unit>
       </group>
     </body>

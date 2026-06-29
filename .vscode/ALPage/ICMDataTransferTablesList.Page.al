@@ -192,7 +192,7 @@ page 50400 "ICM Data Transfer Tables List"
 
                 trigger OnAction()
                 begin
-                    Report.Run(Report::"ICM Copy Tables");
+                    Report.Run(Report::"ICM Copy Company");
                 end;
             }
             separator(Sep3)

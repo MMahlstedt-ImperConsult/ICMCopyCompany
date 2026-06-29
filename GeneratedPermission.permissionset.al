@@ -5,7 +5,7 @@ permissionset 50400 "ICM Copy Company"
         table "ICM Data Transfer Table" = X,
         codeunit "ICM Data Transfer Management" = X,
         page "ICM Data Transfer Tables List" = X,
-        report "ICM Copy Tables" = X,
+        report "ICM Copy Company" = X,
         tabledata "ICM Data Transfer Setup" = RIMD,
         table "ICM Data Transfer Setup" = X,
         page "ICM Data Transfer Setup" = X,

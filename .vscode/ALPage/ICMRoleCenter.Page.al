@@ -1,3 +1,7 @@
+namespace ImperConsult.CopyCompany;
+
+using System.Environment.Configuration;
+
 page 50409 "ICM Role Center"
 {
     PageType = RoleCenter;
@@ -21,19 +25,19 @@ page 50409 "ICM Role Center"
                 action(DataTransferTables)
                 {
                     Caption = 'Data Transfer Tables';
-                    ApplicationArea = Basic, Suite;
+                    ApplicationArea = All;
                     RunObject = Page "ICM Data Transfer Tables List";
                 }
                 action(DataTransferPackageList)
                 {
                     Caption = 'Data Transfer Package List';
-                    ApplicationArea = Basic, Suite;
+                    ApplicationArea = All;
                     RunObject = Page "ICM Data Transfer Package List";
                 }
                 action(DataTransferPackageLogList)
                 {
                     Caption = 'Transfer Data Log List';
-                    ApplicationArea = Basic, Suite;
+                    ApplicationArea = All;
                     RunObject = Page "ICM Transfer Data Log List";
                 }
             }
@@ -43,9 +47,16 @@ page 50409 "ICM Role Center"
                 action(DataTransferSetup)
                 {
                     Caption = 'Setup';
-                    ApplicationArea = Basic, Suite;
+                    ApplicationArea = All;
                     RunObject = Page "ICM Data Transfer Setup";
                 }
+                action(CopyCompany)
+                {
+                    Caption = 'Copy Company';
+                    ApplicationArea = All;
+                    RunObject = Report "Copy Company";
+                }
+
             }
         }
     }

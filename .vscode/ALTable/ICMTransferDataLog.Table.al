@@ -10,7 +10,7 @@ table 50406 "ICM Transfer Data Log"
     Caption = 'Transfer Data Log';
     DataClassification = ToBeClassified;
     Extensible = true;
-    DataPerCompany = true;
+    DataPerCompany = false;
     DrillDownPageId = "ICM Transfer Data Log List";
     LookupPageId = "ICM Transfer Data Log List";
 
@@ -24,7 +24,7 @@ table 50406 "ICM Transfer Data Log"
         }
         field(2; "ICM Table No."; Integer)
         {
-            Caption = 'Table No.';//'Tabellenr';
+            Caption = 'Table No.';
             TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table),
                                                                 "Object Subtype" = const('Normal'));
         }
@@ -38,46 +38,46 @@ table 50406 "ICM Transfer Data Log"
         }
         field(4; "ICM Records Available"; Integer)
         {
-            Caption = 'Records Available';//'Datensätze vorhanden';
+            Caption = 'Records Available';
             MinValue = 0;
             Editable = false;
         }
         field(5; "ICM Records Transferred"; Integer)
         {
-            Caption = 'Records Transferred';//Datensätze übertragen';
+            Caption = 'Records Transferred';
             MinValue = 0;
             Editable = false;
         }
         field(6; "ICM Records Skipped"; Integer)
         {
-            Caption = 'Records Transferred';//Datensätze übertragen';
+            Caption = 'Records Transferred';
             MinValue = 0;
             Editable = false;
         }
         field(7; "ICM Source Company"; Text[30])
         {
-            Caption = 'Source Company';//Quellmandant';
+            Caption = 'Source Company';
             TableRelation = Company;
         }
         field(8; "ICM Target Company"; Text[30])
         {
-            Caption = 'Target Company';//Zielmandant';
+            Caption = 'Target Company';
             TableRelation = Company;
         }
         field(9; "ICM Transferred Date"; DateTime)
         {
-            Caption = 'Transferred Date';//Übertragen am';
+            Caption = 'Transferred Date';
             Editable = false;
         }
         field(10; "ICM Transferred By"; Code[50])
         {
-            Caption = 'Transferred By';//Übertragen von';
+            Caption = 'Transferred By';
             TableRelation = User;
             Editable = false;
         }
         field(11; "ICM Filter Exists"; Boolean)
         {
-            Caption = 'Filter Exists';//Filter vorhanden';
+            Caption = 'Filter Exists';
             Editable = false;
         }
         field(12; "ICM Page ID"; Integer)
@@ -115,22 +115,6 @@ table 50406 "ICM Transfer Data Log"
         }
     }
 
-    trigger OnInsert()
-    begin
-    end;
-
-    trigger OnModify()
-    begin
-    end;
-
-    trigger OnDelete()
-    begin
-    end;
-
-    trigger OnRename()
-    begin
-    end;
-
     procedure GetNextEntryNo(): Integer
     var
         ICMTransferDataLog: Record "ICM Transfer Data Log";
@@ -143,12 +127,10 @@ table 50406 "ICM Transfer Data Log"
 
     procedure ShowDatabaseRecords()
     begin
-
         if "ICM Page ID" <> 0 then
             PAGE.Run("ICM Page ID")
         else
             Error(DefineDrillDownPageMsg, FieldCaption("ICM Page ID"));
-
     end;
 
     var

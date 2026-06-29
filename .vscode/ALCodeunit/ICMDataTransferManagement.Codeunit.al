@@ -133,7 +133,7 @@ codeunit 50400 "ICM Data Transfer Management"
     end;
 
     /// <summary>
-    /// Inserts a Line into "ICM Table" if it does not already exist
+    /// Inserts a Line into "ICM Data Transfer Table" if it does not already exist
     /// </summary>
     local procedure UpdateICMTableLine(var AllObjWithCaptionR: Record AllObjWithCaption; CompanyNameR: Text[30])
     var
@@ -178,8 +178,6 @@ codeunit 50400 "ICM Data Transfer Management"
             repeat
                 if ActiveStatusR = true then begin
                     if ICMDataTransferTableR."ICM Included in the License" and (ICMDataTransferTableR."ICM Table Subtype" = 'Normal') then begin
-                        //if ICMTable."ICM Table Subtype" = 'Normal' then begin
-
                         ICMDataTransferTableR."ICM Active" := ActiveStatusR;
                         ICMDataTransferTableR.Modify();
                     end;
@@ -485,9 +483,7 @@ codeunit 50400 "ICM Data Transfer Management"
             WindowDialog.Close();
 
         TransferDataLogListL.Run();
-        //if GuiAllowed then
-        //    Message(Text007Lbl, CopiedTableCountL, ICMConfigPackageL."ICM Source Company Name", ICMConfigPackageL."ICM Target Company Name");
-        //Message(Text004Lbl, CopiedTableCountL, SkippedTableCountL);        
+
     end;
 
     [TryFunction]

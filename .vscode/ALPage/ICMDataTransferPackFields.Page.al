@@ -70,6 +70,7 @@ page 50405 "ICM Data Transfer Pack. Fields"
                 Caption = 'Set Included';
                 ToolTip = 'Set Included';
                 Image = Open;
+                Visible = ActionsVisible;
 
                 trigger OnAction()
                 var
@@ -86,6 +87,7 @@ page 50405 "ICM Data Transfer Pack. Fields"
                 Caption = 'Clear Included';
                 ToolTip = 'Clear Included';
                 Image = Close;
+                Visible = ActionsVisible;
 
                 trigger OnAction()
                 var
@@ -105,6 +107,12 @@ page 50405 "ICM Data Transfer Pack. Fields"
     trigger OnAfterGetRecord()
     begin
         IncludedEditable := SetIncludedEditable();
+        SetActionsVisible();
+    end;
+
+    trigger OnInit()
+    begin
+        ActionsVisible := true;
     end;
 
     local procedure SetIncludedEditable(): Boolean
@@ -115,6 +123,18 @@ page 50405 "ICM Data Transfer Pack. Fields"
         exit((not Rec."ICM Primary Key") and (ICMConfigPackageLineL."ICM Apply Table Fields" <> ICMConfigPackageLineL."ICM Apply Table Fields"::"All Fields"));
     end;
 
+    procedure SetActionsVisible()
+    var
+        ICMDataTransferPackLine: Record "ICM Data Transfer Package Line";
+    begin
+        if ICMDataTransferPackLine.Get(Rec."ICM Package Code", Rec."ICM Table ID") then
+            if ICMDataTransferPackLine."ICM Apply Table Fields" = ICMDataTransferPackLine."ICM Apply Table Fields"::"Some Fields" then
+                ActionsVisible := true
+            else
+                ActionsVisible := false;
+    end;
+
     var
         IncludedEditable: Boolean;
+        ActionsVisible: Boolean;
 }

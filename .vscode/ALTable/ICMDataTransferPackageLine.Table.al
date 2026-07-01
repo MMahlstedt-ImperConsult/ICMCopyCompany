@@ -248,26 +248,6 @@ table 50403 "ICM Data Transfer Package Line"
     begin
         DataTransfPackFilterL.Reset();
 
-        /*ConfigPackageData.Reset();
-        ConfigPackageData.SetRange("Package Code", "Package Code");
-        ConfigPackageData.SetRange("Table ID", "Table ID");
-        ConfigPackageData.SetRange("No.", "No.");
-        if FindProcessingRuleFilters(ConfigPackageFilter, RuleNo) then begin
-            RecRefTemp.Open("Table ID", true);
-            repeat
-                ConfigPackageData.SetRange("Field ID", ConfigPackageFilter."Field ID");
-                if ConfigPackageData.FindFirst() then begin
-                    FieldRef := RecRefTemp.Field(ConfigPackageData."Field ID");
-                    ConfigValidateMgt.EvaluateTextToFieldRef(ConfigPackageData.Value, FieldRef, false);
-                    FieldRef.SetFilter(ConfigPackageFilter."Field Filter");
-                end else
-                    exit(false);
-            until ConfigPackageFilter.Next() = 0;
-            RecRefTemp.Insert();
-            if RecRefTemp.IsEmpty() then
-                exit(false);
-        end; 
-        exit(true); */
         RecRefL.Open("ICM Table ID");
 
         DataTransfPackFilterL.Reset();

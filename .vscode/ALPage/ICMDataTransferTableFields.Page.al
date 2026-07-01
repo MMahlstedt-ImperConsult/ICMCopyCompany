@@ -14,7 +14,7 @@ page 50406 "ICM Data Transfer Table Fields"
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(General)
             {
                 field("ICM Table ID"; Rec."ICM Table ID")
                 {
@@ -61,10 +61,6 @@ page 50406 "ICM Data Transfer Table Fields"
                 }
             }
         }
-        area(Factboxes)
-        {
-
-        }
     }
 
     actions
@@ -76,6 +72,7 @@ page 50406 "ICM Data Transfer Table Fields"
                 Caption = 'Set Included';
                 ToolTip = 'Set Included';
                 Image = Open;
+                Visible = ActionsVisible;
 
                 trigger OnAction()
                 var
@@ -93,6 +90,7 @@ page 50406 "ICM Data Transfer Table Fields"
                 Caption = 'Clear Included';
                 ToolTip = 'Clear Included';
                 Image = Close;
+                Visible = ActionsVisible;
 
                 trigger OnAction()
                 var
@@ -112,6 +110,12 @@ page 50406 "ICM Data Transfer Table Fields"
     trigger OnAfterGetRecord()
     begin
         IncludedEditable := SetIncludedEditable();
+        SetActionsVisible();
+    end;
+
+    trigger OnInit()
+    begin
+        ActionsVisible := true;
     end;
 
     local procedure SetIncludedEditable(): Boolean
@@ -122,6 +126,18 @@ page 50406 "ICM Data Transfer Table Fields"
         exit((not Rec."ICM Primary Key") and (ICMTableL."ICM Apply Table Fields" <> ICMTableL."ICM Apply Table Fields"::"All Fields"));
     end;
 
+    procedure SetActionsVisible()
+    var
+        ICMDataTransferTable: Record "ICM Data Transfer Table";
+    begin
+        if ICMDataTransferTable.Get(Rec."ICM Company Name", Rec."ICM Table ID") then
+            if ICMDataTransferTable."ICM Apply Table Fields" = ICMDataTransferTable."ICM Apply Table Fields"::"Some Fields" then
+                ActionsVisible := true
+            else
+                ActionsVisible := false;
+    end;
+
     var
         IncludedEditable: Boolean;
+        ActionsVisible: Boolean;
 }

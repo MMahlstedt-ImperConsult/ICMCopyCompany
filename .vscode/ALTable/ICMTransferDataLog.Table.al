@@ -101,7 +101,11 @@ table 50406 "ICM Transfer Data Log"
             Caption = 'Filter Text';
             Editable = false;
         }
-
+        field(17; "ICM Error Text"; Text[250])
+        {
+            Caption = 'Error Text';
+            Editable = false;
+        }
     }
 
     keys

@@ -71,19 +71,19 @@ page 50407 "ICM Transfer Data Log List"
                 field("ICM Transferred Date"; Rec."ICM Transferred Date")
                 {
                     ApplicationArea = All;
-                    Caption = 'Transferred Date';//'Übertragen am';
+                    Caption = 'Transferred Date';
                     ToolTip = 'Specifies the date and time when the records were transferred.';
                 }
                 field("ICM Transferred By"; Rec."ICM Transferred By")
                 {
                     ApplicationArea = All;
-                    Caption = 'Transferred By';//'Übertragen von';
+                    Caption = 'Transferred By';
                     ToolTip = 'Specifies the user who transferred the records.';
                 }
                 field("ICM Filter Exists"; Rec."ICM Filter Exists")
                 {
                     ApplicationArea = All;
-                    Caption = 'Filter Exists';//'Filter vorhanden';
+                    Caption = 'Filter Exists';
                     ToolTip = 'Specifies if a filter was applied during the transfer.';
                     Visible = false;
                 }

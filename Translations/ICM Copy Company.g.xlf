@@ -363,6 +363,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Entry No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1318717364 - Field 1527174126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Error Text - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1318717364 - Field 2559459937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filter Exists</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1114,7 +1119,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Tables</source>
+          <source>Data Transfer Tables List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferTables - Property Caption</note>
         </trans-unit>

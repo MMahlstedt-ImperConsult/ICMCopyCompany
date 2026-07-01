@@ -24,7 +24,7 @@ page 50409 "ICM Role Center"
                 Caption = 'Data Transfer';
                 action(DataTransferTables)
                 {
-                    Caption = 'Data Transfer Tables';
+                    Caption = 'Data Transfer Tables List';
                     ApplicationArea = All;
                     RunObject = Page "ICM Data Transfer Tables List";
                 }

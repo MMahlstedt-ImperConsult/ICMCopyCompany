@@ -1336,9 +1336,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Tables</source>
-          <target>Datentransfer Tabellen</target>
+          <source>Data Transfer Tables List</source>
+          <target>Datentransfer Tabellenliste</target>
           <note from="Developer" annotates="general" priority="2"></note>
+          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferTables - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1461664492 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

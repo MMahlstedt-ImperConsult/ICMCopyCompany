@@ -146,10 +146,6 @@ page 50400 "ICM Data Transfer Tables List"
                     CurrPage.Update(false);
                 end;
             }
-            separator(Sep1)
-            {
-                Caption = '', Locked = true;
-            }
             action("Set Field Active")
             {
                 Caption = 'Set Field Active to true or false';
@@ -180,10 +176,6 @@ page 50400 "ICM Data Transfer Tables List"
                     CurrPage.Update(false);
                 end;
             }
-            separator(Sep2)
-            {
-                Caption = '', Locked = true;
-            }
             action("Transfer Data")
             {
                 Caption = 'Transfer Data Between Companies';
@@ -194,10 +186,6 @@ page 50400 "ICM Data Transfer Tables List"
                 begin
                     Report.Run(Report::"ICM Copy Company");
                 end;
-            }
-            separator(Sep3)
-            {
-                Caption = '', Locked = true;
             }
             action("Toggle Active Tables Visibility")
             {
@@ -212,6 +200,19 @@ page 50400 "ICM Data Transfer Tables List"
                     if CompanyName <> '' then
                         Rec.SetRange("ICM Company Name", CompanyName);
                     CurrPage.Update(false);
+                end;
+            }
+            action("Test")
+            {
+                Caption = 'Test';
+                ToolTip = 'Test';
+                Image = Refresh;
+
+                trigger OnAction()
+                var
+                    ICMMgt: Codeunit "ICM Data Transfer Management";
+                begin
+                    ICMMgt.TestDeleteData('My Company');
                 end;
             }
         }

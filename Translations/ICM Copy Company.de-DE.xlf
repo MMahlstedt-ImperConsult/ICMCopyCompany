@@ -435,6 +435,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Entry No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1318717364 - Field 1527174126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error Text</source>
+          <target>Fehlertext</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ICM Transfer Data Log - Field ICM Error Text - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1318717364 - Field 2559459937 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Filter Exists</source>
           <target>Filter vorhanden</target>
@@ -975,6 +981,54 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Package List - Action Transfer Data Log - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1786240613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ICM Data Transfer Role Center</source>
+          <target>Datentransfer Rollencenter</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 1414057293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer</source>
+          <target>Datentransfer</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action DataTransfer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 3821831941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Package List</source>
+          <target>Datentransferpaket Liste</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action DataTransferPackageList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 2319250073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transfer Data Log List</source>
+          <target>Datentransfer Archiv Liste</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action DataTransferPackageLogList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Tables List</source>
+          <target>Datentransfer Tabellenliste</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action DataTransferTables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <target>Einrichtung</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 3929915254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Company</source>
+          <target>Mandanten kopieren</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action CopyCompany - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1786240613 - Action 2184016096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Transfer Setup</source>
+          <target>Datentransfer Einrichtung</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Role Center - Action DataTransferSetup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 554812621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Data Transfer Setup</source>
           <target>Datentransfer Einrichtung</target>
@@ -1310,55 +1364,6 @@
           <target>Tabellen aktualisieren</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ICM Data Transfer Tables List - Action Update tables - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ICM Data Transfer Role Center</source>
-          <target>Datentransfer Rollencenter</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 1414057293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer</source>
-          <target>Datentransfer</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransfer - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 3821831941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Package List</source>
-          <target>Datentransfer Paket Liste</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 2319250073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Data Log List</source>
-          <target>Datentransfer Archiv Liste</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferPackageLogList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 3049493426 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Data Transfer Tables List</source>
-          <target>Datentransfer Tabellenliste</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Source has been modified.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferTables - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <target>Einrichtung</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action Setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 3929915254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy Company</source>
-          <target>Mandanten kopieren</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action CopyCompany - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1461664492 - Action 2184016096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <target>Einrichtung</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ICM Role Center - Action DataTransferSetup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2632851142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfer Data Log</source>

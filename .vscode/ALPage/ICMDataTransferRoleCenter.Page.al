@@ -2,7 +2,7 @@ namespace ImperConsult.CopyCompany;
 
 using System.Environment.Configuration;
 
-page 50409 "ICM Role Center"
+page 50409 "ICM Data Transfer Role Center"
 {
     PageType = RoleCenter;
     Caption = 'ICM Data Transfer Role Center';
@@ -46,7 +46,7 @@ page 50409 "ICM Role Center"
                 Caption = 'Setup';
                 action(DataTransferSetup)
                 {
-                    Caption = 'Setup';
+                    Caption = 'Data Transfer Setup';
                     ApplicationArea = All;
                     RunObject = Page "ICM Data Transfer Setup";
                 }

@@ -1,6 +1,7 @@
 namespace ImperConsult.CopyCompany;
 
 using Microsoft.Foundation.Company;
+using Microsoft.Purchases.Payables;
 using Microsoft.Inventory.Item;
 using System.Reflection;
 using System.Environment;
@@ -237,6 +238,30 @@ codeunit 50400 "ICM Data Transfer Management"
             until ICMTableFieldR.Next() = 0;
     end;
 
+    procedure TestDeleteData(CompanyNameR: Text[30])
+    var
+        RecRefL: RecordRef;
+        VendorLedgerEntryL: Record "Vendor Ledger Entry";
+    begin
+        CompanyNameR := 'My Company';
+        VendorLedgerEntryL.Reset();
+        //VendorLedgerEntryL.ChangeCompany('My Company');
+        if VendorLedgerEntryL.FindLast() then
+            if not TryDeleteVendorLedgerEntry(VendorLedgerEntryL) then
+                //VendorLedgerEntryL.Delete();
+                //RecRefL.Open(25, false, CompanyNameR);
+                //if RecRefL.ReadPermission() then
+                //RecRefL.DeleteAll();
+                //RecRefL.Close();
+                Message('Test: %1', GetLastErrorText);
+    end;
+
+    [TryFunction]
+    local procedure TryDeleteVendorLedgerEntry(var VendorLedgerEntryR: Record "Vendor Ledger Entry")
+    begin
+        VendorLedgerEntryR.Delete();
+    end;
+
     procedure CopyToCompanyFromDataTransferTables(SourceCompanyR: Text[30]; TargetCompanyR: Text[30])
     var
         ICMTableL: Record "ICM Data Transfer Table";
@@ -295,14 +320,21 @@ codeunit 50400 "ICM Data Transfer Management"
                 TargetRecRefL.Open(ICMTableL."ICM Table ID", false, TargetCompanyR);
 
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
-                    ErrorTextL := DeleteAllWithLog(TargetRecRefL);
+                    if TryDeleteAll(TargetRecRefL) then
+                        ErrorTextL := GetLastErrorText;
+                //if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
+                //    TargetRecRefL.DeleteAll();
+                //    ErrorTextL := DeleteAllWithLog(TargetRecRefL);
                 //TryDeleteAll(TargetRecRefL);
+                //if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
+                //    DeleteAllRecords(TargetRecRefL);
+                //ErrorTextL := ErrorText;
 
                 ICMTransferDataLogL.Reset();
                 NextEntryNoL := ICMTransferDataLogL.GetNextEntryNo;
                 ICMTransferDataLogL."ICM Entry No." := NextEntryNoL;
                 ICMTransferDataLogL."ICM Table No." := ICMTableL."ICM Table ID";
-                //ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
+                ICMTransferDataLogL."ICM Records Available" := SourceRecRefL.Count();
                 ICMTransferDataLogL."ICM Source Company" := SourceCompanyR;
                 ICMTransferDataLogL."ICM Target Company" := TargetCompanyR;
                 ICMTransferDataLogL."ICM Page ID" := ICMTableL."ICM Page ID";
@@ -316,7 +348,6 @@ codeunit 50400 "ICM Data Transfer Management"
 
                 if SourceRecRefL.FindSet() then begin
                     repeat
-
                         if ICMTableFieldL.FindSet() then begin
                             repeat
                                 FieldRefL := SourceRecRefL.Field(ICMTableFieldL."ICM Field ID");
@@ -332,26 +363,24 @@ codeunit 50400 "ICM Data Transfer Management"
                             TargetRecRefL.Find('=') then
                             SkippedRecordCountL += 1
                         else begin
+                            //if InsertRecordWithLog(TargetRecRefL) then begin                        
                             if TryInsertRecord(TargetRecRefL) then begin
                                 CopiedRecordCountL += 1;
                                 RecordsTransferedL := true;
                             end else
                                 SkippedRecordCountL += 1;
                         end;
-
-
                     until SourceRecRefL.Next() = 0;
                 end;
 
                 if ICMTransferDataLogL.Get(NextEntryNoL) then begin
-                    ICMTransferDataLogL."ICM Records Available" := ICMTableL."ICM Record Count"; //SourceRecRefL.Count();
+                    //ICMTransferDataLogL."ICM Records Available" := ICMTableL."ICM Record Count"; //SourceRecRefL.Count();
                     ICMTransferDataLogL."ICM Records Transferred" := CopiedRecordCountL;
                     ICMTransferDataLogL."ICM Records Skipped" := SkippedRecordCountL;
                     ICMTransferDataLogL."ICM Transferred By" := UserId;
                     ICMTransferDataLogL."ICM Transferred Date" := CurrentDateTime;
                     ICMTransferDataLogL.Modify();
                 end;
-                //CopiedTableCountL += 1;
 
                 ICMTableL."ICM Records transferred" := RecordsTransferedL;
                 ICMTableL.Modify();
@@ -421,8 +450,8 @@ codeunit 50400 "ICM Data Transfer Management"
                 TargetRecRefL.Open(ICMDataTransferPackageLineL."ICM Table ID", false, ICMDataTransferPackageL."ICM Target Company Name");
 
                 if ICMSetupL."ICM Table data processing" = ICMSetupL."ICM Table data processing"::"Overwrite existing data" then
-                    //TryDeleteAll(TargetRecRefL);
-                    ErrorTextL := DeleteAllWithLog(TargetRecRefL);
+                    TryDeleteAll(TargetRecRefL);
+                //    ErrorTextL := DeleteAllWithLog(TargetRecRefL);
 
                 NextEntryNoL := CreateTransferDataLogFromPackage(ICMTransferDataLogL, ICMDataTransferPackageL, ICMDataTransferPackageLineL, SourceRecRefL);
                 //ICMTransferDataLogL."ICM Error Text" := CopyStr(ErrorTextL, 1, MaxStrLen(ICMTransferDataLogL."ICM Error Text"));
@@ -487,10 +516,60 @@ codeunit 50400 "ICM Data Transfer Management"
 
     end;
 
+
+    local procedure InsertRecordWithLog(var RecRefR: RecordRef): Text
+    var
+        ErrorTextL: Text;
+    begin
+        if not TryInsertRecord(RecRefR) then begin
+            ErrorTextL := GetLastErrorText();
+        end;
+        exit(ErrorTextL)
+    end;
+
     [TryFunction]
     local procedure TryInsertRecord(var RecRefR: RecordRef)
     begin
         RecRefR.Insert();
+    end;
+
+    [TryFunction]
+    local procedure TryDeleteRecord(var RecRef: RecordRef)
+    begin
+        RecRef.Delete();
+    end;
+
+    procedure DeleteAllRecords(RecRefR: RecordRef): Boolean
+    begin
+        RecRefR.Reset();
+        if RecRefR.FindSet() then
+            repeat
+                if not TryDeleteRecord(RecRefR) then begin
+                    ErrorText := GetLastErrorText();
+                    // Bei Fehler aus der Schleife aussteigen
+                    BREAK;
+                end;
+            until RecRefR.Next() = 0;
+
+        // Wenn noch ein aktueller Datensatz vorhanden ist, war ein Fehler aufgetreten
+        exit(RecRefR.IsEmpty());
+    end;
+
+    [TryFunction]
+    local procedure TryDeleteAll(var RecRefR: RecordRef)
+    begin
+        if RecRefR.Number <> 0 then
+            RecRefR.DeleteAll();
+    end;
+
+    local procedure DeleteAllWithLog(var RecRefR: RecordRef): Text
+    var
+        ErrorTextL: Text;
+    begin
+        if not TryDeleteAll(RecRefR) then begin
+            ErrorTextL := GetLastErrorText();
+        end;
+        exit(ErrorTextL)
     end;
 
     local procedure CreateTransferDataLogFromPackage(var ICMTransferDataLogR: Record "ICM Transfer Data Log"; ICMDataTransferPackageR: Record "ICM Data Transfer Package"; ICMDataTransferPackageLineR: Record "ICM Data Transfer Package Line"; SourceRecRefR: RecordRef): Integer
@@ -524,23 +603,6 @@ codeunit 50400 "ICM Data Transfer Management"
             ICMTransferDataLogR."ICM Transferred Date" := CurrentDateTime;
             ICMTransferDataLogR.Modify();
         end;
-    end;
-
-    [TryFunction]
-    local procedure TryDeleteAll(var RecRefR: RecordRef)
-    begin
-        if RecRefR.Number <> 0 then
-            RecRefR.DeleteAll();
-    end;
-
-    local procedure DeleteAllWithLog(var RecRefR: RecordRef): Text
-    var
-        ErrorTextL: Text;
-    begin
-        if not TryDeleteAll(RecRefR) then begin
-            ErrorTextL := GetLastErrorText();
-        end;
-        exit(ErrorTextL)
     end;
 
     procedure LookupCompanyName(var CurrentCompanyNameR: Text[30]; var ICMTableR: Record "ICM Data Transfer Table")
@@ -671,6 +733,7 @@ codeunit 50400 "ICM Data Transfer Management"
         WindowDialog: Dialog;
         WindowDialogCount1: Integer;
         WindowDialogIndex1: Integer;
+        ErrorText: Text;
         Text001Lbl: Label 'Lines has been updated.';
         Text002Lbl: Label 'The Field Active has been set to %1 for all filtered table lines.';
         Text003Lbl: Label 'No active tables found.';
